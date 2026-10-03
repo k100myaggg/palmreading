@@ -1,0 +1,13 @@
+{
+  "name": "aurapalm-palm-reading",
+  "version": "1.0.0",
+  "description": "AuraPalm - Celestial Chiromancy, Free AI Palm Reading Online & Master Palmist Consultations",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^6.2.0"
+  }
+}
