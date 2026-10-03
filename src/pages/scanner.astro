@@ -1,98 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive Palm Reading AI Scanner: Free Online Tool for Male &amp; Female | AuraPalm</title>
-  <meta name="description" content="Use our free AI palm reading scanner tool online. Real-time biometric chiromancy analyzes Heart, Head, Life, and Fate lines with planetary mount calibration.">
-  <meta name="keywords" content="palm reading ai, scanner, tool, free, palm reading online, palm reading for male, palm reading for female, palmistry scanner">
-  <link rel="canonical" href="https://aurapalm.com/scanner.html">
+---
+import Layout from '../layouts/Layout.astro';
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b68b31'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg>">
-  <link rel="stylesheet" href="css/styles.css">
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebApplication",
-    "name": "AuraPalm Free Interactive Palm Reading AI Scanner",
-    "url": "https://aurapalm.com/scanner.html",
-    "applicationCategory": "LifestyleApplication",
-    "operatingSystem": "All",
-    "description": "Real-time biometric palm reading scanner tool providing instant accurate chiromancy analysis.",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "AuraPalm Free Interactive Palm Reading AI Scanner",
+  "url": "https://palmreading-b0v.pages.dev/scanner.html",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "All",
+  "description": "Real-time biometric palm reading scanner tool providing instant accurate chiromancy analysis for male and female seekers.",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "INR"
   }
-  </script>
-</head>
-<body>
+};
+---
 
-  <!-- Site Header -->
-  <header class="site-header">
-    <div class="container-wide nav-inner">
-      <a href="index.html" class="brand-logo" aria-label="AuraPalm Home">
-        <div class="brand-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <span class="brand-title">AuraPalm</span>
-          <span class="brand-subtitle">Celestial Chiromancy &amp; Destiny Readings</span>
-        </div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="guides.html" class="nav-link">Explore Readings</a>
-        <a href="scanner.html" class="nav-link active">Interactive Scanner</a>
-        <a href="report.html" class="nav-link">My Destiny Report</a>
-        <a href="palmists.html" class="nav-link">Master Palmists</a>
-        <a href="guides.html#journal" class="nav-link">Astrology Journal</a>
-      </nav>
-
-      <div class="nav-actions">
-        <!-- Language Switcher: EN | HI -->
-        <button class="lang-toggle-btn" title="Switch language (English / हिन्दी)" aria-label="Toggle language">
-          <span class="lang-code active">EN</span><span class="lang-sep">|</span><span class="lang-code">हिं</span>
-        </button>
-
-        <!-- Theme Switcher: Light Mode default, Dark Mode toggle -->
-        <button class="theme-toggle-btn" title="Toggle Celestial Dark / Light Theme" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-
-        <a href="scanner.html" class="btn btn-primary btn-glow">SCAN YOUR PALM</a>
-
-        <button class="icon-btn" aria-label="Notifications">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-          </svg>
-          <span class="badge-dot"></span>
-        </button>
-
-        <div class="avatar-nav" title="Sophia Thorne">
-          <img src="images/master-sophia.jpg" alt="Master Palmist Avatar" width="38" height="38">
-        </div>
-
-        <button class="mobile-menu-toggle" aria-label="Open mobile menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Scanner Interface -->
+<Layout
+  title="Interactive Palm Reading AI Scanner: Free Online Tool for Male & Female | AuraPalm"
+  description="Use our free AI palm reading scanner tool online. Real-time biometric chiromancy analyzes Heart, Head, Life, and Fate lines with planetary mount calibration."
+  keywords="palm reading ai, scanner, tool, free, palm reading online, palm reading for male, palm reading for female, palmistry scanner"
+  activePage="scanner"
+  jsonLd={jsonLd}
+>
   <main class="scanner-page">
     <div class="container-wide">
       
@@ -158,22 +89,18 @@
         <!-- Left: Biometric Camera Viewport -->
         <div>
           <div class="scanner-chamber">
-            <!-- Video feed (camera) or Calibrated image feed -->
             <video id="camera-feed" class="chamber-video-feed" autoplay playsinline muted style="display:none;"></video>
-            <img id="image-feed" class="chamber-image-feed" src="images/palm-base.jpg" alt="Calibrated Palm Specimen for AI Scanning">
+            <img id="image-feed" class="chamber-image-feed" src="/images/palm-base.jpg" alt="Calibrated Palm Specimen for AI Scanning">
 
             <!-- Biometric HUD Overlay -->
             <div class="hud-overlay">
-              <!-- Laser Scanner Line -->
               <div class="scan-laser-line"></div>
 
-              <!-- Reticle Corners -->
               <div class="reticle-corner reticle-tl"></div>
               <div class="reticle-corner reticle-tr"></div>
               <div class="reticle-corner reticle-bl"></div>
               <div class="reticle-corner reticle-br"></div>
 
-              <!-- HUD Top Bar Status -->
               <div class="hud-top-bar">
                 <div class="hud-pill">
                   <span class="hud-dot-pulse"></span>
@@ -187,15 +114,12 @@
 
               <!-- Biometric Tracking Wireframe Overlay -->
               <svg style="position: absolute; inset: 0; width: 100%; height: 100%;" viewBox="0 0 500 600">
-                <!-- Center Horizon Axis -->
                 <line x1="50" y1="350" x2="450" y2="350" stroke="var(--color-gold-primary)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7"/>
                 <line x1="250" y1="200" x2="250" y2="520" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
 
-                <!-- Hand Silhouette Target Outline -->
                 <path d="M160 520 C140 500 120 400 100 320 C85 260 70 200 80 160 C90 130 120 140 135 180 C145 140 160 85 180 80 C200 75 210 110 220 160 C230 110 245 50 265 45 C285 40 295 80 300 150 C315 100 330 90 350 95 C370 100 370 150 365 210 C385 160 410 155 425 175 C440 195 430 260 410 310 C390 360 415 440 375 500 C340 540 200 550 160 520 Z"
                       fill="none" stroke="var(--color-gold-primary)" stroke-width="2" opacity="0.85" />
                 
-                <!-- Target Pulse Circle -->
                 <circle cx="250" cy="350" r="14" fill="none" stroke="var(--color-cyan-biometric)" stroke-width="2" class="pulse-node" />
                 <circle cx="250" cy="350" r="4" fill="var(--color-gold-primary)" />
               </svg>
@@ -211,7 +135,6 @@
                 <span>Vitality Arc (Life): <strong>96.8% Mapped</strong></span>
               </div>
 
-              <!-- Distance Guidance Meter -->
               <div class="hud-guidance-pill" style="left: 50%; transform: translateX(-50%);">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
@@ -256,7 +179,7 @@
               </svg>
               <span>Upload Photo</span>
             </button>
-            <input type="file" id="file-upload-input" accept="image/*" style="display:none;">
+            <input type="file" id="file-upload-input" accept="image/*" style="display:none;" />
           </div>
         </div>
 
@@ -359,7 +282,7 @@
       </div>
 
       <!-- Ancient Wisdom & Guidance Accordion -->
-      <section style="margin-top: 40px;">
+      <section style="margin-top: 40px; margin-bottom: 60px;">
         <div class="section-header" style="text-align: left; margin-bottom: 24px;">
           <span class="section-eyebrow">ANCIENT WISDOM &amp; GUIDANCE</span>
           <h2 class="section-title" style="font-size: 1.6rem;">Dominant vs. Non-Dominant Palm Dynamics</h2>
@@ -402,21 +325,18 @@
     </div>
   </main>
 
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="container-wide footer-bottom">
-      <div>&copy; 2026 AuraPalm Arcane Institute. All celestial rights reserved.</div>
-      <div class="footer-legal-links">
-        <a href="#" class="footer-link">Sanctuary Terms</a>
-        <a href="#" class="footer-link">Occult Privacy</a>
-        <a href="#" class="footer-link">Ephemeris Integrity</a>
-      </div>
-    </div>
-  </footer>
-
-  <script type="module" src="js/i18n.js"></script>
-  <script type="module" src="js/theme.js"></script>
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/scanner.js"></script>
-</body>
-</html>
+  <script is:inline src="/js/main.js"></script>
+  <script is:inline src="/js/scanner.js"></script>
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.faq-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+          const item = trigger.closest('.faq-item');
+          const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
+          trigger.setAttribute('aria-expanded', !isExpanded);
+          item.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+</Layout>

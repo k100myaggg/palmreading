@@ -1,0 +1,120 @@
+---
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/styles.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  canonical?: string;
+  activePage?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, any>;
+}
+
+const {
+  title = "Palm Reading Online India: Free AI Palmistry Scanner & Vedic Chiromancy | AuraPalm",
+  description = "Discover your karmic destiny with AuraPalm India. 100% accurate online palm reading & AI palmistry scanner tool. Book live consultations with Vedic astrologers for only ₹499.",
+  keywords = "Palm reading, palmistry, palm reading online, palm reading ai, free, tool, for male, for female, scanner, हस्तरेखा, हस्तरेखा ज्ञान, Samudrika Shastra, Vedic palm reading India, ₹499",
+  canonical = Astro.url.href,
+  activePage = "home",
+  ogImage = "/images/palm-base.jpg",
+  jsonLd
+} = Astro.props;
+
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://palmreading-b0v.pages.dev/#website",
+      "url": "https://palmreading-b0v.pages.dev/",
+      "name": "AuraPalm - Vedic Chiromancy & Palm Reading Online India",
+      "inLanguage": ["en-IN", "hi-IN"],
+      "description": "Accurate free AI palm reading online tool and certified Vedic chiromancy consultations for male and female seekers across India.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "AuraPalm Arcane Institute India",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://palmreading-b0v.pages.dev/images/palm-base.jpg"
+        }
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "https://palmreading-b0v.pages.dev/#app",
+      "name": "AuraPalm AI Palm Reading Scanner Tool",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "INR"
+      }
+    }
+  ]
+};
+
+const structuredData = jsonLd || defaultSchema;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:url" content={canonical} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
+
+  <!-- AI Discovery & Machine-Readable Spec Links -->
+  <link rel="help" type="text/plain" href="/llms.txt" title="LLM Agent Context" />
+  <link rel="alternate" type="text/markdown" href="/pricing.md" title="Pricing Specification" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b68b31'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg>" />
+
+  <!-- Early Theme Init Script to avoid FOUC / layout shift -->
+  <script is:inline>
+    (function() {
+      const theme = localStorage.getItem('aurapalm_theme') || 'light';
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+      }
+    })();
+  </script>
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <Navbar activePage={activePage} />
+
+  <!-- Page Content -->
+  <slot />
+
+  <!-- Universal Footer -->
+  <Footer />
+
+  <!-- Universal Scripts -->
+  <script is:inline type="module" src="/js/i18n.js"></script>
+  <script is:inline type="module" src="/js/theme.js"></script>
+</body>
+</html>

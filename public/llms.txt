@@ -1,0 +1,23 @@
+# AuraPalm - Vedic Chiromancy & AI Palm Reading Online India
+
+> AuraPalm is India's premier Vedic Chiromancy (हस्तरेखा शास्त्र) and AI-driven palmistry platform. We combine ancient Samudrika Shastra algorithms with biometric palm scanning and live consultations from verified master astrologers across India.
+
+## Key Features
+- **Free AI Palm Scanner**: Real-time biometric scanning for male and female hands, detecting Heart, Head, Life, Fate, and Sun lines.
+- **Bilingual Experience**: Full dual-language support in English and Hindi (हिन्दी).
+- **Vedic Chiromancy Knowledgebase**: Exhaustive guides on mounts (Jupiter, Saturn, Apollo, Mercury, Venus, Mars, Moon) and auspicious yogas (Gaj Kesari, Raj Yoga, Simhasan Yoga).
+- **Certified Master Palmists**: 1-on-1 consultations starting at ₹499 INR with verified Vedic chiromancers.
+- **Personalized Kundali & Palm Reports**: Downloadable detailed karmic and career destiny dossiers.
+
+## Core Pages & Services
+- [Home & Free Reading Tool](https://palmreading-b0v.pages.dev/): Instant hand analysis, mounts overview, daily horoscopes, and pricing.
+- [AI Palm Scanner](https://palmreading-b0v.pages.dev/scanner.html): Interactive webcam and image upload palm scanner tool.
+- [Master Palmists Directory](https://palmreading-b0v.pages.dev/palmists.html): Browse verified Vedic astrologers with client ratings and consultation slots.
+- [Palmistry Guides & Chiromancy](https://palmreading-b0v.pages.dev/guides.html): Complete reference on major lines, minor markings, and hand shapes.
+- [Analysis Report](https://palmreading-b0v.pages.dev/report.html): Comprehensive palm analysis results with planetary remedies.
+- [Structured Pricing](https://palmreading-b0v.pages.dev/pricing.md): Complete breakdown of tiers from ₹0 to ₹1,499.
+
+## Consultation Tiers
+- **AI Instant Reading**: ₹0 (Free forever, instant biometric report)
+- **Vedic Consultation**: ₹499 (30 min live session, 5 questions answered, gemstone recommendations)
+- **Complete Life Dossier**: ₹1,499 (60 min deep session, kundali + palm correlation, yearly remedies)

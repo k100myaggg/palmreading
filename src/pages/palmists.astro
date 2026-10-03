@@ -1,116 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consult Certified Master Palmists: 1-on-1 Live Palm Reading Online | AuraPalm</title>
-  <meta name="description" content="Book 1-on-1 online palm reading sessions with certified Vedic chiromancers and Western palmists. Live video consultations, palmistry line synastry, and karmic timing.">
-  <meta name="keywords" content="master palmists, palm reading online, certified chiromancers, live palm reading, palmistry consultation, palm reading for male, palm reading for female">
-  <link rel="canonical" href="https://aurapalm.com/palmists.html">
+---
+import Layout from '../layouts/Layout.astro';
 
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b68b31'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg>">
-  <link rel="stylesheet" href="css/styles.css">
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Certified Master Palmists & Vedic Astrologers",
+  "description": "Book 1-on-1 private video and audio chiromancy sessions with top certified Vedic and Western palm readers across India.",
+  "itemListElement": [
+    {
+      "@type": "Person",
+      "name": "Master Sophia Thorne",
+      "jobTitle": "Master Chiromancer",
+      "description": "Dual Heart Line synastry and karmic crossroads specialist.",
+      "image": "https://palmreading-b0v.pages.dev/images/master-sophia.jpg"
+    },
+    {
+      "@type": "Person",
+      "name": "Acharya Devraj",
+      "jobTitle": "Vedic Samudrika Shastra Astrologer",
+      "description": "Hastarekha depth mapping, wealth stars, and karmic turning points.",
+      "image": "https://palmreading-b0v.pages.dev/images/acharya-devraj.jpg"
+    },
+    {
+      "@type": "Person",
+      "name": "Vivienne Montgomery",
+      "jobTitle": "Western Chiromancer",
+      "description": "Micro-dermatoglyphic ridge analysis and artistic callings.",
+      "image": "https://palmreading-b0v.pages.dev/images/vivienne-montgomery.jpg"
+    }
+  ]
+};
+---
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "AuraPalm Master Palmists Directory",
-    "itemListElement": [
-      {
-        "@type": "Person",
-        "name": "Master Sophia Thorne",
-        "jobTitle": "Lead Chiromancer & Vedic Astrologer",
-        "image": "https://aurapalm.com/images/master-sophia.jpg",
-        "award": "International Vedic Palmistry Guild Fellow"
-      },
-      {
-        "@type": "Person",
-        "name": "Acharya Devraj",
-        "jobTitle": "Master of Samudrika Shastra",
-        "image": "https://aurapalm.com/images/acharya-devraj.jpg"
-      },
-      {
-        "@type": "Person",
-        "name": "Vivienne Montgomery",
-        "jobTitle": "Classical Western Chirology Scholar",
-        "image": "https://aurapalm.com/images/vivienne-montgomery.jpg"
-      },
-      {
-        "@type": "Person",
-        "name": "Master Ren Kenshin",
-        "jobTitle": "Eastern Chiromancy & Meridian Healer",
-        "image": "https://aurapalm.com/images/master-ren.jpg"
-      }
-    ]
-  }
-  </script>
-</head>
-<body>
-
-  <!-- Site Header -->
-  <header class="site-header">
-    <div class="container-wide nav-inner">
-      <a href="index.html" class="brand-logo" aria-label="AuraPalm Home">
-        <div class="brand-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-          </svg>
-        </div>
-        <div class="brand-text">
-          <span class="brand-title">AuraPalm</span>
-          <span class="brand-subtitle">Celestial Chiromancy &amp; Destiny Readings</span>
-        </div>
-      </a>
-
-      <nav class="nav-links">
-        <a href="guides.html" class="nav-link">Explore Readings</a>
-        <a href="scanner.html" class="nav-link">Interactive Scanner</a>
-        <a href="report.html" class="nav-link">My Destiny Report</a>
-        <a href="palmists.html" class="nav-link active">Master Palmists</a>
-        <a href="guides.html#journal" class="nav-link">Astrology Journal</a>
-      </nav>
-
-      <div class="nav-actions">
-        <!-- Language Switcher: EN | HI -->
-        <button class="lang-toggle-btn" title="Switch language (English / हिन्दी)" aria-label="Toggle language">
-          <span class="lang-code active">EN</span><span class="lang-sep">|</span><span class="lang-code">हिं</span>
-        </button>
-
-        <!-- Theme Switcher: Light Mode default, Dark Mode toggle -->
-        <button class="theme-toggle-btn" title="Toggle Celestial Dark / Light Theme" aria-label="Toggle theme">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-          </svg>
-        </button>
-
-        <a href="scanner.html" class="btn btn-primary btn-glow" data-i18n="nav.scanBtn">SCAN YOUR PALM</a>
-
-        <button class="icon-btn" aria-label="Notifications">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-            <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-          </svg>
-          <span class="badge-dot"></span>
-        </button>
-
-        <div class="avatar-nav" title="Sophia Thorne">
-          <img src="images/master-sophia.jpg" alt="Master Palmist Avatar" width="38" height="38">
-        </div>
-
-        <button class="mobile-menu-toggle" aria-label="Open mobile menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <line x1="3" y1="12" x2="21" y2="12"></line>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <line x1="3" y1="18" x2="21" y2="18"></line>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Directory Container -->
+<Layout
+  title="Consult Master Palmists & Vedic Astrologers Online - ₹499 | AuraPalm"
+  description="Connect with certified Vedic chiromancers and palm readers. 1-on-1 private encrypted sessions, love synastry, and career destiny readings starting at ₹499."
+  keywords="vedic palmist, palm reader online, hastarekha astrologer, book palm reading, chiromancer consultation, samudrika shastra"
+  activePage="palmists"
+  jsonLd={jsonLd}
+>
   <main class="palmists-page">
     <div class="container-wide">
       
@@ -131,7 +59,7 @@
               <circle cx="11" cy="11" r="8"></circle>
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
-            <input type="text" id="search-palmist-input" class="search-input" placeholder="Search by name, mount, or tradition..." aria-label="Search palmists">
+            <input type="text" id="search-palmist-input" class="search-input" placeholder="Search by name, mount, or tradition..." aria-label="Search palmists" />
           </div>
 
           <select id="filter-specialty-select" class="filter-select" aria-label="Filter by specialty">
@@ -162,7 +90,7 @@
       <!-- Featured Master Reader Card (Master Sophia Thorne) -->
       <section class="featured-master-card">
         <div class="master-photo-col">
-          <img src="images/master-sophia.jpg" alt="Master Palmist Sophia Thorne">
+          <img src="/images/master-sophia.jpg" alt="Master Palmist Sophia Thorne" />
           <div class="master-badge-top">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
             <span>TOP RATED MYSTIC MASTER</span>
@@ -258,7 +186,7 @@
           <div>
             <div class="reader-header">
               <div class="reader-avatar">
-                <img src="images/acharya-devraj.jpg" alt="Acharya Devraj">
+                <img src="/images/acharya-devraj.jpg" alt="Acharya Devraj" />
               </div>
               <div>
                 <h3 class="reader-name">Acharya Devraj</h3>
@@ -297,7 +225,7 @@
           <div>
             <div class="reader-header">
               <div class="reader-avatar">
-                <img src="images/vivienne-montgomery.jpg" alt="Vivienne Montgomery">
+                <img src="/images/vivienne-montgomery.jpg" alt="Vivienne Montgomery" />
               </div>
               <div>
                 <h3 class="reader-name">Vivienne Montgomery</h3>
@@ -336,7 +264,7 @@
           <div>
             <div class="reader-header">
               <div class="reader-avatar">
-                <img src="images/master-ren.jpg" alt="Master Ren Kenshin">
+                <img src="/images/master-ren.jpg" alt="Master Ren Kenshin" />
               </div>
               <div>
                 <h3 class="reader-name">Master Ren Kenshin</h3>
@@ -413,7 +341,7 @@
       </section>
 
       <!-- Sanctuary Assurance Card -->
-      <section class="card-glass" id="assurance" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 30px;">
+      <section class="card-glass" id="assurance" style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px; padding: 30px; margin-bottom: 60px;">
         <div style="display: flex; align-items: center; gap: 20px;">
           <div style="width: 56px; height: 56px; border-radius: 50%; background: var(--color-gold-subtle); color: var(--color-gold-primary); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -459,12 +387,12 @@
       <form id="booking-form" style="display: flex; flex-direction: column; gap: 14px;">
         <div>
           <label style="font-size: 0.74rem; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; display: block; margin-bottom: 6px;">Your Name / आपका नाम</label>
-          <input type="text" id="booking-client-name" class="newsletter-input" required placeholder="Elena Vance" style="border-radius: var(--radius-sm); padding: 10px 14px;">
+          <input type="text" id="booking-client-name" class="newsletter-input" required placeholder="Elena Vance" style="border-radius: var(--radius-sm); padding: 10px 14px;" />
         </div>
 
         <div>
           <label style="font-size: 0.74rem; font-weight: 700; color: var(--color-text-muted); text-transform: uppercase; display: block; margin-bottom: 6px;">Email or WhatsApp (+91) / संपर्क विवरण</label>
-          <input type="text" id="booking-client-email" class="newsletter-input" required placeholder="+91 98765 43210 or name@example.com" style="border-radius: var(--radius-sm); padding: 10px 14px;">
+          <input type="text" id="booking-client-email" class="newsletter-input" required placeholder="+91 98765 43210 or name@example.com" style="border-radius: var(--radius-sm); padding: 10px 14px;" />
         </div>
 
         <div>
@@ -483,21 +411,6 @@
     </div>
   </div>
 
-  <!-- Site Footer -->
-  <footer class="site-footer">
-    <div class="container-wide footer-bottom">
-      <div>&copy; 2026 AuraPalm Arcane Institute India. All celestial rights reserved.</div>
-      <div class="footer-legal-links">
-        <a href="#" class="footer-link">Sanctuary Terms</a>
-        <a href="#" class="footer-link">Occult Privacy</a>
-        <a href="#" class="footer-link">Ephemeris Integrity</a>
-      </div>
-    </div>
-  </footer>
-
-  <script type="module" src="js/i18n.js"></script>
-  <script type="module" src="js/theme.js"></script>
-  <script type="module" src="js/main.js"></script>
-  <script type="module" src="js/palmists.js"></script>
-</body>
-</html>
+  <script is:inline src="/js/main.js"></script>
+  <script is:inline src="/js/palmists.js"></script>
+</Layout>
