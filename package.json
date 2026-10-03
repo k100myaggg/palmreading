@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "check": "astro check",
+    "deploy": "node scripts/deploy.mjs"
   },
   "devDependencies": {
     "vite": "^6.2.0"

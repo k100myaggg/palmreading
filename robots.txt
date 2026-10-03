@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://aurapalm.com/sitemap.xml
+# AI Discovery & Search Crawlers
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+Sitemap: https://palmreading-b0v.pages.dev/sitemap.xml
