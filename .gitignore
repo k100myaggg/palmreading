@@ -6,3 +6,6 @@ Thumbs.db
 .system_generated/
 .vite/
 .astro/
+.env
+.env.*
+!.env.example

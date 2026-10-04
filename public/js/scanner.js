@@ -2,7 +2,7 @@
  * Hastarekha Archive — Scanner & Specimen Examination Controller
  * Folio VII • Hasta Pariksha Engine
  * Handles specimen upload, camera stream, archival examination frame,
- * historical progress sequence, and navigation to the personal folio.
+ * real Gemini AI Vision analysis, and navigation to the personal folio.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -14,13 +14,81 @@ document.addEventListener('DOMContentLoaded', () => {
   const polarityBtns = document.querySelectorAll('.polarity-btn');
   const scanningOverlay = document.getElementById('scanning-overlay');
   const scanStatusMsg = document.getElementById('scan-animated-msg');
-  const statusItems = document.querySelectorAll('.scan-status-item');
   const examinationFrame = document.querySelector('.archival-examination-frame');
   const specimenPlate = document.getElementById('specimen-plate-container');
+
+  // API Key Modal Elements
+  const btnOpenApiKeyModal = document.getElementById('btn-open-apikey-modal');
+  const apiKeyModal = document.getElementById('apikey-modal');
+  const closeApiKeyModal = document.getElementById('close-apikey-modal');
+  const btnSaveApiKey = document.getElementById('btn-save-apikey');
+  const btnClearApiKey = document.getElementById('btn-clear-apikey');
+  const inputGeminiKey = document.getElementById('input-gemini-key');
+  const apiKeyStatusText = document.getElementById('apikey-status-text');
 
   let currentPolarity = 'right'; // default to right hand (कर्मक)
   let isScanning = false;
   let cameraStream = null;
+
+  function updateApiKeyStatusUI() {
+    const currentKey = window.AiPalmAnalyzer ? window.AiPalmAnalyzer.getApiKey() : '';
+    if (apiKeyStatusText) {
+      if (currentKey) {
+        apiKeyStatusText.innerHTML = '✨ AI विज़न (सक्रिय)';
+        apiKeyStatusText.parentElement.classList.add('key-active');
+      } else {
+        apiKeyStatusText.innerHTML = '⚙️ AI विज़न कुंजी (सेटअप)';
+        apiKeyStatusText.parentElement.classList.remove('key-active');
+      }
+    }
+  }
+  updateApiKeyStatusUI();
+
+  // API Key Modal Handlers
+  if (btnOpenApiKeyModal && apiKeyModal) {
+    btnOpenApiKeyModal.addEventListener('click', () => {
+      if (inputGeminiKey && window.AiPalmAnalyzer) {
+        inputGeminiKey.value = window.AiPalmAnalyzer.getApiKey();
+      }
+      apiKeyModal.classList.add('open');
+      if (window.SoundFX) window.SoundFX.chime();
+    });
+  }
+
+  if (closeApiKeyModal && apiKeyModal) {
+    closeApiKeyModal.addEventListener('click', () => {
+      apiKeyModal.classList.remove('open');
+    });
+  }
+
+  if (btnSaveApiKey && inputGeminiKey) {
+    btnSaveApiKey.addEventListener('click', () => {
+      const keyVal = inputGeminiKey.value.trim();
+      if (!keyVal) {
+        if (window.showToast) window.showToast('कृपया मान्य Gemini API Key दर्ज करें।');
+        return;
+      }
+      if (window.AiPalmAnalyzer) {
+        window.AiPalmAnalyzer.setApiKey(keyVal);
+      }
+      updateApiKeyStatusUI();
+      if (apiKeyModal) apiKeyModal.classList.remove('open');
+      if (window.showToast) window.showToast('✨ Gemini AI विज़न कुंजी सफलतापूर्वक सुरक्षित की गई!');
+      if (window.SoundFX) window.SoundFX.complete();
+    });
+  }
+
+  if (btnClearApiKey) {
+    btnClearApiKey.addEventListener('click', () => {
+      if (window.AiPalmAnalyzer) {
+        window.AiPalmAnalyzer.setApiKey('');
+      }
+      if (inputGeminiKey) inputGeminiKey.value = '';
+      updateApiKeyStatusUI();
+      if (apiKeyModal) apiKeyModal.classList.remove('open');
+      if (window.showToast) window.showToast('कुंजी हटाई गई — डिफ़ॉल्ट शास्त्रीय मोड सक्रिय।');
+    });
+  }
 
   // Polarity switch
   polarityBtns.forEach(btn => {
@@ -36,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Camera initialization with polite fallback
   async function initCamera() {
-    // By default, show calibrated manuscript specimen
     showFallbackImage();
   }
 
@@ -44,7 +111,6 @@ document.addEventListener('DOMContentLoaded', () => {
     if (videoFeed) videoFeed.style.display = 'none';
     if (imageFeed) {
       imageFeed.style.display = 'block';
-      // If user had previously uploaded in session, restore it
       const savedImg = sessionStorage.getItem('aurapalm_scan_image');
       if (savedImg) {
         imageFeed.src = savedImg;
@@ -58,34 +124,35 @@ document.addEventListener('DOMContentLoaded', () => {
   const cameraBtn = document.getElementById('btn-toggle-camera');
   if (cameraBtn) {
     cameraBtn.addEventListener('click', async () => {
-      if (videoFeed && videoFeed.style.display === 'block') {
-        // Turn off camera
-        if (cameraStream) {
-          cameraStream.getTracks().forEach(track => track.stop());
-          cameraStream = null;
-        }
+      if (cameraStream) {
+        cameraStream.getTracks().forEach(track => track.stop());
+        cameraStream = null;
         showFallbackImage();
-        cameraBtn.classList.remove('active');
-      } else {
-        // Turn on camera
-        if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-          try {
-            const stream = await navigator.mediaDevices.getUserMedia({
-              video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }
-            });
-            cameraStream = stream;
-            if (videoFeed) {
-              videoFeed.srcObject = stream;
-              videoFeed.style.display = 'block';
-              if (imageFeed) imageFeed.style.display = 'none';
-            }
-            cameraBtn.classList.add('active');
-            if (window.showToast) window.showToast('हस्त परीक्षण हेतु कैमरा सक्रिय किया गया।');
-          } catch (err) {
-            console.warn('Camera access denied or unavailable', err);
-            if (window.showToast) window.showToast('कैमरा उपलब्ध नहीं। अभिलेखीय प्रतिदर्श प्रयुक्त हो रहा है।');
-            showFallbackImage();
-          }
+        cameraBtn.innerHTML = '<span>कैनवास दृश्य</span>';
+        if (window.showToast) window.showToast('कैमरा बंद किया गया।');
+        return;
+      }
+
+      try {
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+          throw new Error('getUserMedia not supported');
+        }
+        cameraStream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: 'environment', width: { ideal: 1280 }, height: { ideal: 720 } }
+        });
+        if (videoFeed) {
+          videoFeed.srcObject = cameraStream;
+          videoFeed.style.display = 'block';
+          if (imageFeed) imageFeed.style.display = 'none';
+        }
+        cameraBtn.innerHTML = '<span>कैमरा बंद करें</span>';
+        if (window.SoundFX) window.SoundFX.scanPulse();
+        if (window.showToast) window.showToast('हस्त परीक्षण हेतु सीधा कैमरा सक्रिय।');
+      } catch (err) {
+        console.warn('Camera access declined or unavailable', err);
+        showFallbackImage();
+        if (window.showToast) {
+          window.showToast('कैमरा अनुपलब्ध। कृपया हथेली का चित्र सीधे अपलोड करें।');
         }
       }
     });
@@ -122,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
           if (window.SoundFX) window.SoundFX.scanPulse();
           if (window.showToast) window.showToast('हस्तचिह्न सफलता पूर्वक स्वीकार किया गया। पठन प्रारम्भ करें।');
           
-          // Scroll smoothly to examination preview if on mobile
           if (window.innerWidth < 768 && examinationFrame) {
             examinationFrame.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
           }
@@ -162,44 +228,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Scanning Experience Flow (Non-futuristic, Vedic manuscript examination)
+  // Scanning Experience Flow with Real AI Multimodal Vision Integration
   if (scanBtn) {
-    scanBtn.addEventListener('click', () => {
+    scanBtn.addEventListener('click', async () => {
       if (isScanning) return;
       isScanning = true;
       scanBtn.disabled = true;
       scanBtn.classList.add('scanning-active');
 
-      // Reveal scanning overlay over the examination frame
-      if (scanningOverlay) {
-        scanningOverlay.classList.add('active');
-      }
-      if (examinationFrame) {
-        examinationFrame.classList.add('is-scanning');
-      }
+      if (scanningOverlay) scanningOverlay.classList.add('active');
+      if (examinationFrame) examinationFrame.classList.add('is-scanning');
 
       if (window.SoundFX) window.SoundFX.scanPulse();
 
-      // Sequence of historical animated messages and statuses
-      // 1. Initial: रेखा-संरचना अंकित की जा रही है...
-      if (scanStatusMsg) {
-        scanStatusMsg.innerText = 'रेखा-संरचना अंकित की जा रही है...';
+      // Get current palm image data
+      let palmImageData = sessionStorage.getItem('aurapalm_scan_image') || '';
+      if (!palmImageData && imageFeed && imageFeed.src) {
+        palmImageData = imageFeed.src;
       }
 
-      // 1.0s: Step 1 complete -> Step 2
+      // Step 1: Initial message
+      if (scanStatusMsg) scanStatusMsg.innerText = 'हस्तचिह्न का विज़न स्कैन प्रारम्भ...';
+
+      // Step 2 (1s): Line structure inspection
       setTimeout(() => {
         const item1 = document.getElementById('scan-status-lines');
         if (item1) {
           item1.classList.add('done');
           item1.querySelector('.status-glyph').innerText = '✓';
         }
-        if (scanStatusMsg) {
-          scanStatusMsg.innerText = 'प्रमुख पर्वतों का निरीक्षण...';
-        }
+        if (scanStatusMsg) scanStatusMsg.innerText = 'प्रमुख रेखाओं (आयु, मति, हृदय, भाग्य) का अंकन...';
         if (window.SoundFX) window.SoundFX.scanPulse();
       }, 1000);
 
-      // 2.0s: Step 2 complete -> Step 3
+      // Step 3 (2s): Mounts & Polarity
       setTimeout(() => {
         const item2 = document.getElementById('scan-status-mounts');
         if (item2) {
@@ -211,13 +273,21 @@ document.addEventListener('DOMContentLoaded', () => {
           item3.classList.add('done');
           item3.querySelector('.status-glyph').innerText = '✓';
         }
-        if (scanStatusMsg) {
-          scanStatusMsg.innerText = 'प्राचीन संदर्भों से मिलान...';
-        }
+        if (scanStatusMsg) scanStatusMsg.innerText = 'वैदिक सामुद्रिक शास्त्र संहिता से वास्तविक मिलान...';
         if (window.SoundFX) window.SoundFX.chime();
       }, 2000);
 
-      // 2.9s: Step 4
+      // Trigger AI Analysis in parallel
+      let aiResult = null;
+      try {
+        if (window.AiPalmAnalyzer && palmImageData.startsWith('data:image/')) {
+          aiResult = await window.AiPalmAnalyzer.analyze(palmImageData, currentPolarity);
+        }
+      } catch (err) {
+        console.warn('AI analysis execution notice:', err);
+      }
+
+      // Step 4 (3s): Compiling manuscript
       setTimeout(() => {
         const item4 = document.getElementById('scan-status-signs');
         if (item4) {
@@ -225,31 +295,40 @@ document.addEventListener('DOMContentLoaded', () => {
           item4.querySelector('.status-glyph').innerText = '✓';
         }
         if (scanStatusMsg) {
-          scanStatusMsg.innerText = 'व्यक्तिगत अभिलेख तैयार किया जा रहा है...';
+          scanStatusMsg.innerText = aiResult && aiResult.isRealAi 
+            ? '✨ वास्तविक AI विज़न विश्लेषण संकलित हो गया!' 
+            : 'व्यक्तिगत पाण्डुलिपि अभिलेख तैयार किया जा रहा है...';
         }
         if (window.SoundFX) window.SoundFX.chime();
-      }, 2900);
+      }, 3000);
 
-      // 3.8s: Complete & Navigate to Personal Folio
+      // Final Navigation (3.8s)
       setTimeout(() => {
         if (window.SoundFX) window.SoundFX.complete();
 
         const scanPayload = {
           polarity: currentPolarity,
           date: new Date().toLocaleDateString('hi-IN', { year: 'numeric', month: 'long', day: 'numeric' }),
-          score: 94,
+          score: (aiResult && aiResult.isRealAi && aiResult.data && aiResult.data.harmonyScore) ? aiResult.data.harmonyScore : 94,
+          isRealAi: !!(aiResult && aiResult.isRealAi),
           timestamp: Date.now()
         };
         sessionStorage.setItem('aurapalm_scan_result', JSON.stringify(scanPayload));
 
-        if (window.showToast) window.showToast('हस्तपरीक्षा पूर्ण! अभिलेख पृष्ठ खोला जा रहा है...');
+        if (aiResult && aiResult.isRealAi && aiResult.data) {
+          sessionStorage.setItem('aurapalm_ai_reading', JSON.stringify(aiResult.data));
+          if (window.showToast) window.showToast('✨ आपकी हथेली का वास्तविक AI विज़न विश्लेषण पूर्ण!');
+        } else {
+          sessionStorage.removeItem('aurapalm_ai_reading');
+          if (window.showToast) window.showToast('हस्तपरीक्षा पूर्ण! शास्त्रीय अभिलेख तैयार है।');
+        }
+
         setTimeout(() => {
           window.location.href = 'report.html';
-        }, 600);
+        }, 500);
       }, 3800);
     });
   }
 
-  // Attempt camera / fallback on load
   initCamera();
 });

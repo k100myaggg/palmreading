@@ -183,6 +183,115 @@ function initReport() {
     }
   };
 
+  // ========================================================
+  // REAL AI VISION HYDRATION (Gemini 2.0 / 1.5 Multimodal)
+  // ========================================================
+  let aiReading = null;
+  try {
+    const rawAi = sessionStorage.getItem('aurapalm_ai_reading');
+    if (rawAi) {
+      aiReading = JSON.parse(rawAi);
+    }
+  } catch (e) {
+    console.warn('Could not parse AI reading', e);
+  }
+
+  if (aiReading) {
+    // Show AI status badge
+    const aiChip = document.getElementById('report-ai-status-chip');
+    if (aiChip) aiChip.style.display = 'inline-flex';
+
+    // Harmony Score
+    const scoreBadge = document.querySelector('.score-badge');
+    if (scoreBadge && aiReading.harmonyScore) {
+      scoreBadge.innerText = `${aiReading.harmonyScore} / १०० • सामंजस्य सूचकांक`;
+    }
+
+    // Main Finding Description
+    const findingDesc = document.querySelector('.finding-desc');
+    if (findingDesc && aiReading.mainSynthesis) {
+      findingDesc.innerText = aiReading.mainSynthesis;
+    }
+
+    // Merge AI lines into lineData (Hindi)
+    if (aiReading.lines) {
+      ['life', 'head', 'heart', 'fate', 'apollo'].forEach(k => {
+        if (aiReading.lines[k]) {
+          lineData.hi[k] = Object.assign({}, lineData.hi[k], aiReading.lines[k], {
+            plateId: lineData.hi[k].plateId
+          });
+        }
+      });
+    }
+
+    // Hydrate Archival Plates
+    const plateAyur = document.querySelector('#plate-ayur .panel-reading-body');
+    if (plateAyur && lineData.hi.life && lineData.hi.life.summary) {
+      plateAyur.innerText = lineData.hi.life.summary;
+    }
+    const plateMatisha = document.querySelector('#plate-matisha .panel-reading-body');
+    if (plateMatisha && lineData.hi.head && lineData.hi.head.summary) {
+      plateMatisha.innerText = lineData.hi.head.summary;
+    }
+    const plateHridaya = document.querySelector('#plate-hridaya .panel-reading-body');
+    if (plateHridaya && lineData.hi.heart && lineData.hi.heart.summary) {
+      plateHridaya.innerText = lineData.hi.heart.summary;
+    }
+    const plateBhagya = document.querySelector('#plate-bhagya .panel-reading-body');
+    if (plateBhagya && lineData.hi.fate && lineData.hi.fate.summary) {
+      plateBhagya.innerText = lineData.hi.fate.summary;
+    }
+    const plateApollo = document.querySelector('#plate-apollo .panel-reading-body');
+    if (plateApollo && lineData.hi.apollo && lineData.hi.apollo.summary) {
+      plateApollo.innerText = lineData.hi.apollo.summary;
+    }
+
+    // Update plate interpretation chips
+    ['life', 'head', 'heart', 'fate', 'apollo'].forEach(k => {
+      const plate = document.getElementById(lineData.hi[k].plateId);
+      if (plate && lineData.hi[k].archival) {
+        const chipsRow = plate.querySelector('.interpretation-tags-row');
+        if (chipsRow) {
+          const parts = lineData.hi[k].archival.split(/[•·,\-]/).map(s => s.trim()).filter(Boolean);
+          if (parts.length > 0) {
+            chipsRow.innerHTML = parts.map(p => `<span class="interpretation-chip">${p}</span>`).join('<span class="chip-sep">•</span>');
+          }
+        }
+      }
+    });
+
+    // Update major lines quick values in right column
+    const summaryItems = document.querySelectorAll('.major-line-summary-item');
+    summaryItems.forEach(item => {
+      const lineKey = item.dataset.lineTarget;
+      const quickValEl = item.querySelector('.line-quick-val');
+      if (quickValEl && lineData.hi[lineKey] && lineData.hi[lineKey].archival) {
+        quickValEl.innerText = lineData.hi[lineKey].archival;
+      }
+    });
+
+    // Hydrate Mounts if available
+    if (aiReading.mounts) {
+      const mountCards = document.querySelectorAll('.observations-grid .observation-card');
+      if (mountCards.length >= 2) {
+        if (aiReading.mounts.moon) {
+          const moonCard = mountCards[0];
+          const pct = moonCard.querySelector('.obs-pct');
+          const desc = moonCard.querySelector('.obs-desc');
+          if (pct && aiReading.mounts.moon.strength) pct.innerText = aiReading.mounts.moon.strength + ' उत्थान';
+          if (desc && aiReading.mounts.moon.interpretation) desc.innerText = aiReading.mounts.moon.interpretation;
+        }
+        if (aiReading.mounts.venus) {
+          const venusCard = mountCards[1];
+          const pct = venusCard.querySelector('.obs-pct');
+          const desc = venusCard.querySelector('.obs-desc');
+          if (pct && aiReading.mounts.venus.strength) pct.innerText = aiReading.mounts.venus.strength + ' उत्थान';
+          if (desc && aiReading.mounts.venus.interpretation) desc.innerText = aiReading.mounts.venus.interpretation;
+        }
+      }
+    }
+  }
+
   function updateReportLangUI(lang) {
     if (btnReportLangEn && btnReportLangHi) {
       if (lang === 'hi') {

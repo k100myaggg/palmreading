@@ -283,25 +283,25 @@ const jsonLd = {
         <div class="rekha-narrative-grid">
           <div class="rekha-block">
             <h4 class="rekha-name">०१. जीवन रेखा (AYUR REKHA)</h4>
-            <p class="rekha-desc">
+            <p class="rekha-desc" id="print-desc-life">
               शुक्र पर्वत को घेरती हुई यह रेखा गहरी, अखंडित एवं निर्दोष है। किसी भी बड़े कट या द्वीप का अभाव दीर्घायु बल, उत्कृष्ट स्नायु-आरोग्यता तथा रोग-प्रतिरोधक सामर्थ्य का परिचायक है। मध्य भाग में सूक्ष्म मंगल रेखा अदृश्य कुल संरक्षण की पुष्टि करती है।
             </p>
           </div>
           <div class="rekha-block">
             <h4 class="rekha-name">०२. मस्तिष्क रेखा (MATISHA REKHA)</h4>
-            <p class="rekha-desc">
+            <p class="rekha-desc" id="print-desc-head">
               तर्जनी के मूल से निकलकर चंद्र पर्वत की दिशा में ढलने वाली यह रेखा अंत में द्विमुखी (लेखक-द्विमुख) रूप धारण करती है। यह व्यावहारिक तार्किक संतुलन और दूरदर्शी कल्पनाशीलता का श्रेष्ठ समन्वय दर्शाती है।
             </p>
           </div>
           <div class="rekha-block">
             <h4 class="rekha-name">०३. हृदय रेखा (HRIDAYA REKHA)</h4>
-            <p class="rekha-desc">
+            <p class="rekha-desc" id="print-desc-heart">
               हृदय रेखा अनामिका के नीचे से एक संतुलित चाप बनाती हुई सीधे देवगुरु बृहस्पति के पर्वत पर प्रतिष्ठित होती है। यह भावनात्मक गरिमा, निष्कपट निष्ठा तथा आत्मीय संबंधों में सतहीपन के प्रति स्वाभाविक वितृष्णा को व्यक्त करती है।
             </p>
           </div>
           <div class="rekha-block">
             <h4 class="rekha-name">०४. भाग्य रेखा (BHAGYA REKHA)</h4>
-            <p class="rekha-desc">
+            <p class="rekha-desc" id="print-desc-fate">
               मणिबंध के समीप चंद्र पर्वत से प्रारंभ होकर शनि पर्वत की ओर ऊर्ध्वगामी होने वाली यह रेखा स्वअर्जित सफलता का प्रतीक है। ३२वें वर्ष के उपरांत भाग्य रेखा में विशेष प्रखरता दृष्टिगोचर होती है।
             </p>
           </div>
@@ -724,6 +724,26 @@ const jsonLd = {
         }
       } catch (e) {
         console.warn('Scan data read failed', e);
+      }
+
+      // Real AI Vision Hydration in Printed Manuscript Folio
+      try {
+        const rawAi = sessionStorage.getItem('aurapalm_ai_reading');
+        if (rawAi) {
+          const aiData = JSON.parse(rawAi);
+          if (aiData.lines) {
+            const lifeEl = document.getElementById('print-desc-life');
+            if (lifeEl && aiData.lines.life && aiData.lines.life.summary) lifeEl.innerText = aiData.lines.life.summary;
+            const headEl = document.getElementById('print-desc-head');
+            if (headEl && aiData.lines.head && aiData.lines.head.summary) headEl.innerText = aiData.lines.head.summary;
+            const heartEl = document.getElementById('print-desc-heart');
+            if (heartEl && aiData.lines.heart && aiData.lines.heart.summary) heartEl.innerText = aiData.lines.heart.summary;
+            const fateEl = document.getElementById('print-desc-fate');
+            if (fateEl && aiData.lines.fate && aiData.lines.fate.summary) fateEl.innerText = aiData.lines.fate.summary;
+          }
+        }
+      } catch (e) {
+        console.warn('AI folio hydration failed', e);
       }
 
       // Print trigger button

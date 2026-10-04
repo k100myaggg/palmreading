@@ -32,6 +32,10 @@ const jsonLd = {
         <div class="folio-tag-row">
           <span class="folio-num-badge">FOLIO VII • HASTA PARIKSHA</span>
           <span class="folio-meta-stamp">पत्र संख्या ०७ • हस्तचिह्न परीक्षण</span>
+          <button id="btn-open-apikey-modal" class="apikey-status-badge" type="button" title="Configure Google Gemini Vision API Key">
+            <span class="key-icon">⚙️</span>
+            <span id="apikey-status-text">AI विज़न कुंजी (सेटअप)</span>
+          </button>
         </div>
         <h1 class="examination-folio-title">अपनी हथेली प्रस्तुत करें</h1>
         <p class="examination-folio-desc">
@@ -312,10 +316,52 @@ const jsonLd = {
           </div>
         </div>
       </section>
-
     </div>
   </main>
 
-  <script is:inline src="/js/main.js"></script>
+  <!-- Gemini Vision API Key Setup Modal -->
+  <div id="apikey-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="apikey-modal-title">
+    <div class="archival-modal-card">
+      <button id="close-apikey-modal" class="modal-close-plate" aria-label="Close modal">✕</button>
+
+      <span class="modal-folio-stamp">AI VISION CONFIGURATION</span>
+      <h3 id="apikey-modal-title" class="modal-plate-title">Google Gemini विज़न कुंजी</h3>
+      <p class="modal-plate-desc">
+        100% वास्तविक हस्तरेखा विश्लेषण हेतु अपनी निःशुल्क Gemini API Key दर्ज करें:
+      </p>
+
+      <div class="apikey-input-box" style="margin: 16px 0; text-align: left;">
+        <label for="input-gemini-key" style="display: block; font-family: var(--font-hindi); font-size: 0.85rem; font-weight: 700; color: var(--ink); margin-bottom: 6px;">Gemini API Key:</label>
+        <input 
+          id="input-gemini-key" 
+          type="password" 
+          placeholder="AIzaSy..." 
+          class="archival-copy-input" 
+          style="width: 100%; box-sizing: border-box;"
+          autocomplete="off"
+        />
+        <div style="margin-top: 8px;">
+          <a href="https://aistudio.google.com/" target="_blank" rel="noopener" style="font-family: var(--font-hindi); font-size: 0.8rem; color: var(--vermillion); text-decoration: underline;">
+            👉 Google AI Studio से 1 मिनट में मुफ़्त Key प्राप्त करें (₹0) ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="modal-export-actions" style="margin-top: 16px;">
+        <button id="btn-save-apikey" class="btn-archive-primary btn-lg" type="button">
+          <span>कुंजी सुरक्षित करें (Save Key)</span>
+        </button>
+        <button id="btn-clear-apikey" class="btn-archive-secondary" type="button">
+          <span>कुंजी हटाएं (Reset to Baseline)</span>
+        </button>
+      </div>
+
+      <div class="modal-plate-note">
+        🔒 आपकी कुंजी सुरक्षित स्थानीय स्तर पर रखी जाती है।
+      </div>
+    </div>
+  </div>
+
+  <script is:inline src="/js/ai-palm-analyzer.js"></script>
   <script is:inline src="/js/scanner.js"></script>
 </Layout>
