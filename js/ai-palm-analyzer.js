@@ -20,6 +20,15 @@ window.AiPalmAnalyzer = {
           console.log('✅ Real Gemini Vision analysis received from backend endpoint!');
           return { success: true, isRealAi: true, data: data.analysis };
         }
+        if (data.error === 'NOT_A_PALM') {
+          console.warn('Backend rejected non-palm specimen:', data.message);
+          return {
+            success: false,
+            isRealAi: true,
+            error: 'NOT_A_PALM',
+            message: data.message || 'प्रस्तुत चित्र किसी मानव हथेली का नहीं है। कृपया स्पष्ट प्रकाश में अपनी खुली हथेली का चित्र प्रस्तुत करें।'
+          };
+        }
         if (data.error === 'NO_API_KEY') {
           console.warn('Backend reported no GEMINI_API_KEY configured in environment.');
         } else if (data.message) {

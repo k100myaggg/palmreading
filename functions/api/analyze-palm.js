@@ -53,12 +53,24 @@ export async function onRequestPost(context) {
     const handText = polarity === 'left' ? 'वाम हस्त (Left Palm • Receptive/Inherent)' : 'दक्षिण हस्त (Right Palm • Active/Manifested)';
 
     const prompt = `
-You are a venerable 1800s Indian Samudrika Shastra master and scholar analyzing this photograph of a human palm (${handText}).
-Examine the image carefully: the curvature, depth, length, breaks, branches, and forks of the palm lines, the elevation of the planetary mounts (Jupiter, Saturn, Sun, Mercury, Venus, Moon, Mars), skin texture, and any rare markings (such as Mystic Cross, Writer's Fork, Star, Triangle, Trident, Moles).
+CRITICAL GATEKEEPING DIRECTIVE — PALM VERIFICATION:
+Inspect this image with extreme precision before analyzing any palmistry:
+1. Is this genuinely an open human palm facing towards the camera with visible palmar skin and creases?
+2. If this image shows:
+   - A human face, head, portrait, eyes, mouth, or selfie
+   - A foot, toes, leg, torso, elbow, or other non-palm body part
+   - An animal (dog, cat, pet paw, etc.)
+   - An inanimate object (bottle, cup, spectacles/glasses, shoe, footwear, vehicle, phone, laptop, keyboard, furniture, cloth, food item, etc.)
+   - A landscape, screenshot, cartoon, graphic, or random blurry unidentifiable item
+   Then it is NOT a human palm. You MUST set "isHumanPalm": false and provide a polite, dignified explanation in Hindi in "palmRejectionReason" explaining that this object/part is not a palm. When "isHumanPalm" is false, do NOT invent or hallucinate palm lines.
 
-Analyze the actual hand shown in the image and return a strictly valid JSON object (no markdown code blocks, just raw JSON) following this exact schema:
+Only if this image is unambiguously an open human palm with visible palmar surface and lines, set "isHumanPalm": true, leave "palmRejectionReason": "", and conduct an authentic Vedic Samudrika Shastra reading of the actual visible lines and mounts (${handText}).
+
+Return a strictly valid JSON object (no markdown code blocks, just raw JSON) following this exact schema:
 
 {
+  "isHumanPalm": true,
+  "palmRejectionReason": "",
   "harmonyScore": 92,
   "handType": "जल एवं वायु तत्व (Water & Air Archetype)",
   "skinTexture": "स्निग्ध, कोमल एवं संवेदनशील (Sattvic & Sensitive)",
@@ -208,6 +220,18 @@ Ensure the response contains only the valid JSON string.
         success: false,
         error: 'PARSE_FAILED',
         rawText: candidateText
+      }), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Gatekeeping: Check if image is an authentic human palm
+    if (parsedResult.isHumanPalm === false) {
+      return new Response(JSON.stringify({
+        success: false,
+        error: 'NOT_A_PALM',
+        message: parsedResult.palmRejectionReason || 'प्रस्तुत चित्र में मानव हथेली उपस्थित नहीं है। कृपया स्पष्ट प्रकाश में अपनी खुली हथेली का चित्र प्रस्तुत करें।'
       }), {
         status: 200,
         headers: { 'Content-Type': 'application/json' }

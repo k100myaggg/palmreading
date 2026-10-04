@@ -100,6 +100,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const reader = new FileReader();
         reader.onload = (event) => {
           const dataUrl = event.target.result;
+          const errorBanner = document.getElementById('palm-validation-error');
+          if (errorBanner) errorBanner.style.display = 'none';
           if (videoFeed) videoFeed.style.display = 'none';
           if (imageFeed) {
             imageFeed.style.display = 'block';
@@ -157,10 +159,25 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Scanning Experience Flow with Real AI Multimodal Vision Integration
+  // Dismiss palm validation error
+  const btnDismissError = document.getElementById('btn-dismiss-palm-error');
+  if (btnDismissError) {
+    btnDismissError.addEventListener('click', () => {
+      const errorBanner = document.getElementById('palm-validation-error');
+      if (errorBanner) errorBanner.style.display = 'none';
+    });
+  }
+
+  // Scanning Experience Flow with Real AI Multimodal Vision Integration & Gatekeeper Check
   if (scanBtn) {
     scanBtn.addEventListener('click', async () => {
       if (isScanning) return;
+
+      // Clear any prior validation error
+      const errorBanner = document.getElementById('palm-validation-error');
+      const errorDesc = document.getElementById('palm-error-desc');
+      if (errorBanner) errorBanner.style.display = 'none';
+
       isScanning = true;
       scanBtn.disabled = true;
       scanBtn.classList.add('scanning-active');
@@ -179,32 +196,16 @@ document.addEventListener('DOMContentLoaded', () => {
       // Step 1: Initial message
       if (scanStatusMsg) scanStatusMsg.innerText = 'हस्तचिह्न का विज़न स्कैन प्रारम्भ...';
 
-      // Step 2 (1s): Line structure inspection
-      setTimeout(() => {
+      // Step 2: Line structure inspection animation
+      const t1 = setTimeout(() => {
         const item1 = document.getElementById('scan-status-lines');
         if (item1) {
           item1.classList.add('done');
           item1.querySelector('.status-glyph').innerText = '✓';
         }
-        if (scanStatusMsg) scanStatusMsg.innerText = 'प्रमुख रेखाओं (आयु, मति, हृदय, भाग्य) का अंकन...';
+        if (scanStatusMsg) scanStatusMsg.innerText = 'हस्तचिह्न व रेखाओं का गहन सत्यापन...';
         if (window.SoundFX) window.SoundFX.scanPulse();
-      }, 1000);
-
-      // Step 3 (2s): Mounts & Polarity
-      setTimeout(() => {
-        const item2 = document.getElementById('scan-status-mounts');
-        if (item2) {
-          item2.classList.add('done');
-          item2.querySelector('.status-glyph').innerText = '✓';
-        }
-        const item3 = document.getElementById('scan-status-direction');
-        if (item3) {
-          item3.classList.add('done');
-          item3.querySelector('.status-glyph').innerText = '✓';
-        }
-        if (scanStatusMsg) scanStatusMsg.innerText = 'वैदिक सामुद्रिक शास्त्र संहिता से वास्तविक मिलान...';
-        if (window.SoundFX) window.SoundFX.chime();
-      }, 2000);
+      }, 900);
 
       // Trigger AI Analysis in parallel
       let aiResult = null;
@@ -216,7 +217,61 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn('AI analysis execution notice:', err);
       }
 
-      // Step 4 (3s): Compiling manuscript
+      // ========================================================
+      // GATEKEEPER CHECK: If specimen is NOT a human palm, ABORT!
+      // ========================================================
+      if (aiResult && aiResult.error === 'NOT_A_PALM') {
+        clearTimeout(t1);
+        isScanning = false;
+        scanBtn.disabled = false;
+        scanBtn.classList.remove('scanning-active');
+
+        if (scanningOverlay) scanningOverlay.classList.remove('active');
+        if (examinationFrame) examinationFrame.classList.remove('is-scanning');
+
+        // Reset scanning item glyphs
+        ['scan-status-lines', 'scan-status-mounts', 'scan-status-direction', 'scan-status-signs'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) {
+            el.classList.remove('done');
+            const glyph = el.querySelector('.status-glyph');
+            if (glyph) glyph.innerText = '○';
+          }
+        });
+
+        // Display Archival Rejection Banner
+        if (errorBanner) {
+          if (errorDesc && aiResult.message) {
+            errorDesc.innerText = aiResult.message;
+          }
+          errorBanner.style.display = 'block';
+          errorBanner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        if (window.SoundFX && typeof window.SoundFX.scanPulse === 'function') {
+          window.SoundFX.scanPulse();
+        }
+        if (window.showToast) {
+          window.showToast('⚠️ हस्तचिह्न अस्वीकृत: प्रस्तुत चित्र किसी मानव हथेली का नहीं है।');
+        }
+        return; // STOP EXECUTION! Do NOT redirect to report!
+      }
+
+      // Step 3 (1.8s): Mounts & Polarity
+      const item2 = document.getElementById('scan-status-mounts');
+      if (item2) {
+        item2.classList.add('done');
+        item2.querySelector('.status-glyph').innerText = '✓';
+      }
+      const item3 = document.getElementById('scan-status-direction');
+      if (item3) {
+        item3.classList.add('done');
+        item3.querySelector('.status-glyph').innerText = '✓';
+      }
+      if (scanStatusMsg) scanStatusMsg.innerText = 'वैदिक सामुद्रिक शास्त्र संहिता से वास्तविक मिलान...';
+      if (window.SoundFX) window.SoundFX.chime();
+
+      // Step 4 (2.6s): Compiling manuscript
       setTimeout(() => {
         const item4 = document.getElementById('scan-status-signs');
         if (item4) {
@@ -229,9 +284,9 @@ document.addEventListener('DOMContentLoaded', () => {
             : 'व्यक्तिगत पाण्डुलिपि अभिलेख तैयार किया जा रहा है...';
         }
         if (window.SoundFX) window.SoundFX.chime();
-      }, 3000);
+      }, 1000);
 
-      // Final Navigation (3.8s)
+      // Final Navigation (3.4s)
       setTimeout(() => {
         if (window.SoundFX) window.SoundFX.complete();
 
@@ -255,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setTimeout(() => {
           window.location.href = 'report.html';
         }, 500);
-      }, 3800);
+      }, 2000);
     });
   }
 
