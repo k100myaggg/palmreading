@@ -156,16 +156,14 @@ Return a strictly valid JSON object (no markdown code blocks, just raw JSON) fol
 Ensure the response contains only the valid JSON string.
 `;
 
-  const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
-
   const geminiPayload = {
     contents: [
       {
         parts: [
           { text: prompt },
           {
-            inlineData: {
-              mimeType: mimeType,
+            inline_data: {
+              mime_type: mimeType,
               data: base64Data
             }
           }
@@ -173,25 +171,45 @@ Ensure the response contains only the valid JSON string.
       }
     ],
     generationConfig: {
-      temperature: 0.3,
-      responseMimeType: "application/json"
+      temperature: 0.2,
+      topP: 0.9,
+      maxOutputTokens: 2500
     }
   };
 
-  const response = await fetch(geminiUrl, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(geminiPayload)
-  });
+  const candidateModels = ['gemini-flash-latest', 'gemini-3.5-flash', 'gemini-3.8-flash'];
+  let lastErrorText = '';
+  let response = null;
+  let activeModel = candidateModels[0];
 
-  if (!response.ok) {
-    const errText = await response.text();
-    console.error('Gemini Vision API Error:', errText);
+  for (const model of candidateModels) {
+    try {
+      const geminiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+      const res = await fetch(geminiUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(geminiPayload)
+      });
+      if (res.ok) {
+        response = res;
+        activeModel = model;
+        break;
+      } else {
+        lastErrorText = await res.text();
+        console.warn(`Model ${model} returned ${res.status}, trying next fallback...`);
+      }
+    } catch (e) {
+      lastErrorText = e.message;
+    }
+  }
+
+  if (!response || !response.ok) {
+    console.error('All Gemini models failed:', lastErrorText);
     return {
       success: false,
       error: 'API_ERROR',
-      message: 'Gemini Vision API error: ' + response.statusText,
-      details: errText
+      message: 'Gemini Vision API error across all models.',
+      details: lastErrorText
     };
   }
 
@@ -231,7 +249,7 @@ Ensure the response contains only the valid JSON string.
     success: true,
     analysis: parsedResult,
     isRealAi: true,
-    model: 'gemini-2.0-flash',
+    model: activeModel,
     analyzedAt: new Date().toISOString()
   };
 }
