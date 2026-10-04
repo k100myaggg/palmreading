@@ -15,80 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const scanningOverlay = document.getElementById('scanning-overlay');
   const scanStatusMsg = document.getElementById('scan-animated-msg');
   const examinationFrame = document.querySelector('.archival-examination-frame');
-  const specimenPlate = document.getElementById('specimen-plate-container');
-
-  // API Key Modal Elements
-  const btnOpenApiKeyModal = document.getElementById('btn-open-apikey-modal');
-  const apiKeyModal = document.getElementById('apikey-modal');
-  const closeApiKeyModal = document.getElementById('close-apikey-modal');
-  const btnSaveApiKey = document.getElementById('btn-save-apikey');
-  const btnClearApiKey = document.getElementById('btn-clear-apikey');
-  const inputGeminiKey = document.getElementById('input-gemini-key');
-  const apiKeyStatusText = document.getElementById('apikey-status-text');
-
   let currentPolarity = 'right'; // default to right hand (कर्मक)
   let isScanning = false;
   let cameraStream = null;
-
-  function updateApiKeyStatusUI() {
-    const currentKey = window.AiPalmAnalyzer ? window.AiPalmAnalyzer.getApiKey() : '';
-    if (apiKeyStatusText) {
-      if (currentKey) {
-        apiKeyStatusText.innerHTML = '✨ AI विज़न (सक्रिय)';
-        apiKeyStatusText.parentElement.classList.add('key-active');
-      } else {
-        apiKeyStatusText.innerHTML = '⚙️ AI विज़न कुंजी (सेटअप)';
-        apiKeyStatusText.parentElement.classList.remove('key-active');
-      }
-    }
-  }
-  updateApiKeyStatusUI();
-
-  // API Key Modal Handlers
-  if (btnOpenApiKeyModal && apiKeyModal) {
-    btnOpenApiKeyModal.addEventListener('click', () => {
-      if (inputGeminiKey && window.AiPalmAnalyzer) {
-        inputGeminiKey.value = window.AiPalmAnalyzer.getApiKey();
-      }
-      apiKeyModal.classList.add('open');
-      if (window.SoundFX) window.SoundFX.chime();
-    });
-  }
-
-  if (closeApiKeyModal && apiKeyModal) {
-    closeApiKeyModal.addEventListener('click', () => {
-      apiKeyModal.classList.remove('open');
-    });
-  }
-
-  if (btnSaveApiKey && inputGeminiKey) {
-    btnSaveApiKey.addEventListener('click', () => {
-      const keyVal = inputGeminiKey.value.trim();
-      if (!keyVal) {
-        if (window.showToast) window.showToast('कृपया मान्य Gemini API Key दर्ज करें।');
-        return;
-      }
-      if (window.AiPalmAnalyzer) {
-        window.AiPalmAnalyzer.setApiKey(keyVal);
-      }
-      updateApiKeyStatusUI();
-      if (apiKeyModal) apiKeyModal.classList.remove('open');
-      if (window.showToast) window.showToast('✨ Gemini AI विज़न कुंजी सफलतापूर्वक सुरक्षित की गई!');
-      if (window.SoundFX) window.SoundFX.complete();
-    });
-  }
-
-  if (btnClearApiKey) {
-    btnClearApiKey.addEventListener('click', () => {
-      if (window.AiPalmAnalyzer) {
-        window.AiPalmAnalyzer.setApiKey('');
-      }
-      if (inputGeminiKey) inputGeminiKey.value = '';
-      updateApiKeyStatusUI();
-      if (apiKeyModal) apiKeyModal.classList.remove('open');
-      if (window.showToast) window.showToast('कुंजी हटाई गई — डिफ़ॉल्ट शास्त्रीय मोड सक्रिय।');
-    });
-  }
 
   // Polarity switch
   polarityBtns.forEach(btn => {
