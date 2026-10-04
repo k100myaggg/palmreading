@@ -14,9 +14,9 @@ interface Props {
 }
 
 const {
-  title = "Palm Reading Online India: Free AI Palmistry Scanner & Vedic Chiromancy | AuraPalm",
-  description = "Discover your karmic destiny with AuraPalm India. 100% accurate online palm reading & AI palmistry scanner tool. Book live consultations with Vedic astrologers for only ₹499.",
-  keywords = "Palm reading, palmistry, palm reading online, palm reading ai, free, tool, for male, for female, scanner, हस्तरेखा, हस्तरेखा ज्ञान, Samudrika Shastra, Vedic palm reading India, ₹499",
+  title = "हस्तरेखा अभिलेख — HASTAREKHA ARCHIVE | वैदिक सामुद्रिक शास्त्र पाण्डुलिपि",
+  description = "प्राचीन हस्तरेखा परंपराओं से प्रेरित एक विस्तृत डिजिटल अभिलेख। आपकी हथेली की प्रमुख रेखाओं और पर्वतों का शास्त्रीय अध्ययन, 2026 में डिजिटल रूप से संरक्षित।",
+  keywords = "हस्तरेखा अभिलेख, Hastarekha Archive, Samudrika Shastra, Vedic palm reading, हस्तरेखा, हस्तरेखा ज्ञान, प्राचीन ग्रंथ, Palmistry manuscript",
   canonical = Astro.url.href,
   activePage = "home",
   ogImage = "/images/palm-base.jpg",
@@ -30,12 +30,12 @@ const defaultSchema = {
       "@type": "WebSite",
       "@id": "https://palmreading-b0v.pages.dev/#website",
       "url": "https://palmreading-b0v.pages.dev/",
-      "name": "AuraPalm - Vedic Chiromancy & Palm Reading Online India",
-      "inLanguage": ["en-IN", "hi-IN"],
-      "description": "Accurate free AI palm reading online tool and certified Vedic chiromancy consultations for male and female seekers across India.",
+      "name": "हस्तरेखा अभिलेख — HASTAREKHA ARCHIVE",
+      "inLanguage": ["hi-IN", "en-IN"],
+      "description": "प्राचीन भारतीय सामुद्रिक शास्त्र और हस्तरेखा परंपराओं का डिजिटल अभिलेख।",
       "publisher": {
         "@type": "Organization",
-        "name": "AuraPalm Arcane Institute India",
+        "name": "हस्तरेखा अभिलेख संकलन",
         "logo": {
           "@type": "ImageObject",
           "url": "https://palmreading-b0v.pages.dev/images/palm-base.jpg"
@@ -45,12 +45,12 @@ const defaultSchema = {
     {
       "@type": "WebApplication",
       "@id": "https://palmreading-b0v.pages.dev/#app",
-      "name": "AuraPalm AI Palm Reading Scanner Tool",
+      "name": "हस्तरेखा अभिलेख पठन प्रणाली",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "All",
       "offers": {
         "@type": "Offer",
-        "price": "0",
+        "price": "199",
         "priceCurrency": "INR"
       }
     }
@@ -61,7 +61,7 @@ const structuredData = jsonLd || defaultSchema;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -69,6 +69,11 @@ const structuredData = jsonLd || defaultSchema;
   <meta name="description" content={description} />
   <meta name="keywords" content={keywords} />
   <link rel="canonical" href={canonical} />
+
+  <!-- Google Fonts: EB Garamond, Courier Prime, Noto Serif Devanagari, Tiro Devanagari Hindi -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Tiro+Devanagari+Hindi:ital@0;1&display=swap" rel="stylesheet" />
 
   <!-- Open Graph / Social Sharing -->
   <meta property="og:type" content="website" />
@@ -85,8 +90,8 @@ const structuredData = jsonLd || defaultSchema;
   <link rel="help" type="text/plain" href="/llms.txt" title="LLM Agent Context" />
   <link rel="alternate" type="text/markdown" href="/pricing.md" title="Pricing Specification" />
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23b68b31'><path d='M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z'/></svg>" />
+  <!-- Favicon: Archival Vermillion Seal -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%238E1D12' rx='2'/><text x='16' y='22' font-family='serif' font-size='18' text-anchor='middle' fill='%23F7EFE7'>❦</text></svg>" />
 
   <!-- Early Theme Init Script to avoid FOUC / layout shift -->
   <script is:inline>
@@ -103,18 +108,19 @@ const structuredData = jsonLd || defaultSchema;
   <!-- JSON-LD Structured Data Schema -->
   <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 </head>
-<body>
-  <!-- Header / Navigation -->
+<body class="archive-paper-canvas">
+  <!-- Minimal Historical Archive Header -->
   <Navbar activePage={activePage} />
 
   <!-- Page Content -->
   <slot />
 
-  <!-- Universal Footer -->
+  <!-- Archival Colophon Footer -->
   <Footer />
 
   <!-- Universal Scripts -->
   <script is:inline type="module" src="/js/i18n.js"></script>
   <script is:inline type="module" src="/js/theme.js"></script>
+  <script is:inline type="module" src="/js/main.js"></script>
 </body>
 </html>

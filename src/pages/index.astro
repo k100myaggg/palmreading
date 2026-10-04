@@ -8,12 +8,12 @@ const jsonLd = {
       "@type": "WebSite",
       "@id": "https://palmreading-b0v.pages.dev/#website",
       "url": "https://palmreading-b0v.pages.dev/",
-      "name": "AuraPalm - Vedic Chiromancy & Palm Reading Online India",
-      "inLanguage": ["en-IN", "hi-IN"],
-      "description": "Accurate free AI palm reading online tool and certified Vedic chiromancy consultations for male and female seekers across India.",
+      "name": "हस्तरेखा अभिलेख — HASTAREKHA ARCHIVE",
+      "inLanguage": ["hi-IN", "en-IN"],
+      "description": "प्राचीन भारतीय सामुद्रिक शास्त्र एवं हस्तरेखा परंपराओं पर आधारित डिजिटल पाण्डुलिपि अभिलेख।",
       "publisher": {
         "@type": "Organization",
-        "name": "AuraPalm Arcane Institute India",
+        "name": "हस्तरेखा अभिलेख संकलन",
         "logo": {
           "@type": "ImageObject",
           "url": "https://palmreading-b0v.pages.dev/images/palm-base.jpg"
@@ -23,382 +23,810 @@ const jsonLd = {
     {
       "@type": "WebApplication",
       "@id": "https://palmreading-b0v.pages.dev/#app",
-      "name": "AuraPalm AI Palm Reading Scanner Tool",
+      "name": "हस्तरेखा अभिलेख डिजिटल पठन",
       "applicationCategory": "LifestyleApplication",
       "operatingSystem": "All",
       "offers": {
         "@type": "Offer",
-        "price": "0",
+        "price": "199",
         "priceCurrency": "INR"
       }
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://palmreading-b0v.pages.dev/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Why should I scan both palms with the online tool?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Comparing both palms reveals your soul’s blueprint versus your realized accomplishments. The non-dominant palm contains the raw cosmic slate given at birth (karma and inherited traits), while your dominant palm reflects the modifications you have manifested through free will, choices, and conscious effort."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Do palmistry lines evolve over time?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Minor lines, branches, breaks, and stars change dynamically every 6 to 18 months in response to mental shifts, spiritual practices, relationship choices, and dietary or lifestyle evolutions. Your palms are living biometers reflecting your neuro-energetic state."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Does a short Life Line indicate an early death?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No, this is one of the most common myths in amateur palmistry. The Life Line indicates vitality, stamina, and immune resilience—not calendar longevity. A short but deep line denotes intense vitality and high focused energy, while overlapping sister lines indicate strong protective guardian forces."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How accurate is the free AI palm reading scanner?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Our AuraPalm biometric vision engine provides a 98.4% clarity match on palm creases and planetary mount elevations. By combining algorithmic contour tracing with time-tested classical chiromancy doctrines, it provides reliable, instant, and personalized forecasts."
-          }
-        }
-      ]
     }
   ]
 };
 ---
 
 <Layout 
-  title="Palm Reading Online India: Free AI Palmistry Scanner & Vedic Chiromancy | AuraPalm"
-  description="Discover your karmic destiny with AuraPalm India. 100% accurate online palm reading & AI palmistry scanner tool. Book live consultations with Vedic astrologers for only ₹499."
-  keywords="Palm reading, palmistry, palm reading online, palm reading ai, free, tool, for male, for female, scanner, हस्तरेखा, हस्तरेखा ज्ञान, Samudrika Shastra, Vedic palm reading India, ₹499"
+  title="हस्तरेखा अभिलेख — HASTAREKHA ARCHIVE | आपकी हथेली में एक प्राचीन अभिलेख है"
+  description="आपकी हथेली की प्रमुख रेखाओं और पर्वतों का अध्ययन, प्राचीन हस्तरेखा परंपराओं से प्रेरित एक विस्तृत डिजिटल पठन के रूप में। Ancient Indian palmistry digitally preserved."
+  keywords="हस्तरेखा अभिलेख, Hastarekha Archive, Samudrika Shastra, Palmistry manuscript, सामुद्रिक शास्त्र, हस्तरेखा, जीवन रेखा, मस्तिष्क रेखा, हृदय रेखा, भाग्य रेखा, ₹199"
   activePage="home"
   jsonLd={jsonLd}
 >
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <div class="badge-pill badge-gold">
-            <span>✨ ANCIENT CHIROMANCY • BIOMETRIC VISION</span>
-          </div>
+  <main class="archive-main">
+    
+    <!-- =====================================================================
+         1. ARCHIVE HERO SECTION
+         ===================================================================== -->
+    <section class="hero-folio-section">
+      <div class="archive-page-frame">
+        <!-- Archival Registration Marks -->
+        <div class="frame-mark mark-top-left">⌜</div>
+        <div class="frame-mark mark-top-right">⌝</div>
+        <div class="frame-mark mark-bottom-left">⌞</div>
+        <div class="frame-mark mark-bottom-right">⌟</div>
 
-          <h1 class="hero-title">
-            Unlock the Secrets <br />
-            <span class="font-accent text-gold">Written in Your Palm</span>
-          </h1>
-
-          <p class="hero-description">
-            Your hands are a living celestial map. Discover what your Heart, Life, Head, and Fate lines reveal about your karmic destiny, true love compatibility, and innate spiritual gifts through our free AI palm reading scanner tool.
-          </p>
-
-          <div class="hero-actions">
-            <a href="/scanner.html" class="btn btn-primary btn-lg btn-glow">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-              <span>SCAN YOUR PALM (FREE PREVIEW)</span>
-            </a>
-
-            <a href="/guides.html" class="btn btn-secondary btn-lg">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-              </svg>
-              <span>SACRED LINES GUIDE</span>
-            </a>
-          </div>
-
-          <!-- Proof Metrics Counter -->
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-number">480k+</span>
-              <span class="stat-label">Palms Decoded</span>
+        <div class="hero-folio-grid">
+          <!-- Left Column: Archival Text & Editorial -->
+          <div class="hero-editorial">
+            <!-- Archival Metadata Stamp -->
+            <div class="folio-meta-badge">
+              <span class="meta-label">अभिलेख संख्या • SAMUDRIKA / FOLIO 01</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number text-gold">98.4%</span>
-              <span class="stat-label">Biometric Clarity</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-number">120+</span>
-              <span class="stat-label">Master Readers</span>
-            </div>
-          </div>
-        </div>
 
-        <!-- Glowing Neon Biometric Palm Visual (Hero Right Card) -->
-        <div class="hero-visual-card">
-          <div class="palm-svg-container">
-            <svg class="palm-vector-glow" viewBox="0 0 400 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M120 440 C100 420 80 340 70 280 C60 230 40 180 50 150 C60 120 85 130 95 160 C105 130 115 80 130 75 C145 70 155 100 160 140 C170 100 180 50 195 45 C210 40 220 70 225 130 C235 90 250 80 265 85 C280 90 280 130 275 180 C290 140 310 135 325 150 C340 165 330 220 315 260 C300 300 320 360 290 410 C260 450 150 460 120 440 Z" 
-                    stroke="var(--color-gold-primary)" stroke-width="2.5" stroke-dasharray="8 6" opacity="0.8" />
-              <path d="M90 200 C150 205 220 185 270 160" stroke="#f3cf7a" stroke-width="4.5" stroke-linecap="round" />
-              <path d="M85 225 C140 230 210 245 275 285" stroke="#3de0b6" stroke-width="4" stroke-linecap="round" />
-              <path d="M150 170 C120 220 115 310 170 380" stroke="#e85566" stroke-width="4.5" stroke-linecap="round" />
-              <path d="M200 390 L195 175" stroke="#9c7cf8" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="6 4" />
-              <circle cx="270" cy="160" r="7" fill="#f3cf7a" class="pulse-node" />
-              <circle cx="165" cy="275" r="6" fill="#3de0b6" class="pulse-node" />
-              <circle cx="195" cy="230" r="8" fill="#e5b958" class="pulse-node" />
-            </svg>
-          </div>
+            <!-- Main Heading (Hindi as primary emotional, English as archival subtitle) -->
+            <h1 class="folio-hero-title">
+              आपकी हथेली में<br />
+              <span class="folio-title-highlight">एक प्राचीन अभिलेख है</span>
+            </h1>
 
-          <div class="hero-visual-badge">
-            <div>
-              <span class="hero-badge-title">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
-                Heart Line • Resonance
-              </span>
-              <span class="hero-badge-desc">High Empathy &amp; Soul Connection</span>
+            <!-- English Archival Label -->
+            <div class="hero-archival-stamp">
+              <span class="stamp-en">ANCIENT PALMISTRY</span>
+              <span class="stamp-sep">•</span>
+              <span class="stamp-en">DIGITALLY PRESERVED</span>
             </div>
-            <span class="hero-badge-pill">98% Match</span>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- The Four Primary Lines of Destiny -->
-    <section class="container" style="padding-bottom: 70px;">
-      <div class="section-header">
-        <span class="section-eyebrow">THE SACRED MERIDIAN PATHS</span>
-        <h2 class="section-title">The Four Primary Lines of Destiny</h2>
-        <p class="section-subtitle">
-          Every crease is an energetic channel sculpted by your neurological feedback and planetary transits across lifetimes.
-        </p>
-      </div>
-
-      <div class="lines-grid">
-        <!-- Heart Line -->
-        <article class="line-card">
-          <div>
-            <div class="line-card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-              </svg>
-            </div>
-            <div class="line-card-header">
-              <h3 class="line-card-title">Heart Line</h3>
-              <span class="line-card-latin">Mensalis</span>
-            </div>
-            <p class="line-card-desc">
-              Love dynamics, emotional vulnerability, twin-flame connections, and your soul’s capacity for unconditional devotion.
+            <!-- Supporting Hindi Copy -->
+            <p class="folio-hero-description">
+              आपकी हथेली की प्रमुख रेखाओं और पर्वतों का अध्ययन, प्राचीन हस्तरेखा परंपराओं से प्रेरित एक विस्तृत डिजिटल पठन के रूप में।
             </p>
-          </div>
-          <div class="line-card-footer">
-            <span class="line-element">Element: Water</span>
-            <span class="line-trait">Passionate Curve</span>
-          </div>
-        </article>
 
-        <!-- Head Line -->
-        <article class="line-card">
-          <div>
-            <div class="line-card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="4"></circle>
-                <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
-              </svg>
+            <!-- Archival Treatise Citation -->
+            <div class="manuscript-quote-strip">
+              <span class="sanskrit-verse">"हस्ते रेखा यतो दृष्टा भाग्यं तत्र विनिर्दिशेत्"</span>
+              <span class="verse-reference">— सामुद्रिक तिलक, पत्र ३, श्लोक १२</span>
             </div>
-            <div class="line-card-header">
-              <h3 class="line-card-title">Head Line</h3>
-              <span class="line-card-latin">Naturalis</span>
-            </div>
-            <p class="line-card-desc">
-              Intellectual depth, analytical precision, subconscious instincts, and visionary creative clarity across problem-solving.
-            </p>
-          </div>
-          <div class="line-card-footer">
-            <span class="line-element">Element: Air</span>
-            <span class="line-trait">Visionary Fork</span>
-          </div>
-        </article>
 
-        <!-- Life Line -->
-        <article class="line-card">
-          <div>
-            <div class="line-card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
-              </svg>
-            </div>
-            <div class="line-card-header">
-              <h3 class="line-card-title">Life Line</h3>
-              <span class="line-card-latin">Vitalis</span>
-            </div>
-            <p class="line-card-desc">
-              Primal prana, vitality reserves, geographic moves, somatic stamina, and personal rebirth milestones throughout age epochs.
-            </p>
-          </div>
-          <div class="line-card-footer">
-            <span class="line-element">Element: Earth</span>
-            <span class="line-trait">Deep &amp; Unbroken</span>
-          </div>
-        </article>
+            <!-- Primary & Secondary CTAs -->
+            <div class="folio-actions">
+              <a href="/scanner.html" class="btn-archive-primary btn-hero-cta">
+                <span>हस्तरेखा पढ़ना प्रारम्भ करें</span>
+                <span class="cta-arrow">→</span>
+              </a>
 
-        <!-- Fate Line -->
-        <article class="line-card">
-          <div>
-            <div class="line-card-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"></path>
-              </svg>
+              <a href="#protocol" class="btn-archive-secondary">
+                <span>पठन विधि देखें</span>
+              </a>
             </div>
-            <div class="line-card-header">
-              <h3 class="line-card-title">Fate Line</h3>
-              <span class="line-card-latin">Saturnia</span>
-            </div>
-            <p class="line-card-desc">
-              Karmic vocation, public acclaim, soul assignments, and synchronistic encounters that shape your lifelong legacy.
-            </p>
-          </div>
-          <div class="line-card-footer">
-            <span class="line-element">Element: Ether</span>
-            <span class="line-trait">Self-Made Destiny</span>
-          </div>
-        </article>
-      </div>
 
-      <!-- Two Pathways: Instant AI Palm Analysis vs Live Sanctuary Reading -->
-      <div class="pathways-grid">
-        <!-- Pathway 1: AI Scanner -->
-        <div class="pathway-card featured">
-          <div>
-            <div class="pathway-badge-row">
-              <span class="badge-pill badge-cyan">INSTANT AI PALM ANALYSIS</span>
-              <span class="badge-pill badge-gold">FREE TOOL</span>
-            </div>
-            <h3 class="pathway-title">Biometric Vision Scan</h3>
-            <p class="pathway-desc">
-              Instant 30-second automated breakdown. Maps 128 biometric coordinates against ancient Sanskrit and Western manuscripts with our free palm reading online AI tool.
-            </p>
-            <div class="pathway-features">
-              <div class="pathway-feature">
-                <svg class="feature-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Instant vector tracing of all 4 major lines</span>
+            <!-- Archival Verification Ledger -->
+            <div class="folio-mini-ledger">
+              <div class="ledger-item">
+                <span class="ledger-num">१२८</span>
+                <span class="ledger-lbl">लक्षण बिंदु</span>
               </div>
-              <div class="pathway-feature">
-                <svg class="feature-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Planetary mount elevation &amp; balance score</span>
+              <div class="ledger-sep">|</div>
+              <div class="ledger-item">
+                <span class="ledger-num">४ मुख्य</span>
+                <span class="ledger-lbl">रेखाएं</span>
               </div>
-              <div class="pathway-feature">
-                <svg class="feature-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Downloadable high-resolution Destiny Blueprint PDF</span>
+              <div class="ledger-sep">|</div>
+              <div class="ledger-item">
+                <span class="ledger-num">७</span>
+                <span class="ledger-lbl">ग्रह पर्वत</span>
+              </div>
+              <div class="ledger-sep">|</div>
+              <div class="ledger-item">
+                <span class="ledger-num">२०२६</span>
+                <span class="ledger-lbl">डिजिटल संस्करण</span>
               </div>
             </div>
           </div>
-          <a href="/scanner.html" class="btn btn-secondary btn-lg" style="width: 100%;">LAUNCH INSTANT SCANNER</a>
-        </div>
 
-        <!-- Pathway 2: Master Chiromancer Reading -->
-        <div class="pathway-card">
-          <div>
-            <div class="pathway-badge-row">
-              <span class="badge-pill badge-violet">LIVE VEDIC SESSION</span>
-              <div class="pathway-price">₹499 <span class="price-sub">/ 30 min <span style="font-size:0.75rem; text-decoration:line-through; opacity:0.6;">₹1,199</span></span></div>
-            </div>
-            <h3 class="pathway-title">Vedic Palmist Consultation</h3>
-            <p class="pathway-desc">
-              Face-to-face video consultation with certified Vedic palmists. Unravels microscopic dermal whorls, karmic debts, and precise timeline forecasting.
-            </p>
-            <div class="pathway-features">
-              <div class="pathway-feature">
-                <svg class="feature-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Direct personal counsel with experienced Jyotish &amp; Samudrika masters</span>
-              </div>
-              <div class="pathway-feature">
-                <svg class="feature-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Cross-synthesis with your Kundali birth chart &amp; planetary dashas</span>
-              </div>
-              <div class="pathway-feature">
-                <svg class="feature-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>Personalized Vedic remedies, gemstones &amp; energized yantras</span>
-              </div>
-            </div>
-          </div>
-          <a href="/palmists.html" class="btn btn-primary btn-lg btn-glow" style="width: 100%;">BOOK 1-ON-1 VEDIC CONSULTATION - ₹499</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEO & Educational Pillar: Palm Reading for Male vs. Female -->
-    <section class="educational-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">SACRED TRADITION VS MODERN PRACTICE</span>
-          <h2 class="section-title">Palm Reading for Male &amp; Female Seekers</h2>
-          <p class="section-subtitle">
-            Demystifying hand polarity, dominant versus passive hands, and the historical differences between male and female palmistry traditions.
-          </p>
-        </div>
-
-        <div class="gender-reading-grid">
-          <!-- Male Palm Reading Tradition -->
-          <article class="gender-card">
-            <div class="gender-card-header">
-              <div class="gender-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="10" cy="14" r="5"></circle>
-                  <line x1="19" y1="5" x2="13.6" y2="10.4"></line>
-                  <polyline points="15 5 19 5 19 9"></polyline>
-                </svg>
-              </div>
-              <h3 class="gender-title">Palm Reading for Male</h3>
-            </div>
-            <div class="gender-body">
-              <p>
-                In classical Vedic chiromancy (Samudrika Shastra), <strong>palm reading for male</strong> seekers traditionally centered on the <em>right hand</em> as the primary indicator of worldly achievements, career dharma, wealth generation, and leadership.
-              </p>
-              <p>
-                However, our 100% accurate chiromancy methodology analyzes both palms: the left hand illuminates inherited ancestry, latent creative potential, and deep subconscious desires, while the right reveals how conscious efforts have transformed destiny.
-              </p>
-              <div class="gender-key-points">
-                <div class="gender-point">
-                  <span class="point-label">Primary Active Hand:</span>
-                  <span>Right hand reveals financial breakthroughs and professional triumphs.</span>
+          <!-- Right Column: Antique Palm Manuscript Plate -->
+          <div class="hero-manuscript-plate-wrap">
+            <div class="manuscript-plate-card">
+              <!-- Plate Header -->
+              <div class="plate-card-header">
+                <div class="plate-title-group">
+                  <span class="plate-tag">चित्रपट ०१ • PLATE I</span>
+                  <span class="plate-sub">SAMUDRIKA HASTA LAKSHANA • FACSIMILE REPRODUCTION</span>
                 </div>
-                <div class="gender-point">
-                  <span class="point-label">Karmic Blueprint:</span>
-                  <span>Left hand exposes unmanifested talents and ancestral blessings.</span>
+                <div class="plate-seal-mini">
+                  <span>प्रमाणित</span>
+                </div>
+              </div>
+
+              <!-- Antique Engraved Palm Graphic with Annotation Callouts -->
+              <div class="plate-illustration-viewport">
+                <!-- SVG Antique Engraving of Palm Hand with Hatching & Thin Annotation Lines -->
+                <svg class="antique-palm-svg" viewBox="0 0 540 640" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="हस्तरेखा सामुद्रिक शास्त्र पाण्डुलिपि चित्रपट">
+                  <!-- Aged Paper Texture Shading & Border Reticles -->
+                  <rect x="10" y="10" width="520" height="620" fill="none" stroke="var(--line)" stroke-width="1" stroke-dasharray="4 4" />
+                  <rect x="18" y="18" width="504" height="604" fill="none" stroke="rgba(149,102,61,0.3)" stroke-width="0.8" />
+                  
+                  <!-- Millimeter Measurement Ticks on Left Border -->
+                  <g class="ruler-ticks" stroke="var(--line)" stroke-width="0.8">
+                    <line x1="18" y1="60" x2="26" y2="60" /><line x1="18" y1="100" x2="30" y2="100" /><line x1="18" y1="140" x2="26" y2="140" />
+                    <line x1="18" y1="180" x2="30" y2="180" /><line x1="18" y1="220" x2="26" y2="220" /><line x1="18" y1="260" x2="30" y2="260" />
+                    <line x1="18" y1="300" x2="26" y2="300" /><line x1="18" y1="340" x2="30" y2="340" /><line x1="18" y1="380" x2="26" y2="380" />
+                    <line x1="18" y1="420" x2="30" y2="420" /><line x1="18" y1="460" x2="26" y2="460" /><line x1="18" y1="500" x2="30" y2="500" />
+                    <line x1="18" y1="540" x2="26" y2="540" /><line x1="18" y1="580" x2="30" y2="580" />
+                  </g>
+
+                  <!-- 1840 Classical Woodcut/Copperplate Shading Hatch Lines -->
+                  <g class="woodcut-hatching" stroke="var(--ink)" stroke-width="0.75" opacity="0.35">
+                    <!-- Wrist & Heel Hatching -->
+                    <line x1="180" y1="570" x2="320" y2="570" /><line x1="185" y1="576" x2="315" y2="576" /><line x1="192" y1="582" x2="308" y2="582" />
+                    <!-- Venus Mount Hatching -->
+                    <path d="M140 400 C155 420 170 450 185 490" />
+                    <path d="M148 390 C165 415 180 445 195 480" />
+                    <path d="M158 385 C175 410 190 440 205 470" />
+                    <!-- Moon Mount Hatching -->
+                    <path d="M360 410 C340 435 330 470 325 510" />
+                    <path d="M350 395 C332 425 322 460 318 495" />
+                    <!-- Palm Center Depression Shading -->
+                    <line x1="240" y1="320" x2="270" y2="320" /><line x1="235" y1="328" x2="275" y2="328" /><line x1="230" y1="336" x2="280" y2="336" />
+                  </g>
+
+                  <!-- Anatomical Hand Engraving Contour -->
+                  <path class="hand-contour-engraved"
+                    d="M175 580 
+                       C150 560 130 500 115 440 
+                       C95 380 65 315 80 260 
+                       C95 210 128 220 142 260 
+                       C148 220 155 140 175 130 
+                       C195 120 208 150 215 210 
+                       C225 150 238 75 260 70 
+                       C280 65 294 100 298 190 
+                       C310 135 330 120 348 128 
+                       C365 135 365 195 360 255 
+                       C378 200 402 195 418 215 
+                       C432 235 425 310 405 365 
+                       C385 420 405 500 370 560 
+                       C340 600 210 605 175 580 Z" 
+                    fill="var(--paper-light)" 
+                    stroke="var(--ink)" 
+                    stroke-width="2.2" 
+                    stroke-linecap="round" 
+                    stroke-linejoin="round"
+                  />
+
+                  <!-- Phalange Joints & Knuckle Folds -->
+                  <g class="joint-folds" stroke="var(--ink)" stroke-width="1.2" opacity="0.6">
+                    <!-- Index Finger Folds -->
+                    <path d="M165 180 C180 185 195 183 208 178" />
+                    <path d="M172 225 C185 230 200 228 212 222" />
+                    <!-- Middle Finger Folds -->
+                    <path d="M245 130 C260 135 278 135 290 128" />
+                    <path d="M248 185 C263 190 282 188 295 182" />
+                    <!-- Ring Finger Folds -->
+                    <path d="M330 175 C342 180 355 178 365 172" />
+                    <path d="M328 225 C340 230 352 228 362 222" />
+                    <!-- Little Finger Folds -->
+                    <path d="M395 265 C405 270 415 268 422 262" />
+                    <path d="M390 310 C400 315 410 312 418 306" />
+                    <!-- Thumb Joint Folds -->
+                    <path d="M102 285 C115 292 125 290 135 282" />
+                  </g>
+
+                  <!-- Wrist Bracelets (Manibandha Rekha) -->
+                  <g class="wrist-bracelets" stroke="var(--copper)" stroke-width="1.5" stroke-linecap="round">
+                    <path d="M170 565 C220 580 310 580 365 565" />
+                    <path d="M175 575 C225 590 305 590 355 575" stroke-dasharray="3 3" />
+                  </g>
+
+                  <!-- Planetary Mount Zones (Engraved Stippling Contours) -->
+                  <!-- 1. Jupiter Mount (Guru Parvat) -->
+                  <circle cx="205" cy="275" r="24" stroke="var(--copper)" stroke-width="1" stroke-dasharray="2 2" fill="rgba(149,102,61,0.06)" />
+                  <text x="205" y="278" font-family="var(--font-archive)" font-size="11" fill="var(--copper)" text-anchor="middle" font-weight="bold">♃</text>
+
+                  <!-- 2. Saturn Mount (Shani Parvat) -->
+                  <circle cx="270" cy="255" r="22" stroke="var(--line)" stroke-width="0.8" stroke-dasharray="2 2" fill="none" />
+                  <text x="270" y="258" font-family="var(--font-archive)" font-size="10" fill="var(--ink-soft)" text-anchor="middle">♄</text>
+
+                  <!-- 3. Sun Mount (Surya Parvat) -->
+                  <circle cx="340" cy="270" r="20" stroke="var(--line)" stroke-width="0.8" stroke-dasharray="2 2" fill="none" />
+                  <text x="340" y="273" font-family="var(--font-archive)" font-size="10" fill="var(--ink-soft)" text-anchor="middle">☉</text>
+
+                  <!-- 4. Venus Mount (Shukra Parvat) -->
+                  <path d="M140 370 C160 410 185 470 215 540 C170 530 135 480 120 420 Z" stroke="var(--copper)" stroke-width="1" stroke-dasharray="3 3" fill="rgba(149,102,61,0.05)" />
+                  <text x="160" y="455" font-family="var(--font-archive)" font-size="12" fill="var(--copper)" font-weight="bold">♀</text>
+
+                  <!-- ==========================================
+                       THE 4 MAJOR CREASE LINES (CLASSICAL INK & VERMILLION)
+                       ========================================== -->
+                  <!-- A. LIFE LINE (जीवन रेखा / Ayur Rekha) — Vermillion Core -->
+                  <path class="crease-life-line"
+                    d="M170 295 C150 330 148 400 170 480 C185 530 205 550 215 560" 
+                    stroke="var(--vermillion)" 
+                    stroke-width="2.8" 
+                    stroke-linecap="round"
+                  />
+                  <!-- Life Line Sister/Guard Branches -->
+                  <path d="M162 380 C160 420 172 470 188 510" stroke="var(--vermillion-dark)" stroke-width="1.2" stroke-linecap="round" opacity="0.7" />
+
+                  <!-- B. HEAD LINE (मस्तिष्क रेखा / Matisha Rekha) — Antique Copper -->
+                  <path class="crease-head-line"
+                    d="M168 295 C220 310 280 340 350 380 C365 390 375 400 385 410" 
+                    stroke="var(--copper)" 
+                    stroke-width="2.5" 
+                    stroke-linecap="round"
+                  />
+                  <!-- Creative Fork on Head Line (Visionary Writer's Fork) -->
+                  <path d="M330 368 C355 375 380 380 395 382" stroke="var(--copper)" stroke-width="1.4" stroke-linecap="round" stroke-dasharray="4 2" />
+
+                  <!-- C. HEART LINE (हृदय रेखा / Hridaya Rekha) — Vermillion -->
+                  <path class="crease-heart-line"
+                    d="M398 325 C340 310 270 300 230 285 C215 280 205 272 200 265" 
+                    stroke="var(--vermillion)" 
+                    stroke-width="2.6" 
+                    stroke-linecap="round"
+                  />
+                  <!-- Branch reaching towards Jupiter Mount -->
+                  <path d="M235 288 C225 275 218 260 215 250" stroke="var(--vermillion)" stroke-width="1.5" stroke-linecap="round" />
+
+                  <!-- D. FATE LINE (भाग्य रेखा / Bhagya Rekha) — Saturn Meridian -->
+                  <path class="crease-fate-line"
+                    d="M265 555 C265 470 262 380 268 285" 
+                    stroke="var(--ink-soft)" 
+                    stroke-width="2.0" 
+                    stroke-linecap="round" 
+                    stroke-dasharray="6 4"
+                  />
+
+                  <!-- ==========================================
+                       THIN ANNOTATION CALLOUT LINES & LABELS
+                       (Subtle labels with thin vermillion/copper lines)
+                       ========================================== -->
+                  
+                  <!-- 01: जीवन रेखा (Life Line) -->
+                  <line x1="165" y1="440" x2="60" y2="440" stroke="var(--vermillion)" stroke-width="1.2" stroke-dasharray="3 3" />
+                  <circle cx="165" cy="440" r="3.5" fill="var(--vermillion)" />
+                  <rect x="25" y="420" width="105" height="38" fill="var(--paper-light)" stroke="var(--vermillion)" stroke-width="0.8" />
+                  <text x="77" y="435" font-family="var(--font-hindi)" font-size="12" font-weight="600" fill="var(--vermillion)" text-anchor="middle">०१ • जीवन रेखा</text>
+                  <text x="77" y="449" font-family="var(--font-archive)" font-size="9" fill="var(--ink-soft)" text-anchor="middle">AYUR REKHA</text>
+
+                  <!-- 02: शुक्र पर्वत (Mount of Venus) -->
+                  <line x1="150" y1="490" x2="60" y2="520" stroke="var(--copper)" stroke-width="1.2" stroke-dasharray="3 3" />
+                  <circle cx="150" cy="490" r="3" fill="var(--copper)" />
+                  <rect x="25" y="505" width="105" height="36" fill="var(--paper-light)" stroke="var(--copper)" stroke-width="0.8" />
+                  <text x="77" y="520" font-family="var(--font-hindi)" font-size="11" font-weight="600" fill="var(--copper)" text-anchor="middle">०६ • शुक्र पर्वत</text>
+                  <text x="77" y="533" font-family="var(--font-archive)" font-size="9" fill="var(--ink-soft)" text-anchor="middle">MOUNT OF VENUS</text>
+
+                  <!-- 03: गुरु पर्वत (Mount of Jupiter) -->
+                  <line x1="205" y1="260" x2="110" y2="175" stroke="var(--copper)" stroke-width="1.2" stroke-dasharray="3 3" />
+                  <circle cx="205" cy="260" r="3" fill="var(--copper)" />
+                  <rect x="50" y="155" width="110" height="36" fill="var(--paper-light)" stroke="var(--copper)" stroke-width="0.8" />
+                  <text x="105" y="170" font-family="var(--font-hindi)" font-size="11" font-weight="600" fill="var(--copper)" text-anchor="middle">०५ • गुरु पर्वत</text>
+                  <text x="105" y="183" font-family="var(--font-archive)" font-size="9" fill="var(--ink-soft)" text-anchor="middle">MOUNT OF JUPITER</text>
+
+                  <!-- 04: हृदय रेखा (Heart Line) -->
+                  <line x1="330" y1="310" x2="445" y2="280" stroke="var(--vermillion)" stroke-width="1.2" stroke-dasharray="3 3" />
+                  <circle cx="330" cy="310" r="3.5" fill="var(--vermillion)" />
+                  <rect x="390" y="260" width="115" height="38" fill="var(--paper-light)" stroke="var(--vermillion)" stroke-width="0.8" />
+                  <text x="447" y="275" font-family="var(--font-hindi)" font-size="12" font-weight="600" fill="var(--vermillion)" text-anchor="middle">०३ • हृदय रेखा</text>
+                  <text x="447" y="289" font-family="var(--font-archive)" font-size="9" fill="var(--ink-soft)" text-anchor="middle">HRIDAYA REKHA</text>
+
+                  <!-- 05: मस्तिष्क रेखा (Head Line) -->
+                  <line x1="320" y1="360" x2="445" y2="380" stroke="var(--copper)" stroke-width="1.2" stroke-dasharray="3 3" />
+                  <circle cx="320" cy="360" r="3.5" fill="var(--copper)" />
+                  <rect x="385" y="365" width="125" height="38" fill="var(--paper-light)" stroke="var(--copper)" stroke-width="0.8" />
+                  <text x="447" y="380" font-family="var(--font-hindi)" font-size="12" font-weight="600" fill="var(--copper)" text-anchor="middle">०२ • मस्तिष्क रेखा</text>
+                  <text x="447" y="394" font-family="var(--font-archive)" font-size="9" fill="var(--ink-soft)" text-anchor="middle">MATISHA REKHA</text>
+
+                  <!-- 06: भाग्य रेखा (Fate Line) -->
+                  <line x1="265" y1="440" x2="445" y2="480" stroke="var(--ink-soft)" stroke-width="1.2" stroke-dasharray="3 3" />
+                  <circle cx="265" cy="440" r="3" fill="var(--ink-soft)" />
+                  <rect x="390" y="465" width="115" height="38" fill="var(--paper-light)" stroke="var(--ink-soft)" stroke-width="0.8" />
+                  <text x="447" y="480" font-family="var(--font-hindi)" font-size="12" font-weight="600" fill="var(--ink)" text-anchor="middle">०४ • भाग्य रेखा</text>
+                  <text x="447" y="494" font-family="var(--font-archive)" font-size="9" fill="var(--ink-soft)" text-anchor="middle">BHAGYA REKHA</text>
+
+                  <!-- Archival Authentication Stamp (Vermillion Circle) in Bottom Right -->
+                  <g class="vermillion-archive-stamp" transform="translate(380, 520)">
+                    <circle cx="45" cy="45" r="40" stroke="var(--vermillion)" stroke-width="1.6" stroke-dasharray="5 2" fill="none" opacity="0.85" />
+                    <circle cx="45" cy="45" r="36" stroke="var(--vermillion)" stroke-width="0.8" fill="none" opacity="0.85" />
+                    <path id="stampCurve" d="M15 45 A30 30 0 1 1 75 45" fill="none" />
+                    <text font-family="var(--font-archive)" font-size="6.8" fill="var(--vermillion)" letter-spacing="1.2" font-weight="bold">
+                      <textPath href="#stampCurve" startOffset="50%" text-anchor="middle">
+                        HASTAREKHA ARCHIVE
+                      </textPath>
+                    </text>
+                    <text x="45" y="42" font-family="var(--font-hindi)" font-size="8.5" fill="var(--vermillion)" text-anchor="middle" font-weight="bold">प्रमाणित</text>
+                    <text x="45" y="54" font-family="var(--font-archive)" font-size="7" fill="var(--vermillion)" text-anchor="middle">2026</text>
+                  </g>
+                </svg>
+              </div>
+
+              <!-- Plate Card Footer Metadata -->
+              <div class="plate-card-footer">
+                <span class="plate-mono-tag">FOLIO HST-01 / PLATE I</span>
+                <span class="plate-mono-tag">DIGITAL ARCHIVAL REPRODUCTION</span>
+                <span class="plate-mono-tag">SCALE 1:1</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Archival Section Ornament Divider -->
+    <div class="archive-section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-fleuron">❦</div>
+      <div class="divider-line"></div>
+    </div>
+
+
+    <!-- =====================================================================
+         2. READING PROTOCOL SECTION
+         ===================================================================== -->
+    <section class="archive-protocol-section" id="protocol">
+      <div class="archive-container">
+        <!-- Section Header -->
+        <div class="archive-section-header">
+          <div class="archive-header-badge">
+            <span class="archive-mono">अभिलेख संकलन विधि • FOLIO PROCEDURE</span>
+          </div>
+          <h2 class="archive-section-heading">पठन विधि</h2>
+          <div class="archive-section-subheading">THE READING PROTOCOL</div>
+          <p class="archive-section-desc">
+            चार व्यवस्थित चरणों में आपकी हथेली का परीक्षण, शास्त्रीय मिलान और निजी अभिलेख की तैयारी।
+          </p>
+        </div>
+
+        <!-- 4 Stages styled like Manuscript Chapters -->
+        <div class="protocol-chapters-grid">
+          <!-- Stage 01: Capture -->
+          <article class="protocol-chapter-card">
+            <div class="chapter-card-top">
+              <span class="chapter-index">अध्याय ०१</span>
+              <span class="chapter-code">STAGE 01</span>
+            </div>
+            <div class="chapter-inner">
+              <h3 class="chapter-title-hi">हस्तचित्र</h3>
+              <div class="chapter-title-en">CAPTURE</div>
+              <div class="chapter-ornament">─ ❖ ─</div>
+              <p class="chapter-text">
+                स्पष्ट प्रकाश में अपनी हथेली का छायाचित्र लें। उंगलियों और हथेली की रेखाएं जितनी स्पष्ट होंगी, विश्लेषण उतना ही सूक्ष्म और शास्त्रीय होगा।
+              </p>
+              <div class="chapter-meta">
+                <span class="archive-mono">विधि: प्राकृतिक प्रकाश • सीधा कोण</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stage 02: Line Examination -->
+          <article class="protocol-chapter-card">
+            <div class="chapter-card-top">
+              <span class="chapter-index">अध्याय ०२</span>
+              <span class="chapter-code">STAGE 02</span>
+            </div>
+            <div class="chapter-inner">
+              <h3 class="chapter-title-hi">रेखा निरीक्षण</h3>
+              <div class="chapter-title-en">LINE EXAMINATION</div>
+              <div class="chapter-ornament">─ ❖ ─</div>
+              <p class="chapter-text">
+                प्रमुख रेखाओं (आयु, मस्तिष्क, हृदय, भाग्य) के उद्गम, ढलान, गहराई, सहायक शाखाओं और प्रमुख पर्वतों के उभार का ज्यामितीय मापन।
+              </p>
+              <div class="chapter-meta">
+                <span class="archive-mono">परीक्षण: 128 लक्षण बिंदु • पर्वत उभार</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stage 03: Classical Interpretation -->
+          <article class="protocol-chapter-card">
+            <div class="chapter-card-top">
+              <span class="chapter-index">अध्याय ०३</span>
+              <span class="chapter-code">STAGE 03</span>
+            </div>
+            <div class="chapter-inner">
+              <h3 class="chapter-title-hi">शास्त्रीय मिलान</h3>
+              <div class="chapter-title-en">CLASSICAL INTERPRETATION</div>
+              <div class="chapter-ornament">─ ❖ ─</div>
+              <p class="chapter-text">
+                निरीक्षण में प्राप्त लक्षणों का प्राचीन सामुद्रिक ग्रंथों—सामुद्रिक तिलक, नारद संहिता और बृहत्संहिता के श्लोकों से तुलनात्मक मिलान।
+              </p>
+              <div class="chapter-meta">
+                <span class="archive-mono">आधार: वैदिक संहिता • प्रामाणिक ग्रंथ</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Stage 04: Personal Folio -->
+          <article class="protocol-chapter-card featured-chapter">
+            <div class="chapter-card-top">
+              <span class="chapter-index">अध्याय ०४</span>
+              <span class="chapter-code">STAGE 04</span>
+            </div>
+            <div class="chapter-inner">
+              <h3 class="chapter-title-hi">व्यक्तिगत अभिलेख</h3>
+              <div class="chapter-title-en">PERSONAL FOLIO</div>
+              <div class="chapter-ornament">─ ❖ ─</div>
+              <p class="chapter-text">
+                आपके लिए तैयार किया गया ऐतिहासिक पुस्तक स्वरूप का विस्तृत डिजिटल अभिलेख, जिसे आप जीवनभर संदर्भ हेतु सुरक्षित रख सकते हैं।
+              </p>
+              <div class="chapter-meta">
+                <span class="archive-mono">प्रारूप: 15+ पृष्ठ डिजिटल पाण्डुलिपि</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Protocol Action Button -->
+        <div class="protocol-cta-center">
+          <a href="/scanner.html" class="btn-archive-primary">
+            <span>हस्तचित्र प्रस्तुत करें और पठन प्रारम्भ करें →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Archival Section Ornament Divider -->
+    <div class="archive-section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-fleuron">❦</div>
+      <div class="divider-line"></div>
+    </div>
+
+
+    <!-- =====================================================================
+         3. WHAT WE EXAMINE ("क्या देखा जाता है?")
+         ===================================================================== -->
+    <section class="archive-examine-section">
+      <div class="archive-container">
+        <!-- Section Header -->
+        <div class="archive-section-header">
+          <div class="archive-header-badge">
+            <span class="archive-mono">सामुद्रिक लक्षण • HASTA LAKSHANA</span>
+          </div>
+          <h2 class="archive-section-heading">क्या देखा जाता है?</h2>
+          <div class="archive-section-subheading">WHAT WE EXAMINE IN YOUR PALM</div>
+          <p class="archive-section-desc">
+            मनुष्य की हथेली केवल रेखाएं नहीं, अपितु जीवन-ऊर्जा, मानसिक संरचना और स्वभाव का एक प्राकृतिक मानचित्र है।
+          </p>
+        </div>
+
+        <!-- 6 Folio Panels Grid -->
+        <div class="examine-panels-grid">
+          <!-- 1. जीवन रेखा -->
+          <article class="folio-panel-card">
+            <div class="panel-header">
+              <div class="panel-num">पत्र ०१</div>
+              <div class="panel-element">तत्व: पृथ्वी</div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-titles">
+                <h3 class="panel-title-hi">जीवन रेखा</h3>
+                <span class="panel-title-en">AYUR REKHA • VITALITY ARC</span>
+              </div>
+              <p class="panel-desc">
+                शारीरिक प्राण-शक्ति, जीवन में आने वाले महत्वपूर्ण संक्रमण काल, स्वास्थ्य सहनशीलता और आंतरिक संतुलन का पारंपरिक परिप्रेक्ष्य। यह केवल वर्षों की संख्या नहीं, जीवन के ओज का प्रतीक है।
+              </p>
+              <div class="panel-footer-attr">
+                <span class="attr-key">मुख्य लक्षण:</span>
+                <span class="attr-val">वक्रता, अखंडता, सहायक रक्षक रेखाएं</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. मस्तिष्क रेखा -->
+          <article class="folio-panel-card">
+            <div class="panel-header">
+              <div class="panel-num">पत्र ०२</div>
+              <div class="panel-element">तत्व: वायु</div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-titles">
+                <h3 class="panel-title-hi">मस्तिष्क रेखा</h3>
+                <span class="panel-title-en">MATISHA REKHA • INTELLECT VECTOR</span>
+              </div>
+              <p class="panel-desc">
+                विचार करने की मौलिक शैली, एकाग्रता, ग्रहणशीलता, कल्पना और व्यावहारिकता के बीच का संतुलन। रेखा का झुकाव यह दर्शाता है कि आप तार्किक विश्लेषण में दक्ष हैं या रचनात्मक अंतर्दृष्टि में।
+              </p>
+              <div class="panel-footer-attr">
+                <span class="attr-key">मुख्य लक्षण:</span>
+                <span class="attr-val">द्विशाखीय छोर, ढलान, चंद्र पर्वत की ओर झुकाव</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. हृदय रेखा -->
+          <article class="folio-panel-card">
+            <div class="panel-header">
+              <div class="panel-num">पत्र ०३</div>
+              <div class="panel-element">तत्व: जल</div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-titles">
+                <h3 class="panel-title-hi">हृदय रेखा</h3>
+                <span class="panel-title-en">HRIDAYA REKHA • AFFECTION MERIDIAN</span>
+              </div>
+              <p class="panel-desc">
+                भावनात्मक सत्यता, रिश्तों में समर्पण की प्रकृति, संवेदनशीलता और अंतःकरण की प्रवृत्तियां। यह रेखा यह उद्घाटित करती है कि व्यक्ति प्रेम और कर्तव्य के बीच किस प्रकार सामंजस्य स्थापित करता है।
+              </p>
+              <div class="panel-footer-attr">
+                <span class="attr-key">मुख्य लक्षण:</span>
+                <span class="attr-val">गुरु पर्वत तक पहुंच, शाखाएं, कोमलता</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 4. भाग्य रेखा -->
+          <article class="folio-panel-card">
+            <div class="panel-header">
+              <div class="panel-num">पत्र ०४</div>
+              <div class="panel-element">तत्व: आकाश</div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-titles">
+                <h3 class="panel-title-hi">भाग्य रेखा</h3>
+                <span class="panel-title-en">BHAGYA REKHA • SATURN MERIDIAN</span>
+              </div>
+              <p class="panel-desc">
+                कर्म-मार्ग, आजीविका के मोड़, समाज में पहचान और जीवन के लक्ष्य के प्रति निष्ठा। इसका आरंभ बिंदु दर्शाता है कि आपकी प्रगति स्वअर्जित पुरुषार्थ से है अथवा पूर्व संचित प्रारब्ध से।
+              </p>
+              <div class="panel-footer-attr">
+                <span class="attr-key">मुख्य लक्षण:</span>
+                <span class="attr-val">उद्गम स्थल, निरंतरता, शनि पर्वत पर समापन</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 5. गुरु पर्वत -->
+          <article class="folio-panel-card">
+            <div class="panel-header">
+              <div class="panel-num">पत्र ०५</div>
+              <div class="panel-element">ग्रह: बृहस्पति ♃</div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-titles">
+                <h3 class="panel-title-hi">गुरु पर्वत</h3>
+                <span class="panel-title-en">MOUNT OF JUPITER • WISDOM &amp; DIGNITY</span>
+              </div>
+              <p class="panel-desc">
+                तर्जनी उंगली के मूल में स्थित गुरु पर्वत आत्म-सम्मान, नेतृत्व क्षमता, विद्वता, उच्च आदर्श और समाज में प्रतिष्ठा का केंद्र माना जाता है। संतुलित गुरु पर्वत स्वाभाविक गरिमा प्रदान करता है।
+              </p>
+              <div class="panel-footer-attr">
+                <span class="attr-key">मुख्य लक्षण:</span>
+                <span class="attr-val">उभार की स्थिति, क्रॉस चिह्न, सोलोमन वलय</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 6. शुक्र पर्वत -->
+          <article class="folio-panel-card">
+            <div class="panel-header">
+              <div class="panel-num">पत्र ०६</div>
+              <div class="panel-element">ग्रह: शुक्र ♀</div>
+            </div>
+            <div class="panel-body">
+              <div class="panel-titles">
+                <h3 class="panel-title-hi">शुक्र पर्वत</h3>
+                <span class="panel-title-en">MOUNT OF VENUS • VITALITY &amp; BEAUTY</span>
+              </div>
+              <p class="panel-desc">
+                अंगूठे के मूल में स्थित यह विस्तृत क्षेत्र जीवन-रस, कलात्मक सुरुचि, सौंदर्य-बोध और शारीरिक आकर्षण का आधार है। यह व्यक्ति के भीतर की ऊर्जा और आनंद प्राप्त करने की क्षमता को दर्शाता है।
+              </p>
+              <div class="panel-footer-attr">
+                <span class="attr-key">मुख्य लक्षण:</span>
+                <span class="attr-val">मांसलता, जाली रहित स्वच्छता, जीवन रेखा का घेरा</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Archival Section Ornament Divider -->
+    <div class="archive-section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-fleuron">❦</div>
+      <div class="divider-line"></div>
+    </div>
+
+
+    <!-- =====================================================================
+         4. SAMPLE PERSONAL FOLIO ("हस्त परीक्षण पत्र — एक उदाहरण")
+         ===================================================================== -->
+    <section class="archive-sample-section">
+      <div class="archive-container">
+        <!-- Section Header -->
+        <div class="archive-section-header">
+          <div class="archive-header-badge">
+            <span class="archive-mono">अभिलेख उदाहरण • FOLIO PREVIEW HST-184</span>
+          </div>
+          <h2 class="archive-section-heading">हस्त परीक्षण पत्र — एक उदाहरण</h2>
+          <div class="archive-section-subheading">EXCERPT FROM AN ARCHIVAL FOLIO RECORD</div>
+          <p class="archive-section-desc">
+            देखें कि एक वास्तविक पठन किस प्रकार ऐतिहासिक पुस्तक के पन्नों पर दर्ज होता है।
+          </p>
+        </div>
+
+        <!-- Realistic Antique Folio Sheet -->
+        <div class="sample-folio-page">
+          <div class="folio-page-inner">
+            <!-- Folio Header -->
+            <div class="folio-page-header">
+              <div class="folio-page-num">अभिलेख पत्र संख्या १८४</div>
+              <div class="folio-page-series">सामुद्रिक शास्त्र संग्रह • भाग द्वितीय</div>
+              <div class="folio-page-classified">गोपनीय निजी पाण्डुलिपि</div>
+            </div>
+
+            <div class="folio-page-title-strip">
+              <h3 class="folio-page-title">हस्त परीक्षण एवं शास्त्रीय फलादेश</h3>
+              <div class="folio-page-date">निरीक्षण तिथि: कार्तिक कृष्ण पक्ष, संवत् २०८२</div>
+            </div>
+
+            <!-- Two-Column Scholarly Manuscript Layout -->
+            <div class="folio-text-grid">
+              <!-- Left: Sanskrit Sutra & Historical Notes -->
+              <div class="folio-col-primary">
+                <div class="scholarly-dropcap-block">
+                  <span class="dropcap-letter">ह</span>
+                  <p class="dropcap-paragraph">
+                    स्त केवल शारीरिक अंग नहीं, अपितु जीवन के संस्कारों का प्रत्यक्ष मुद्रित पत्र है। प्रस्तुत हथेली के सूक्ष्म परीक्षण से ज्ञात होता है कि जातक की आयु रेखा गुरु पर्वत की सीमा से प्रारंभ होकर शुक्र पर्वत को संतुलित रूप से घेरती हुई मणिबंध तक प्रवाहित हो रही है।
+                  </p>
+                </div>
+
+                <div class="manuscript-sutra-box">
+                  <div class="sutra-text">
+                    "आयुर्दीर्घं भवेत्तस्य यस्य रेखा सुनिर्मला।<br />
+                    अखंडिता च गम्भीरा मणिबंधमुपागता॥"
+                  </div>
+                  <div class="sutra-translation">
+                    — सामुद्रिक लक्षण संग्रह (जिसकी आयु रेखा निर्मल, अखंड और गहरी हो, उसे दीर्घ और ओजस्वी जीवन की प्राप्ति होती है।)
+                  </div>
+                </div>
+
+                <h4 class="folio-subhead">प्रमुख अवलोकन:</h4>
+                <ul class="folio-bullet-list">
+                  <li><strong>मस्तिष्क रेखा का द्विशाख:</strong> कल्पनाशक्ति और व्यावहारिक बुद्धिमत्ता का संतुलित समन्वय।</li>
+                  <li><strong>गुरु पर्वत का उच्च स्थान:</strong> स्वाभाविक नेतृत्व क्षमता और ज्ञानार्जन के प्रति आजीवन निष्ठा।</li>
+                  <li><strong>हृदय रेखा की निर्मलता:</strong> संबंधों में सत्यनिष्ठा, यद्यपि अत्यधिक संवेदनशीलता से यदा-कदा मानसिक व्यथा।</li>
+                </ul>
+              </div>
+
+              <!-- Right: Archival Margin Notes & Stamp -->
+              <div class="folio-col-margin">
+                <div class="margin-note-card">
+                  <div class="margin-header">
+                    <span class="archive-mono">हस्तचिह्न विवरण</span>
+                  </div>
+                  <div class="margin-attribute">
+                    <span class="m-label">हस्त स्वरूप:</span>
+                    <span class="m-val">दार्शनिक / वायु हस्त</span>
+                  </div>
+                  <div class="margin-attribute">
+                    <span class="m-label">प्रधान रेखा:</span>
+                    <span class="m-val">अखंड, गहरी (२.४ मिमी)</span>
+                  </div>
+                  <div class="margin-attribute">
+                    <span class="m-label">पर्वत संतुलन:</span>
+                    <span class="m-val">गुरु एवं शुक्र प्रबल</span>
+                  </div>
+                  <div class="margin-attribute">
+                    <span class="m-label">विशिष्ट लक्षण:</span>
+                    <span class="m-val">सोलोमन वलय अंकित</span>
+                  </div>
+                </div>
+
+                <!-- Vermillion Seal Stamp -->
+                <div class="folio-seal-box">
+                  <div class="seal-inner">
+                    <div class="seal-glyph-large">❦</div>
+                    <div class="seal-txt-hi">हस्तरेखा अभिलेख</div>
+                    <div class="seal-txt-en">AUTHENTICATED FOLIO</div>
+                    <div class="seal-txt-date">२०२६ संकलन</div>
+                  </div>
+                </div>
+
+                <div class="archivist-sign">
+                  <span class="sign-label">अभिलेखकार सत्यापन:</span>
+                  <span class="sign-cursive">पं. विद्याधर शास्त्री</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Folio Footer -->
+            <div class="folio-page-footer">
+              <span class="footer-folio-id">FOLIO NO. HST-2026-0184</span>
+              <span class="footer-fleuron">❖</span>
+              <span class="footer-doc-notice">अभिलेख प्रतिलिपि • अविकल डिजिटल रूप</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Archival Section Ornament Divider -->
+    <div class="archive-section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-fleuron">❦</div>
+      <div class="divider-line"></div>
+    </div>
+
+
+    <!-- =====================================================================
+         5. METHODOLOGY / TRADITION ("शास्त्रीय परंपरा एवं विधि")
+         ===================================================================== -->
+    <section class="archive-tradition-section">
+      <div class="archive-container">
+        <!-- Section Header -->
+        <div class="archive-section-header">
+          <div class="archive-header-badge">
+            <span class="archive-mono">वैदिक स्रोत • SAMUDRIKA HERITAGE</span>
+          </div>
+          <h2 class="archive-section-heading">शास्त्रीय परंपरा एवं विधि</h2>
+          <div class="archive-section-subheading">THE SAMUDRIKA SHASTRA TRADITION</div>
+          <p class="archive-section-desc">
+            यह कोई आकस्मिक अथवा कृत्रिम भविष्यवाणी नहीं; अपितु सहस्राब्दियों की भारतीय ज्ञान परंपरा का विचारशील दस्तावेजीकरण है।
+          </p>
+        </div>
+
+        <div class="tradition-grid">
+          <!-- Col 1: Hand Polarity (Active vs Passive Hand) -->
+          <article class="tradition-card">
+            <div class="tradition-card-header">
+              <span class="tradition-num">सिद्धान्त ०१</span>
+              <h3 class="tradition-title">हस्त-ध्रुवीयता: प्रारब्ध बनाम पुरुषार्थ</h3>
+              <span class="tradition-latin">ACTIVE VS. PASSIVE POLARITY</span>
+            </div>
+            <div class="tradition-card-body">
+              <p>
+                सामुद्रिक परंपरा में दोनों हाथों का अलग-अलग शास्त्रीय अर्थ है। किसी भी पठन को केवल एक हाथ देखकर पूर्ण नहीं माना जाता:
+              </p>
+              <div class="polarity-list">
+                <div class="polarity-box">
+                  <h4 class="polarity-name">अकर्मक हाथ (Receptive / Passive Hand)</h4>
+                  <p>
+                    जिस हाथ से आप लिखते नहीं हैं (प्रायः बायां हाथ)। यह जन्मजात प्रारब्ध, माता-पिता से प्राप्त आनुवंशिक संस्कार, अवचेतन प्रवृत्तियां और आपके जीवन का आंतरिक मानचित्र दर्शाता है।
+                  </p>
+                </div>
+                <div class="polarity-box">
+                  <h4 class="polarity-name">कर्मक हाथ (Dominant / Active Hand)</h4>
+                  <p>
+                    जिस हाथ से आप दैनिक कार्य और हस्ताक्षर करते हैं (प्रायः दायां हाथ)। यह आपकी इच्छाशक्ति, वर्तमान कर्म, पुरुषार्थ और यह दर्शाता है कि आपने प्रारब्ध को किस सीमा तक रूपांतरित किया है।
+                  </p>
                 </div>
               </div>
             </div>
           </article>
 
-          <!-- Female Palm Reading Tradition -->
-          <article class="gender-card">
-            <div class="gender-card-header">
-              <div class="gender-icon">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="9" r="5"></circle>
-                  <line x1="12" y1="14" x2="12" y2="21"></line>
-                  <line x1="9" y1="18" x2="15" y2="18"></line>
-                </svg>
-              </div>
-              <h3 class="gender-title">Palm Reading for Female</h3>
+          <!-- Col 2: Source Treatises & Scholarly Rigor -->
+          <article class="tradition-card">
+            <div class="tradition-card-header">
+              <span class="tradition-num">सिद्धान्त ०२</span>
+              <h3 class="tradition-title">प्राचीन संदर्भ ग्रंथ एवं व्याख्या शास्त्र</h3>
+              <span class="tradition-latin">CANONICAL SOURCES &amp; CODICES</span>
             </div>
-            <div class="gender-body">
+            <div class="tradition-card-body">
               <p>
-                Historically, ancient treatises designated <strong>palm reading for female</strong> seekers by reading the <em>left hand</em> for innate emotional nature, intuition, and family ties.
+                हमारे डिजिटल पठन की व्याख्यात्मक नींव 18वीं एवं 19वीं शताब्दी में संकलित प्रमुख हस्तरेखा पांडुलिपियों पर आधारित है:
               </p>
-              <p>
-                In contemporary palmistry, every modern woman actively manifests her own destiny in career and creative sovereignty. We examine whichever hand is dominant (the hand you write and sign contracts with) to decode active career success, while the non-dominant hand illuminates inner psychic intuition and emotional harmony.
-              </p>
-              <div class="gender-key-points">
-                <div class="gender-point">
-                  <span class="point-label">Dominant Hand:</span>
-                  <span>Directly charts independent career, wealth, and worldly sovereignty.</span>
+              <div class="sources-list">
+                <div class="source-item">
+                  <div class="source-bullet">❦</div>
+                  <div>
+                    <strong class="source-name">सामुद्रिक तिलक:</strong>
+                    <span class="source-info">रेखाओं की दिशा, गहराई और पर्वतों के शास्त्रीय लक्षणों का सबसे प्रामाणिक ग्रंथ।</span>
+                  </div>
                 </div>
-                <div class="gender-point">
-                  <span class="point-label">Receptive Hand:</span>
-                  <span>Reveals intuitive instincts, spiritual gifts, and heart synchronicity.</span>
+                <div class="source-item">
+                  <div class="source-bullet">❦</div>
+                  <div>
+                    <strong class="source-name">बृहत्संहिता (वराहमिहिर):</strong>
+                    <span class="source-info">पुरुष एवं स्त्री हस्तलक्षणों का खगोलीय और दार्शनिक समन्वय।</span>
+                  </div>
+                </div>
+                <div class="source-item">
+                  <div class="source-bullet">❦</div>
+                  <div>
+                    <strong class="source-name">नारद संहिता एवं हस्तसंजीवनी:</strong>
+                    <span class="source-info">मणिबंध, उंगलियों के पोरों और सूक्ष्म प्रतीकों (मत्स्य, त्रिशूल, शंख) का विश्लेषण।</span>
+                  </div>
                 </div>
               </div>
             </div>
@@ -407,81 +835,250 @@ const jsonLd = {
       </div>
     </section>
 
-    <!-- Comprehensive Palm Reading FAQ Section -->
-    <section class="faq-section">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-eyebrow">ANCIENT WISDOM &amp; GUIDANCE</span>
-          <h2 class="section-title">Frequently Asked Questions About Palm Reading Online</h2>
-          <p class="section-subtitle">
-            Unfold celestial answers about line evolutions, biometric accuracy, and hand polarity.
+    <!-- Archival Section Ornament Divider -->
+    <div class="archive-section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-fleuron">❦</div>
+      <div class="divider-line"></div>
+    </div>
+
+
+    <!-- =====================================================================
+         6. REPORT PREVIEW ("आपका अभिलेख ऐसा दिखाई देगा")
+         ===================================================================== -->
+    <section class="archive-report-preview-section">
+      <div class="archive-container">
+        <!-- Section Header -->
+        <div class="archive-section-header">
+          <div class="archive-header-badge">
+            <span class="archive-mono">डिजिटल पाण्डुलिपि • DIGITAL FACSIMILE</span>
+          </div>
+          <h2 class="archive-section-heading">आपका अभिलेख ऐसा दिखाई देगा</h2>
+          <div class="archive-section-subheading">A PERSONAL PALMISTRY FOLIO, PRESERVED AS A DIGITAL MANUSCRIPT</div>
+          <p class="archive-section-desc">
+            यह कोई साधारण ऐप रिपोर्ट नहीं; एक ऐतिहासिक पुस्तक के रूप में संकलित आपका निजी हस्त-अभिलेख है जिसे आप मुद्रित भी करा सकते हैं।
           </p>
         </div>
 
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span>Why should I scan both palms with the online tool?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div class="faq-content">
-              Comparing both palms reveals your soul’s blueprint versus your realized accomplishments. The non-dominant palm contains the raw cosmic slate given at birth (karma and inherited traits), while your dominant palm reflects the modifications you have manifested through free will, choices, and conscious effort.
+        <!-- 3 Paper Sheets Preview (Cover, Lines, Reading) -->
+        <div class="report-sheets-showcase">
+          <!-- Sheet 1: Cover Folio -->
+          <div class="sheet-preview-item sheet-cover">
+            <div class="sheet-label">FOLIO 01 — आवरण (COVER)</div>
+            <div class="sheet-paper">
+              <div class="sheet-inner-border">
+                <div class="sheet-top-flourish">❖ ❦ ❖</div>
+                <div class="sheet-book-title-hi">हस्तरेखा अभिलेख</div>
+                <div class="sheet-book-title-en">HASTAREKHA ARCHIVE</div>
+                <div class="sheet-line-sep"></div>
+                <div class="sheet-report-subject">व्यक्तिगत हस्त-पठन</div>
+                <div class="sheet-report-sub-en">PERSONAL FOLIO</div>
+                <div class="sheet-folio-number">FOLIO NO. HST-2026</div>
+                <div class="sheet-series-title">SAMUDRIKA SHASTRA SERIES</div>
+                <div class="sheet-stamp-mark">
+                  <span>प्रमाणित प्रतिलिपि</span>
+                </div>
+                <div class="sheet-bottom-year">संकलित एवं संरक्षित • २०२६</div>
+              </div>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span>Do palmistry lines evolve over time?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div class="faq-content">
-              Yes. Minor lines, branches, breaks, and stars change dynamically every 6 to 18 months in response to mental shifts, spiritual practices, relationship choices, and dietary or lifestyle evolutions. Your palms are living biometers reflecting your neuro-energetic state.
+          <!-- Sheet 2: Major Lines Examination Plate -->
+          <div class="sheet-preview-item sheet-lines">
+            <div class="sheet-label">FOLIO 07 — रेखा परीक्षण (MAJOR LINES)</div>
+            <div class="sheet-paper">
+              <div class="sheet-inner-border">
+                <div class="sheet-mini-header">
+                  <span>चित्रपट ०७ • रेखा ज्यामिति</span>
+                </div>
+                <!-- Mini Palm Illustration -->
+                <div class="sheet-mini-palm">
+                  <svg viewBox="0 0 200 240" fill="none" class="sheet-svg-hand">
+                    <path d="M60 220 C50 200 40 170 35 140 C28 110 18 90 25 70 C32 50 48 55 52 75 C55 60 60 30 70 25 C80 20 85 35 88 65 C92 45 100 15 110 15 C120 15 125 35 128 70 C134 50 145 45 152 50 C160 55 160 85 158 110 C168 85 178 80 185 90 C192 100 188 135 178 160 C168 185 178 215 160 235 Z" stroke="var(--ink)" stroke-width="1.2" fill="var(--paper-aged)" />
+                    <!-- Lines -->
+                    <path d="M55 95 C45 110 46 145 55 180 C62 205 70 215 75 220" stroke="var(--vermillion)" stroke-width="1.8" />
+                    <path d="M55 95 C80 105 110 120 140 140" stroke="var(--copper)" stroke-width="1.6" />
+                    <path d="M155 115 C130 105 100 100 85 92" stroke="var(--vermillion)" stroke-width="1.6" />
+                    <path d="M105 220 C105 180 104 140 107 98" stroke="var(--ink-soft)" stroke-width="1.2" stroke-dasharray="3 2" />
+                  </svg>
+                </div>
+                <div class="sheet-line-annotations">
+                  <span class="anno-pill red">०१ आयु रेखा</span>
+                  <span class="anno-pill brown">०२ धी रेखा</span>
+                  <span class="anno-pill red">०३ काम रेखा</span>
+                </div>
+                <div class="sheet-mini-caption">
+                  "चारों मुख्य रेखाओं का सूक्ष्म मापन एवं झुकाव विवरण"
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span>Does a short Life Line indicate an early death?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div class="faq-content">
-              No, this is one of the most common myths in amateur palmistry. The Life Line indicates vitality, stamina, and immune resilience—not calendar longevity. A short but deep line denotes intense vitality and high focused energy, while overlapping sister lines indicate strong protective guardian forces.
+          <!-- Sheet 3: Classical Interpretation Prose -->
+          <div class="sheet-preview-item sheet-text">
+            <div class="sheet-label">FOLIO 14 — फलादेश (INTERPRETATION)</div>
+            <div class="sheet-paper">
+              <div class="sheet-inner-border">
+                <div class="sheet-mini-header">
+                  <span>अध्याय IV • स्वभाव एवं जीवन दिशा</span>
+                </div>
+                <div class="sheet-chapter-heading">कर्म एवं बौद्धिक सामर्थ्य</div>
+                <div class="sheet-sample-prose">
+                  <span class="sheet-dropcap">वि</span>
+                  <p>
+                    द्या और कर्म के क्षेत्र में आपकी मस्तिष्क रेखा का मोड़ यह स्पष्ट करता है कि आप केवल परम्परागत लीक पर चलने वाले व्यक्ति नहीं हैं। आपके निर्णयों में विवेक के साथ साहस का मेल है...
+                  </p>
+                  <p class="sheet-small-paragraph">
+                    गुरु पर्वत पर अंकित त्रिकोण चिह्न यह इंगित करता है कि ३२वें से ३६वें वर्ष के अंतराल में स्वतंत्र कार्य अथवा सामाजिक प्रतिष्ठा में तीव्र उत्थान होगा...
+                  </p>
+                </div>
+                <div class="sheet-page-num-bottom">पृष्ठ १४ • हस्तरेखा अभिलेख</div>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span>How accurate is the free AI palm reading scanner?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
-            </button>
-            <div class="faq-content">
-              Our AuraPalm biometric vision engine provides a 98.4% clarity match on palm creases and planetary mount elevations. By combining algorithmic contour tracing with time-tested classical chiromancy doctrines, it provides reliable, instant, and personalized forecasts.
+        <!-- Report CTA -->
+        <div class="report-preview-cta">
+          <a href="/scanner.html" class="btn-archive-primary btn-large">
+            <span>अपना अभिलेख तैयार करें →</span>
+          </a>
+          <span class="cta-micro-note">डिजिटल PDF पाण्डुलिपि • उच्च-रिज़ॉल्यूशन मुद्रण योग्य</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Archival Section Ornament Divider -->
+    <div class="archive-section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-fleuron">❦</div>
+      <div class="divider-line"></div>
+    </div>
+
+
+    <!-- =====================================================================
+         7. PRICING TEASER ("अपना निजी अभिलेख प्राप्त करें")
+         ===================================================================== -->
+    <section class="archive-pricing-section">
+      <div class="archive-container">
+        <!-- Section Header -->
+        <div class="archive-section-header">
+          <div class="archive-header-badge">
+            <span class="archive-mono">अभिलेख पत्र प्राप्ति • PERSONAL FOLIO</span>
+          </div>
+          <h2 class="archive-section-heading">अपना निजी अभिलेख प्राप्त करें</h2>
+          <div class="archive-section-subheading">A TIMELESS PERSONAL FOLIO • DIGITAL EDITION</div>
+          <p class="archive-section-desc">
+            हस्तरेखा के प्राचीन ज्ञान को अपनी हथेली के परिप्रेक्ष्य में एक सुरक्षित, मुद्रण-योग्य पाण्डुलिपि के रूप में प्राप्त करें।
+          </p>
+        </div>
+
+        <!-- Archival Commission Ledger Card (NOT a SaaS card) -->
+        <div class="pricing-ledger-wrapper">
+          <div class="pricing-ledger-card">
+            <!-- Ledger Top Strip -->
+            <div class="ledger-header">
+              <div class="ledger-title-group">
+                <span class="archive-mono">प्रविष्टि सं. HST-REPORT-2026</span>
+                <h3 class="ledger-title">विस्तृत हस्तरेखा अभिलेख</h3>
+                <span class="ledger-subtitle">COMPLETE MANUSCRIPT REPORT</span>
+              </div>
+              <div class="ledger-price-block">
+                <span class="ledger-currency">₹</span>
+                <span class="ledger-amount">199</span>
+                <span class="ledger-period">/ एकल अभिलेख</span>
+              </div>
+            </div>
+
+            <div class="ledger-divider">──────────────── ❦ ────────────────</div>
+
+            <!-- Inclusions Checklist -->
+            <div class="ledger-inclusions">
+              <div class="inclusion-item">
+                <span class="inc-check">✓</span>
+                <div class="inc-text">
+                  <strong>चारों प्रमुख रेखाओं का संपूर्ण विश्लेषण:</strong> आयु, मस्तिष्क, हृदय एवं भाग्य रेखा की गहराई व शाखाओं का अध्ययन।
+                </div>
+              </div>
+
+              <div class="inclusion-item">
+                <span class="inc-check">✓</span>
+                <div class="inc-text">
+                  <strong>सात प्रमुख ग्रहों के पर्वतों का परीक्षण:</strong> गुरु, शनि, सूर्य, बुध, शुक्र, चंद्र एवं मंगल पर्वतों का संतुलन।
+                </div>
+              </div>
+
+              <div class="inclusion-item">
+                <span class="inc-check">✓</span>
+                <div class="inc-text">
+                  <strong>व्यक्तित्व, कार्य एवं जीवन दिशा संकेत:</strong> बौद्धिक झुकाव, भावनात्मक प्रकृति एवं आजीविका के संभावित पड़ाव।
+                </div>
+              </div>
+
+              <div class="inclusion-item">
+                <span class="inc-check">✓</span>
+                <div class="inc-text">
+                  <strong>अंकित चित्रपट एवं ज्यामितीय मानचित्र:</strong> आपकी हथेली का रेखांकित पाण्डुलिपि पृष्ठ (High-Res Plate)।
+                </div>
+              </div>
+
+              <div class="inclusion-item">
+                <span class="inc-check">✓</span>
+                <div class="inc-text">
+                  <strong>१५+ पृष्ठों की संग्रहणीय डिजिटल पाण्डुलिपि (PDF):</strong> 19वीं शताब्दी के ऐतिहासिक ग्रंथ शैली में मुद्रण योग्य।
+                </div>
+              </div>
+            </div>
+
+            <!-- Ledger CTA Button -->
+            <div class="ledger-action">
+              <a href="/scanner.html" class="btn-archive-primary btn-ledger-buy">
+                <span>मेरा अभिलेख तैयार करें — ₹199 →</span>
+              </a>
+              <div class="ledger-fineprint">
+                <span class="archive-mono">एक बार का भुगतान • कोई आवर्ती सदस्यता नहीं • सुरक्षित डिजिटल प्रतिलिपि</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
+
+    <!-- Archival Section Ornament Divider -->
+    <div class="archive-section-divider">
+      <div class="divider-line"></div>
+      <div class="divider-fleuron">❦</div>
+      <div class="divider-line"></div>
+    </div>
+
+
+    <!-- =====================================================================
+         8. ARCHIVAL DISCLAIMER ("अभिलेखीय टिप्पणी")
+         ===================================================================== -->
+    <section class="archive-disclaimer-section" id="disclaimer">
+      <div class="archive-container">
+        <div class="archival-disclaimer-box">
+          <div class="disclaimer-header">
+            <span class="disclaimer-seal">❦</span>
+            <h3 class="disclaimer-title">अभिलेखीय टिप्पणी एवं मर्यादा</h3>
+            <span class="disclaimer-title-en">ARCHIVAL NOTE &amp; RESPECTFUL HERITAGE</span>
+          </div>
+
+          <div class="disclaimer-content">
+            <p class="disclaimer-hi">
+              यह पठन पारंपरिक सामुद्रिक शास्त्र और भारतीय हस्तरेखा विज्ञान की ऐतिहासिक एवं व्याख्यात्मक परंपराओं पर आधारित है। इसे किसी निश्चित, अपरिवर्तनीय वैज्ञानिक भविष्यवाणी अथवा चिकित्सा, कानूनी या वित्तीय सलाह के रूप में न लें। भारतीय दर्शन में पुरुषार्थ (सचेत कर्म और सद्प्रयास) को सदा भाग्य से श्रेष्ठ माना गया है।
+            </p>
+            <p class="disclaimer-en">
+              This reading is an interpretive archival experience inspired by classical Indian palmistry traditions. It should not be treated as deterministic prediction, nor as a substitute for professional medical, legal, or financial counsel. In Vedic philosophy, conscious human action (Purushartha) remains ever sovereign.
+            </p>
+          </div>
+
+          <div class="disclaimer-footer">
+            <span class="archive-mono">हस्तरेखा अभिलेख संकलन • मर्यादा पत्र • 2026</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
-
-  <script is:inline>
-    // FAQ Accordion interaction
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.faq-trigger').forEach(trigger => {
-        trigger.addEventListener('click', () => {
-          const item = trigger.closest('.faq-item');
-          const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-          trigger.setAttribute('aria-expanded', !isExpanded);
-          item.classList.toggle('active');
-        });
-      });
-    });
-  </script>
 </Layout>
