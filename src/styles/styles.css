@@ -3715,12 +3715,15 @@ h1, h2, h3, h4, h5, h6 {
   align-items: flex-start;
   gap: 10px;
   box-shadow: var(--shadow-sm);
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
-.major-line-summary-item:hover {
+.major-line-summary-item:hover,
+.major-line-summary-item.active {
   border-color: var(--vermillion);
   background: var(--paper-aged);
+  box-shadow: 0 0 0 1px var(--vermillion), var(--shadow-sm);
 }
 
 .line-badge-num {
@@ -3766,7 +3769,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2px;
 }
 
-/* 3. Detailed Archival Folio Panels (Plates I, II, III, IV) */
+/* 3. Detailed Archival Folio Panels (Plates I, II, III, IV, V) */
 .detailed-interpretation-section {
   display: flex;
   flex-direction: column;
@@ -3781,6 +3784,13 @@ h1, h2, h3, h4, h5, h6 {
   padding: 22px 24px;
   box-shadow: var(--shadow-folio);
   position: relative;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, outline-color 0.25s ease;
+}
+
+.archival-folio-panel.active-plate-focus {
+  border-color: var(--vermillion);
+  outline-color: var(--vermillion);
+  box-shadow: 0 0 0 1px var(--vermillion), 0 8px 24px rgba(142, 29, 18, 0.14);
 }
 
 .panel-meta-header {

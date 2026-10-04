@@ -2,17 +2,37 @@
  * Hastarekha Archive — Personal Folio Report Controller
  * Folio Ref: PERSONAL FOLIO • HASTA 001
  * Manages annotated palm inspection, archival folio panels,
- * bilingual rendering, PDF export modal, and summary transmission.
+ * preview tabs, payment modal, historical PDF download, and bilingual rendering.
  */
 
-import { getLanguage, setLanguage } from './i18n.js';
+function getLanguage() {
+  if (typeof window !== 'undefined' && typeof window.aurapalmGetLanguage === 'function') {
+    return window.aurapalmGetLanguage();
+  }
+  try {
+    return localStorage.getItem('aurapalm_lang') || 'hi';
+  } catch (e) {
+    return 'hi';
+  }
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+function setLanguage(lang) {
+  if (typeof window !== 'undefined' && typeof window.aurapalmSetLanguage === 'function') {
+    window.aurapalmSetLanguage(lang);
+  }
+  try {
+    localStorage.setItem('aurapalm_lang', lang);
+  } catch (e) {}
+}
+
+function initReport() {
   const lineToggles = document.querySelectorAll('.hand-line-toggle');
   const svgPaths = document.querySelectorAll('.line-path-svg');
   const numberedMarkers = document.querySelectorAll('.annotated-marker-pin');
+  const majorLineItems = document.querySelectorAll('.major-line-summary-item');
   const inspectorDetailBox = document.getElementById('inspector-detail-box');
   const palmImg = document.getElementById('annotated-palm-img');
+
   const btnDownloadPdf = document.getElementById('btn-download-pdf');
   const btnShareSummary = document.getElementById('btn-share-summary');
   const shareModal = document.getElementById('share-modal');
@@ -65,7 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
         confidence: 'स्पष्ट • निर्दोष चाप • ९६.८% शुद्धता',
         summary: 'शुक्र पर्वत को परिपूर्ण चाप में घेरती हुई यह जीवन रेखा दीर्घायु, सुदृढ़ जीवनी शक्ति तथा शारीरिक रोग प्रतिरोधक क्षमता का प्रत्यक्ष प्रमाण है। मध्य भाग में सूक्ष्म सहायक रेखा (मंगल रेखा) संकटों में दैवीय व कुल संरक्षण प्रदान करती है।',
         timing: 'स्थिर ऊर्जा व स्वास्थ्य काल: २४ से ६८+ वर्ष',
-        archival: 'दीर्घ • निर्दोष • गहन'
+        archival: 'दीर्घ • निर्दोष • गहन',
+        plateId: 'plate-ayur'
       },
       head: {
         num: '02',
@@ -74,7 +95,8 @@ document.addEventListener('DOMContentLoaded', () => {
         confidence: 'द्विमुख अंत • प्रखर मेधा • ९७.२% शुद्धता',
         summary: 'मस्तिष्क रेखा का अंत चंद्र पर्वत की ओर मुड़कर सुंदर द्विमुखी (बुध-शाखा) बनाता है। यह तार्किक बुद्धि, गहन रचनात्मकता तथा दर्शन व व्यावहारिक उद्यमशीलता के समन्वय का सूचक है।',
         timing: 'बौद्धिक व व्यापारिक उत्कर्ष: ३१ से ३८ वर्ष',
-        archival: 'द्विमुखी • प्रखर • संतुलित'
+        archival: 'द्विमुखी • प्रखर • संतुलित',
+        plateId: 'plate-matisha'
       },
       heart: {
         num: '03',
@@ -83,7 +105,8 @@ document.addEventListener('DOMContentLoaded', () => {
         confidence: 'गुरु पर्वत गामी • ९८.४% शुद्धता',
         summary: 'हृदय रेखा का वक्र देवगुरु बृहस्पति के पर्वत पर प्रतिष्ठित होता है। यह निश्छल प्रेम, उच्च नैतिक आदर्श, निष्कपट निष्ठा तथा आत्मीय संबंधों में पवित्रता का अभिलेखीय लक्षण है।',
         timing: 'महत्वपूर्ण कर्म फल काल: २७ से ३४ वर्ष',
-        archival: 'मध्यम • स्पष्ट • संतुलित'
+        archival: 'मध्यम • स्पष्ट • संतुलित',
+        plateId: 'plate-hridaya'
       },
       fate: {
         num: '04',
@@ -92,16 +115,18 @@ document.addEventListener('DOMContentLoaded', () => {
         confidence: 'चंद्र पर्वत से उद्गम • ९४.६% शुद्धता',
         summary: 'चंद्र पर्वत से प्रारंभ होकर शनि पर्वत की ओर ऊर्ध्वगामी होने वाली यह भाग्य रेखा दर्शाती है कि आपका भाग्योदय स्वअर्जित प्रतिभा, लोक-स्वीकृति तथा स्वतंत्र निर्णय क्षमता द्वारा होगा।',
         timing: 'महत्वपूर्ण भाग्योदय काल: ३२ से ३७ वर्ष',
-        archival: 'ऊर्ध्वगामी • स्वतंत्र • तेजस्वी'
+        archival: 'ऊर्ध्वगामी • स्वतंत्र • तेजस्वी',
+        plateId: 'plate-bhagya'
       },
       apollo: {
         num: '05',
         name: 'सूर्य रेखा व पर्वत — SURYA REKHA',
         element: 'अग्नि तत्व • कीर्ति, पद-प्रतिष्ठा एवं संपन्नता',
         confidence: 'ऊर्ध्वमुखी स्तंभ • ९२.१% शुद्धता',
-        summary: 'अनामिका उंगली के नीचे ऊर्ध्वमुखी रेखा समाज में सम्मान, स्वाभिमान तथा कलात्मक व वित्तीय स्वायत्तता का संधान करती है।',
+        summary: 'अनामिका उंगली के नीचे ऊर्ध्वमुखी रेखा समाज में सम्मान, स्वाभिमान तथा कलात्मक व वित्तीय स्वायत्तता का संधान करती है। यह रेखा प्रमाणित करती है कि आपका उद्यम सार्वजनिक प्रतिष्ठा प्राप्त करेगा।',
         timing: 'सर्वोच्च प्रतिष्ठा योग: ३६ वर्ष से आगे',
-        archival: 'स्पष्ट • गरिमामयी • स्थिर'
+        archival: 'स्पष्ट • गरिमामयी • स्थिर',
+        plateId: 'plate-apollo'
       }
     },
     en: {
@@ -112,7 +137,8 @@ document.addEventListener('DOMContentLoaded', () => {
         confidence: 'Deep Etch • Unbroken Arc • 96.8% Fidelity',
         summary: 'Encompassing the Mount of Venus in a graceful, sweeping perimeter, the Ayur Rekha indicates exceptional constitutional endurance, cellular recovery, and generational vitality shield.',
         timing: 'Peak Grounding & Vital Prana: Ages 24 through 68+',
-        archival: 'Long • Unbroken • Profound'
+        archival: 'Long • Unbroken • Profound',
+        plateId: 'plate-ayur'
       },
       head: {
         num: '02',
@@ -121,7 +147,8 @@ document.addEventListener('DOMContentLoaded', () => {
         confidence: 'Bifurcated Apex • 97.2% Fidelity',
         summary: 'Terminating towards the Mount of Moon with a distinct secondary fork, revealing a mind balanced between analytical rigor and intuitive visionary synthesis.',
         timing: 'Major Intellectual Renaissance: Ages 31 to 38',
-        archival: 'Bifurcated • Keen • Balanced'
+        archival: 'Bifurcated • Keen • Balanced',
+        plateId: 'plate-matisha'
       },
       heart: {
         num: '03',
@@ -130,7 +157,8 @@ document.addEventListener('DOMContentLoaded', () => {
         confidence: 'Jupiterian Curvature • 98.4% Fidelity',
         summary: 'Ascending directly toward the Jupiterian mount, indicating high emotional nobility, unyielding loyalty, and an instinctive aversion to superficial entanglements.',
         timing: 'Key Karmic Harmonization: Ages 27 to 34',
-        archival: 'Moderate • Lucid • Harmonious'
+        archival: 'Moderate • Lucid • Harmonious',
+        plateId: 'plate-hridaya'
       },
       fate: {
         num: '04',
@@ -139,7 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
         confidence: 'Lunar Inception • 94.6% Fidelity',
         summary: 'Originating from the Mount of Moon, confirming a destiny sculpted through personal charisma, independent enterprise, and public merit rather than hereditary restriction.',
         timing: 'Breakthrough Epoch: Ages 32 to 37',
-        archival: 'Ascending • Autonomous • Resplendent'
+        archival: 'Ascending • Autonomous • Resplendent',
+        plateId: 'plate-bhagya'
       },
       apollo: {
         num: '05',
@@ -148,7 +177,8 @@ document.addEventListener('DOMContentLoaded', () => {
         confidence: 'Vertical Pillar • 92.1% Fidelity',
         summary: 'Clear vertical striations ascending beneath the ring finger manifest enduring social honor, creative authority, and lasting financial dignity.',
         timing: 'Recognition Zenith: Ages 36 onward',
-        archival: 'Clear • Dignified • Resolute'
+        archival: 'Clear • Dignified • Resolute',
+        plateId: 'plate-apollo'
       }
     }
   };
@@ -178,23 +208,24 @@ document.addEventListener('DOMContentLoaded', () => {
         if (line === 'fate') btn.innerText = '०४ — भाग्य रेखा';
         if (line === 'apollo') btn.innerText = '०५ — सूर्य रेखा';
       } else {
-        if (line === 'life') btn.innerText = '01 — AYUR REKHA';
-        if (line === 'head') btn.innerText = '02 — MATISHA REKHA';
-        if (line === 'heart') btn.innerText = '03 — HRIDAYA REKHA';
-        if (line === 'fate') btn.innerText = '04 — BHAGYA REKHA';
-        if (line === 'apollo') btn.innerText = '05 — SURYA REKHA';
+        if (line === 'life') btn.innerText = '01 — LIFE LINE';
+        if (line === 'head') btn.innerText = '02 — HEAD LINE';
+        if (line === 'heart') btn.innerText = '03 — HEART LINE';
+        if (line === 'fate') btn.innerText = '04 — FATE LINE';
+        if (line === 'apollo') btn.innerText = '05 — SUN LINE';
       }
     });
 
-    selectLine(currentLineKey);
+    selectLine(currentLineKey, false);
   }
 
-  function selectLine(lineKey) {
+  function selectLine(lineKey, playAudio = true) {
+    if (!lineKey) return;
     currentLineKey = lineKey;
     const lang = getLanguage();
     const localizedData = (lineData[lang] || lineData.hi)[lineKey];
 
-    // Update toggle buttons
+    // 1. Update toggle buttons
     lineToggles.forEach(btn => {
       if (btn.dataset.line === lineKey) {
         btn.classList.add('active');
@@ -203,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update SVG paths
+    // 2. Update SVG paths on palm
     svgPaths.forEach(path => {
       if (path.dataset.line === lineKey) {
         path.classList.add('active');
@@ -212,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update numbered markers
+    // 3. Update numbered markers (pins on palm)
     numberedMarkers.forEach(marker => {
       if (marker.dataset.line === lineKey) {
         marker.classList.add('active');
@@ -221,7 +252,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update detail box beneath palm
+    // 4. Update major line summary items in right column
+    majorLineItems.forEach(item => {
+      if (item.dataset.lineTarget === lineKey) {
+        item.classList.add('active');
+      } else {
+        item.classList.remove('active');
+      }
+    });
+
+    // 5. Update detail box beneath palm
     if (localizedData && inspectorDetailBox) {
       inspectorDetailBox.innerHTML = `
         <div class="inspector-folio-card">
@@ -243,7 +283,20 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
         </div>
       `;
-      if (window.SoundFX) window.SoundFX.scanPulse();
+    }
+
+    // 6. Highlight corresponding archival folio panel
+    if (localizedData && localizedData.plateId) {
+      const allPanels = document.querySelectorAll('.archival-folio-panel');
+      allPanels.forEach(panel => panel.classList.remove('active-plate-focus'));
+      const targetPanel = document.getElementById(localizedData.plateId);
+      if (targetPanel) {
+        targetPanel.classList.add('active-plate-focus');
+      }
+    }
+
+    if (playAudio && window.SoundFX && typeof window.SoundFX.scanPulse === 'function') {
+      window.SoundFX.scanPulse();
     }
   }
 
@@ -268,6 +321,13 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // Bind major line summary items clicks
+  majorLineItems.forEach(item => {
+    item.addEventListener('click', () => {
+      selectLine(item.dataset.lineTarget);
+    });
+  });
+
   // Language Switcher
   if (btnReportLangEn) {
     btnReportLangEn.addEventListener('click', () => {
@@ -285,14 +345,15 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Initialize
+  // Initialize Language & First Line
   updateReportLangUI(getLanguage());
+  selectLine('heart', false);
 
   // PDF Export Modal Flow
   if (btnDownloadPdf && pdfLangModal) {
     btnDownloadPdf.addEventListener('click', () => {
       pdfLangModal.classList.add('open');
-      if (window.SoundFX) window.SoundFX.chime();
+      if (window.SoundFX && typeof window.SoundFX.chime === 'function') window.SoundFX.chime();
     });
   }
 
@@ -307,9 +368,9 @@ document.addEventListener('DOMContentLoaded', () => {
       setLanguage('en');
       updateReportLangUI('en');
       pdfLangModal.classList.remove('open');
-      if (window.SoundFX) window.SoundFX.chime();
+      if (window.SoundFX && typeof window.SoundFX.chime === 'function') window.SoundFX.chime();
       setTimeout(() => {
-        window.print();
+        window.open('/folio-print.html?print=true', '_blank');
       }, 300);
     });
   }
@@ -319,9 +380,9 @@ document.addEventListener('DOMContentLoaded', () => {
       setLanguage('hi');
       updateReportLangUI('hi');
       pdfLangModal.classList.remove('open');
-      if (window.SoundFX) window.SoundFX.chime();
+      if (window.SoundFX && typeof window.SoundFX.chime === 'function') window.SoundFX.chime();
       setTimeout(() => {
-        window.print();
+        window.open('/folio-print.html?print=true', '_blank');
       }, 300);
     });
   }
@@ -330,7 +391,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnShareSummary && shareModal) {
     btnShareSummary.addEventListener('click', () => {
       shareModal.classList.add('open');
-      if (window.SoundFX) window.SoundFX.chime();
+      if (window.SoundFX && typeof window.SoundFX.chime === 'function') window.SoundFX.chime();
     });
   }
 
@@ -370,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
           plate.classList.remove('active');
         }
       });
-      if (window.SoundFX) window.SoundFX.click();
+      if (window.SoundFX && typeof window.SoundFX.click === 'function') window.SoundFX.click();
     });
   });
 
@@ -390,10 +451,12 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnViewDigitalFolio = document.getElementById('btn-view-digital-folio');
 
   // Check if user already purchased
-  const hasPurchased = sessionStorage.getItem('hastarekha_paid') === 'true';
-  if (hasPurchased && downloadExperienceBox) {
-    downloadExperienceBox.style.display = 'block';
-  }
+  try {
+    const hasPurchased = sessionStorage.getItem('hastarekha_paid') === 'true';
+    if (hasPurchased && downloadExperienceBox) {
+      downloadExperienceBox.style.display = 'block';
+    }
+  } catch (e) {}
 
   if (btnPurchaseFolio && paymentModal) {
     btnPurchaseFolio.addEventListener('click', () => {
@@ -401,10 +464,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (checkoutStage) checkoutStage.style.display = 'block';
       if (confirmedStage) confirmedStage.style.display = 'none';
       if (inkProgressBar) inkProgressBar.style.width = '0%';
-      if (btnOpenConfirmedFolio) btnOpenConfirmedFolio.disabled = true;
+      if (btnOpenConfirmedFolio) {
+        btnOpenConfirmedFolio.disabled = true;
+        btnOpenConfirmedFolio.classList.remove('pulse-ready');
+      }
 
       paymentModal.classList.add('open');
-      if (window.SoundFX) window.SoundFX.chime();
+      if (window.SoundFX && typeof window.SoundFX.chime === 'function') window.SoundFX.chime();
     });
   }
 
@@ -417,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Confirm payment click -> show ARCHIVE ENTRY CONFIRMED
   if (btnConfirmPayment) {
     btnConfirmPayment.addEventListener('click', () => {
-      if (window.SoundFX) window.SoundFX.scanPulse();
+      if (window.SoundFX && typeof window.SoundFX.scanPulse === 'function') window.SoundFX.scanPulse();
       if (checkoutStage) checkoutStage.style.display = 'none';
       if (confirmedStage) confirmedStage.style.display = 'block';
 
@@ -435,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (btnOpenConfirmedFolio) {
           btnOpenConfirmedFolio.disabled = false;
           btnOpenConfirmedFolio.classList.add('pulse-ready');
-          if (window.SoundFX) window.SoundFX.chime();
+          if (window.SoundFX && typeof window.SoundFX.chime === 'function') window.SoundFX.chime();
         }
       }, 1900);
     });
@@ -444,7 +510,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // Open Confirmed Folio CTA
   if (btnOpenConfirmedFolio) {
     btnOpenConfirmedFolio.addEventListener('click', () => {
-      sessionStorage.setItem('hastarekha_paid', 'true');
+      try {
+        sessionStorage.setItem('hastarekha_paid', 'true');
+      } catch (e) {}
       if (paymentModal) paymentModal.classList.remove('open');
 
       if (downloadExperienceBox) {
@@ -461,7 +529,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Download Historical PDF button
   if (btnDownloadHistoricalPdf) {
     btnDownloadHistoricalPdf.addEventListener('click', () => {
-      if (window.SoundFX) window.SoundFX.chime();
+      if (window.SoundFX && typeof window.SoundFX.chime === 'function') window.SoundFX.chime();
       window.open('/folio-print.html?print=true', '_blank');
     });
   }
@@ -469,8 +537,15 @@ document.addEventListener('DOMContentLoaded', () => {
   // Open Digital Folio button
   if (btnViewDigitalFolio) {
     btnViewDigitalFolio.addEventListener('click', () => {
-      if (window.SoundFX) window.SoundFX.click();
+      if (window.SoundFX && typeof window.SoundFX.click === 'function') window.SoundFX.click();
       window.open('/folio-print.html', '_blank');
     });
   }
-});
+}
+
+// Auto-run when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initReport);
+} else {
+  initReport();
+}
