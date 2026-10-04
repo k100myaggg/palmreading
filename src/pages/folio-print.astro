@@ -1,0 +1,746 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Book",
+  "name": "हस्तरेखा अभिलेख — व्यक्तिगत हस्त-पठन पाण्डुलिपि",
+  "author": {
+    "@type": "Organization",
+    "name": "हस्तरेखा अभिलेख संकलन"
+  },
+  "inLanguage": ["hi-IN", "en-IN"]
+};
+---
+
+<Layout
+  title="HASTAREKHA ARCHIVE • FOLIO 184 | ऐतिहासिक हस्तरेखा पाण्डुलिपि"
+  description="1800s Indian scholarly book & archival manuscript edition of your personal palmistry record. Samudrika Shastra series."
+  activePage="report"
+  jsonLd={jsonLd}
+>
+  <!-- Print & Reader Top Floating Toolbar (Hidden when printed) -->
+  <div class="print-toolbar no-print" id="print-toolbar">
+    <div class="archive-container toolbar-inner">
+      <div class="toolbar-left">
+        <a href="/report.html" class="toolbar-back-btn">← अभिलेख पृष्ठ पर वापस जाएं</a>
+        <span class="toolbar-folio-id">FOLIO NO. 184 • SAMUDRIKA SHASTRA SERIES</span>
+      </div>
+      <div class="toolbar-actions">
+        <button id="toolbar-btn-print" class="btn-archive-primary" type="button">
+          <span>🖨️ PDF डाउनलोड करें / मुद्रण करें</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Historical Book & Manuscript Document Container -->
+  <div class="historical-book-canvas" id="historical-book-root">
+
+    <!-- ========================================================
+         PAGE 1: BOOK COVER (आवरण)
+         ======================================================== -->
+    <article class="manuscript-page book-cover-page">
+      <div class="cover-frame-outer">
+        <div class="cover-frame-inner">
+
+          <!-- Corner Fleurons -->
+          <span class="cover-corner corner-tl">❦</span>
+          <span class="cover-corner corner-tr">❦</span>
+          <span class="cover-corner corner-bl">❦</span>
+          <span class="cover-corner corner-br">❦</span>
+
+          <!-- Top Rule & Header -->
+          <div class="cover-top-meta">
+            <span class="cover-series-name">SAMUDRIKA SHASTRA HISTORICAL MANUSCRIPT SERIES</span>
+            <div class="cover-rule"></div>
+          </div>
+
+          <!-- Main Titles -->
+          <div class="cover-titles-block">
+            <h1 class="cover-main-title-hi">हस्तरेखा अभिलेख</h1>
+            <h2 class="cover-main-title-en">HASTAREKHA ARCHIVE</h2>
+
+            <div class="cover-fleuron-divider">❦</div>
+
+            <h3 class="cover-sub-title-hi">व्यक्तिगत हस्त-पठन</h3>
+            <h4 class="cover-sub-title-en">PERSONAL FOLIO</h4>
+
+            <div class="cover-folio-badge">
+              <span>FOLIO NO. 184</span>
+            </div>
+
+            <p class="cover-series-sub">SAMUDRIKA SHASTRA SERIES</p>
+          </div>
+
+          <!-- Central Ornamental Seal -->
+          <div class="cover-seal-wrapper">
+            <div class="cover-double-seal">
+              <span class="seal-inner-glyph">ह</span>
+            </div>
+            <span class="seal-sanskrit-motto">यथा हस्ते तथा भाव्ये</span>
+            <span class="seal-motto-sub">"As inscribed in the palm, so unfolds the destiny"</span>
+          </div>
+
+          <!-- Cover Bottom Colophon -->
+          <div class="cover-bottom-meta">
+            <div class="cover-rule"></div>
+            <div class="cover-fleuron-divider">❦</div>
+            <p class="cover-preservation-text">संकलित एवं संरक्षित</p>
+            <p class="cover-year-text">2026</p>
+            <p class="cover-archive-id">REGISTRATION ID: HST-2026-0184 • FIRST CLASS DOCUMENTARY FOLIO</p>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <!-- ========================================================
+         PAGE 2: PREFACE & TABLE OF CHAPTERS (विषय-सूची)
+         ======================================================== -->
+    <article class="manuscript-page">
+      <header class="page-running-header">
+        <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+        <span>SAMUDRIKA SHASTRA</span>
+      </header>
+
+      <div class="page-content-wrapper">
+        <div class="chapter-opening-slate">
+          <span class="chapter-number-tag">प्रस्तावना एवं विषय-सूची</span>
+          <h2 class="chapter-title-slate">अभिलेख का अनुक्रम</h2>
+          <div class="ornamental-fleuron-rule">❧ ❧ ❧</div>
+        </div>
+
+        <blockquote class="manuscript-quote">
+          "अङ्गुष्ठमूलतः पूर्वा रेखा भवति जीविनः। मध्यमा बुद्धिदा ज्ञेया कनिष्ठा हृदयान्विता॥"<br />
+          <cite>— प्राचीन हस्तसंजीवन सामुद्रिक संहिता</cite>
+        </blockquote>
+
+        <p class="manuscript-paragraph">
+          प्रस्तुत पाण्डुलिपि १८वीं एवं १९वीं शताब्दी के भारतीय सामुद्रिक शास्त्र ग्रंथों—विशेषतः समुद्र-संहिता, हस्तसंजीवन तथा वाराहीय संहिता—की शास्त्रीय परंपरा के आधार पर तैयार की गई है। इस अभिलेख में आपके हस्तचिह्न की रेखाओं, पर्वतों तथा सूक्ष्म लक्षणों का निष्पक्ष एवं मर्यादापूर्ण अध्ययन संकलित है।
+        </p>
+
+        <!-- Chapter Index Table -->
+        <div class="manuscript-toc-table">
+          <div class="toc-row">
+            <span class="toc-chap">अध्याय I</span>
+            <span class="toc-name">हस्तचिह्न का परिचय एवं मूल प्रकृति</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">पृष्ठ ०३</span>
+          </div>
+          <div class="toc-row">
+            <span class="toc-chap">अध्याय II</span>
+            <span class="toc-name">प्रमुख रेखाओं का शास्त्रीय विन्यास</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">पृष्ठ ०४</span>
+          </div>
+          <div class="toc-row">
+            <span class="toc-chap">अध्याय III</span>
+            <span class="toc-name">सप्त ग्रहों के पर्वतों का उत्थान एवं प्रभाव</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">पृष्ठ ०५</span>
+          </div>
+          <div class="toc-row">
+            <span class="toc-chap">अध्याय IV</span>
+            <span class="toc-name">स्वभाव एवं व्यक्तित्व का अभिलेख</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">पृष्ठ ०६</span>
+          </div>
+          <div class="toc-row">
+            <span class="toc-chap">अध्याय V</span>
+            <span class="toc-name">कार्य, आजीविका एवं भाग्योदय काल</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">पृष्ठ ०७</span>
+          </div>
+          <div class="toc-row">
+            <span class="toc-chap">अध्याय VI</span>
+            <span class="toc-name">संबंध, संवेदनशीलता एवं आत्मीय योग</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">पृष्ठ ०८</span>
+          </div>
+          <div class="toc-row">
+            <span class="toc-chap">अध्याय VII</span>
+            <span class="toc-name">दुर्लभ चिह्न एवं विशिष्ट अवलोकन</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">पृष्ठ ०९</span>
+          </div>
+          <div class="toc-row">
+            <span class="toc-chap">अंतिम पृष्ठ</span>
+            <span class="toc-name">अभिलेखीय टिप्पणी एवं शास्त्रीय मुहर</span>
+            <span class="toc-dots"></span>
+            <span class="toc-page">पृष्ठ १०</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-running-footer">
+        <span>पृष्ठ ०२ • निजी अभिलेख • गोपनीय</span>
+        <span>हस्तरेखा अभिलेख संकलन</span>
+      </footer>
+    </article>
+
+    <!-- ========================================================
+         PAGE 3: CHAPTER I — हस्तचिह्न का परिचय
+         ======================================================== -->
+    <article class="manuscript-page">
+      <header class="page-running-header">
+        <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+        <span>अध्याय I • हस्तचिह्न परिचय</span>
+      </header>
+
+      <div class="page-content-wrapper">
+        <div class="chapter-opening-slate">
+          <span class="chapter-number-tag">अध्याय I</span>
+          <h2 class="chapter-title-slate">हस्तचिह्न का परिचय</h2>
+          <div class="ornamental-fleuron-rule">❧ ❧ ❧</div>
+        </div>
+
+        <p class="manuscript-paragraph has-dropcap">
+          <span class="dropcap">ह</span>स्त केवल बाह्य चर्म की सूक्ष्म परतों का समुच्चय नहीं है; प्राचीन वैदिक परंपरा में इसे अंतःकरण एवं जीवन के संचित संस्कारों का दृश्य मानचित्र स्वीकार किया गया है। जब भी किसी हथेली का परीक्षण किया जाता है, तो रेखाओं से पूर्व हथेली की समग्र बनावट, त्वचा की स्निग्धता तथा अंगुलियों के संतुलन का अवलोकन अनिवार्य होता है।
+        </p>
+
+        <!-- Specimen Identity Ledger -->
+        <div class="manuscript-specimen-ledger">
+          <div class="ledger-row">
+            <span class="ledger-label">परीक्षित हस्त:</span>
+            <span class="ledger-val" id="print-polarity-val">दक्षिण हस्त (कर्मक • Manifested Reality)</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-label">तत्व वर्गीकरण:</span>
+            <span class="ledger-val">जल एवं वायु तत्व का दुर्लभ सामंजस्य</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-label">त्वचा की प्रकृति:</span>
+            <span class="ledger-val">स्निग्ध, कोमल एवं संवेदनशील (सत्त्व-प्रधान)</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-label">अंगुली विन्यास:</span>
+            <span class="ledger-val">तर्जनी एवं अनामिका का संतुलित समानांतर अनुपात</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-label">अभिलेखीय स्थिति:</span>
+            <span class="ledger-val">प्रथम श्रेणी सुरक्षित पाण्डुलिपि</span>
+          </div>
+        </div>
+
+        <p class="manuscript-paragraph">
+          आपके हस्तचिह्न का प्राथमिक निरीक्षण यह दर्शाता है कि आपकी शारीरिक ऊर्जा तथा मानसिक गतिशीलता परस्पर पूरक रूप से कार्य कर रही हैं। जल तत्व की प्रधानता आपकी गहरी आत्मीय संवेदनशीलता, अंतर्ज्ञान तथा निष्कपट निष्ठा को पोषण देती है, जबकि वायु तत्व का संगम आपको तीक्ष्ण विचार-शक्ति, स्वतंत्र विश्लेषण तथा रचनात्मक अभिव्यक्ति की सामर्थ्य प्रदान करता है।
+        </p>
+
+        <div class="marginal-scholarly-note">
+          <strong>शास्त्रीय टिप्पणी:</strong> "दक्षिण हस्ते वर्तमानकर्म प्रस्फुटति"—दक्षिण हस्त व्यक्ति के वर्तमान उद्यम एवं स्वतंत्र संकल्प से अर्जित उपलब्धियों को प्रकट करता है।
+        </div>
+      </div>
+
+      <footer class="page-running-footer">
+        <span>पृष्ठ ०३ • निजी अभिलेख • गोपनीय</span>
+        <span>हस्तरेखा अभिलेख संकलन</span>
+      </footer>
+    </article>
+
+    <!-- ========================================================
+         PAGE 4: CHAPTER II — प्रमुख रेखाएँ (Core Meridians)
+         ======================================================== -->
+    <article class="manuscript-page">
+      <header class="page-running-header">
+        <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+        <span>अध्याय II • प्रमुख रेखाएँ</span>
+      </header>
+
+      <div class="page-content-wrapper">
+        <div class="chapter-opening-slate">
+          <span class="chapter-number-tag">अध्याय II</span>
+          <h2 class="chapter-title-slate">प्रमुख रेखाएँ</h2>
+          <div class="ornamental-fleuron-rule">❧ ❧ ❧</div>
+        </div>
+
+        <!-- Archival Diagram Plate -->
+        <div class="print-diagram-plate">
+          <div class="diagram-caption-top">PLATE II-A • हस्तरेखा विन्यास एवं रेखा-प्रवाह</div>
+          <div class="diagram-render-wrap">
+            <img id="print-palm-img" class="print-palm-photo" src="/images/palm-base.jpg" alt="परीक्षित हस्त आरेखन" />
+            
+            <svg class="print-svg-overlay" viewBox="0 0 600 700">
+              <!-- Ayur Rekha (Vermillion) -->
+              <path d="M225 255 C185 325 175 465 260 565" stroke="#8E1D12" stroke-width="3" fill="none" />
+              <!-- Matisha Rekha (Copper) -->
+              <path d="M145 330 C225 345 335 370 420 430" stroke="#95663D" stroke-width="3" fill="none" />
+              <!-- Hridaya Rekha (Vermillion) -->
+              <path d="M155 295 C235 305 325 265 405 235" stroke="#8E1D12" stroke-width="3.5" fill="none" />
+              <!-- Bhagya Rekha (Dashed Copper) -->
+              <path d="M305 580 L295 260" stroke="#95663D" stroke-width="2.5" stroke-dasharray="6 4" fill="none" />
+            </svg>
+
+            <!-- Line Marker Callouts in Courier Prime -->
+            <div class="print-callout callout-life">01 — जीवन रेखा (AYUR REKHA)</div>
+            <div class="print-callout callout-head">02 — मस्तिष्क रेखा (MATISHA REKHA)</div>
+            <div class="print-callout callout-heart">03 — हृदय रेखा (HRIDAYA REKHA)</div>
+            <div class="print-callout callout-fate">04 — भाग्य रेखा (BHAGYA REKHA)</div>
+          </div>
+        </div>
+
+        <!-- Detailed Rekha Explanations -->
+        <div class="rekha-narrative-grid">
+          <div class="rekha-block">
+            <h4 class="rekha-name">०१. जीवन रेखा (AYUR REKHA)</h4>
+            <p class="rekha-desc">
+              शुक्र पर्वत को घेरती हुई यह रेखा गहरी, अखंडित एवं निर्दोष है। किसी भी बड़े कट या द्वीप का अभाव दीर्घायु बल, उत्कृष्ट स्नायु-आरोग्यता तथा रोग-प्रतिरोधक सामर्थ्य का परिचायक है। मध्य भाग में सूक्ष्म मंगल रेखा अदृश्य कुल संरक्षण की पुष्टि करती है।
+            </p>
+          </div>
+          <div class="rekha-block">
+            <h4 class="rekha-name">०२. मस्तिष्क रेखा (MATISHA REKHA)</h4>
+            <p class="rekha-desc">
+              तर्जनी के मूल से निकलकर चंद्र पर्वत की दिशा में ढलने वाली यह रेखा अंत में द्विमुखी (लेखक-द्विमुख) रूप धारण करती है। यह व्यावहारिक तार्किक संतुलन और दूरदर्शी कल्पनाशीलता का श्रेष्ठ समन्वय दर्शाती है।
+            </p>
+          </div>
+          <div class="rekha-block">
+            <h4 class="rekha-name">०३. हृदय रेखा (HRIDAYA REKHA)</h4>
+            <p class="rekha-desc">
+              हृदय रेखा अनामिका के नीचे से एक संतुलित चाप बनाती हुई सीधे देवगुरु बृहस्पति के पर्वत पर प्रतिष्ठित होती है। यह भावनात्मक गरिमा, निष्कपट निष्ठा तथा आत्मीय संबंधों में सतहीपन के प्रति स्वाभाविक वितृष्णा को व्यक्त करती है।
+            </p>
+          </div>
+          <div class="rekha-block">
+            <h4 class="rekha-name">०४. भाग्य रेखा (BHAGYA REKHA)</h4>
+            <p class="rekha-desc">
+              मणिबंध के समीप चंद्र पर्वत से प्रारंभ होकर शनि पर्वत की ओर ऊर्ध्वगामी होने वाली यह रेखा स्वअर्जित सफलता का प्रतीक है। ३२वें वर्ष के उपरांत भाग्य रेखा में विशेष प्रखरता दृष्टिगोचर होती है।
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-running-footer">
+        <span>पृष्ठ ०४ • निजी अभिलेख • गोपनीय</span>
+        <span>हस्तरेखा अभिलेख संकलन</span>
+      </footer>
+    </article>
+
+    <!-- ========================================================
+         PAGE 5: CHAPTER III — पर्वतों का अध्ययन (Planetary Mounts)
+         ======================================================== -->
+    <article class="manuscript-page">
+      <header class="page-running-header">
+        <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+        <span>अध्याय III • पर्वतों का अध्ययन</span>
+      </header>
+
+      <div class="page-content-wrapper">
+        <div class="chapter-opening-slate">
+          <span class="chapter-number-tag">अध्याय III</span>
+          <h2 class="chapter-title-slate">पर्वतों का अध्ययन</h2>
+          <div class="ornamental-fleuron-rule">❧ ❧ ❧</div>
+        </div>
+
+        <p class="manuscript-paragraph has-dropcap">
+          <span class="dropcap">सा</span>मुद्रिक शास्त्र के अनुसार प्रत्येक अंगुली के नीचे स्थित मांसल उभार किसी विशिष्ट ग्रह की ऊर्जा का केंद्र माना गया है। इन पर्वतों का संतुलित उत्थान व्यक्ति के आंतरिक स्वभाव एवं बाहरी जीवन की दिशा को नियंत्रित करता है।
+        </p>
+
+        <!-- Mounts Grid -->
+        <div class="print-mounts-grid">
+          <div class="mount-box">
+            <div class="mount-header-row">
+              <span class="mount-title">१. गुरु पर्वत (MOUNT OF JUPITER)</span>
+              <span class="mount-strength">उत्थान: ९०% • सुदृढ़</span>
+            </div>
+            <p class="mount-text">
+              तर्जनी के नीचे स्थित गुरु पर्वत का यह श्रेष्ठ उत्थान आत्मसम्मान, नेतृत्व क्षमता, धार्मिक मर्यादा तथा उच्च जीवन मूल्यों के प्रति स्वाभाविक निष्ठा का सूचक है।
+            </p>
+          </div>
+
+          <div class="mount-box">
+            <div class="mount-header-row">
+              <span class="mount-title">२. शनि पर्वत (MOUNT OF SATURN)</span>
+              <span class="mount-strength">उत्थान: ८४% • समशीतोष्ण</span>
+            </div>
+            <p class="mount-text">
+              मध्यमा के नीचे शनि पर्वत संतुलित स्थिति में है। यह आपको गंभीर चिंतन, अनुशासन, एकांतप्रियता तथा कर्मफल के प्रति धैर्यवान दृष्टिकोण प्रदान करता है।
+            </p>
+          </div>
+
+          <div class="mount-box">
+            <div class="mount-header-row">
+              <span class="mount-title">३. सूर्य पर्वत (MOUNT OF APOLLO)</span>
+              <span class="mount-strength">उत्थान: ८९% • प्रदीप्त</span>
+            </div>
+            <p class="mount-text">
+              अनामिका के नीचे स्पष्ट ऊर्ध्वमुखी रेखा सहित सूर्य पर्वत समाज में यश, कीर्ति, कलात्मक अभिरुचि तथा राज-सम्मान का प्रबल योग बनाता है।
+            </p>
+          </div>
+
+          <div class="mount-box">
+            <div class="mount-header-row">
+              <span class="mount-title">४. बुध पर्वत (MOUNT OF MERCURY)</span>
+              <span class="mount-strength">उत्थान: ८६% • सक्रिय</span>
+            </div>
+            <p class="mount-text">
+              कनिष्ठिका के नीचे स्थित बुध पर्वत वाणी में प्रभावोत्पादकता, व्यावसायिक चतुराई, गणना शक्ति तथा तत्क्षण निर्णय लेने की क्षमता का केंद्र है।
+            </p>
+          </div>
+
+          <div class="mount-box">
+            <div class="mount-header-row">
+              <span class="mount-title">५. शुक्र पर्वत (MOUNT OF VENUS)</span>
+              <span class="mount-strength">उत्थान: ९५% • परिपुष्ट</span>
+            </div>
+            <p class="mount-text">
+              अंगूठे के मूल में विस्तृत शुक्र पर्वत उत्कृष्ट जीवनी शक्ति, रसिकता, सौंदर्य-बोध, शारीरिक आकर्षण तथा जीवन में भौतिक सुख-सुविधाओं का कारक है।
+            </p>
+          </div>
+
+          <div class="mount-box">
+            <div class="mount-header-row">
+              <span class="mount-title">६. चंद्र पर्वत (MOUNT OF MOON)</span>
+              <span class="mount-strength">उत्थान: ९८% • अति-विकसित</span>
+            </div>
+            <p class="mount-text">
+              मणिबंध के ऊपर चंद्र पर्वत का यह सर्वोच्च उत्थान तीव्र अंतर्ज्ञान, स्वप्न-दृष्टि, रचनात्मक कल्पना तथा जल व यात्राओं से लाभ का संकेत देता है।
+            </p>
+          </div>
+
+          <div class="mount-box" style="grid-column: 1 / -1;">
+            <div class="mount-header-row">
+              <span class="mount-title">७. मंगल पर्वत (MOUNT OF MARS)</span>
+              <span class="mount-strength">उत्थान: ८८% • संतुलित</span>
+            </div>
+            <p class="mount-text">
+              भीतरी एवं बाहरी मंगल का परस्पर सामंजस्य मानसिक दृढ़ता, संकट में धैर्य तथा आत्मरक्षा की स्वाभाविक क्षमता का प्रमाण है।
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-running-footer">
+        <span>पृष्ठ ०५ • निजी अभिलेख • गोपनीय</span>
+        <span>हस्तरेखा अभिलेख संकलन</span>
+      </footer>
+    </article>
+
+    <!-- ========================================================
+         PAGE 6: CHAPTER IV — स्वभाव एवं व्यक्तित्व (Old Novel Style)
+         ======================================================== -->
+    <article class="manuscript-page">
+      <header class="page-running-header">
+        <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+        <span>अध्याय IV • स्वभाव एवं व्यक्तित्व</span>
+      </header>
+
+      <div class="page-content-wrapper">
+        <div class="chapter-opening-slate">
+          <span class="chapter-number-tag">अध्याय IV</span>
+          <h2 class="chapter-title-slate">स्वभाव का अभिलेख</h2>
+          <div class="ornamental-fleuron-rule">❧ ❧ ❧</div>
+        </div>
+
+        <blockquote class="literary-chapter-quote">
+          "हस्त केवल रेखाओं का समूह नहीं; परंपरा में इसे जीवन के संस्कारों का दृश्य मानचित्र माना गया है।"
+        </blockquote>
+
+        <p class="manuscript-paragraph has-dropcap">
+          <span class="dropcap">य</span>ह पाण्डुलिपि प्रमाणित करती है कि आपका मूल स्वभाव बाह्य आडंबर से दूर, अंतर्मुखी गरिमा से परिपूर्ण है। आपकी चेतना में न्यायप्रियता तथा स्वाभिमान का ऐसा दृढ़ स्तंभ विद्यमान है, जो किसी भी अनुचित समझौते के सम्मुख झुकने से इंकार करता है। यद्यपि बाह्य रूप से आप शांत एवं संतुलित प्रतीत होते हैं, किंतु आंतरिक रूप से आपका मानस निरंतर किसी उच्चतर सत्य, रचनात्मक अभिव्यक्ति और स्वतंत्र गरिमा की खोज में लीन रहता है।
+        </p>
+
+        <p class="manuscript-paragraph">
+          चंद्र पर्वत के असाधारण उत्थान तथा द्विमुखी मस्तिष्क रेखा के संगम से यह सिद्ध होता है कि आपके भीतर एक अत्यंत प्रखर 'अंतःप्रज्ञा' (Intuitive Foresight) कार्य कर रही है। आप परिस्थितियों और मनुष्यों के वास्तविक चरित्र को उनकी बाह्य चेष्टाओं से पूर्व ही भांप लेते हैं। यह गुण आपको मिथ्या संबंधों से सुरक्षित रखता है, यद्यपि कभी-कभी यह आपको भीड़ से अलग कर एकांतप्रिय भी बना देता है।
+        </p>
+
+        <div class="archival-observation-plate">
+          <h4 class="plate-title">व्यक्तित्व के तीन प्रमुख लक्षण:</h4>
+          <ul class="plate-bullets">
+            <li><strong>अखंड स्वाभिमान:</strong> किसी के उपकार या पराधीनता में रहने के प्रति स्वाभाविक विमुखता।</li>
+            <li><strong>गहरी संवेदनशीलता:</strong> न्याय व आत्मीयता के प्रति अत्यंत संवेदनशील, किंतु छल के प्रति क्षमाहीन।</li>
+            <li><strong>रचनात्मक दृष्टि:</strong> जटिल जीवन-प्रश्नों का समाधान रूढ़िवादी लीक से हटकर नए दृष्टिकोण से निकालना।</li>
+          </ul>
+        </div>
+      </div>
+
+      <footer class="page-running-footer">
+        <span>पृष्ठ ०६ • निजी अभिलेख • गोपनीय</span>
+        <span>हस्तरेखा अभिलेख संकलन</span>
+      </footer>
+    </article>
+
+    <!-- ========================================================
+         PAGE 7: CHAPTER V — कार्य एवं जीवन दिशा (Vocation & Dharma)
+         ======================================================== -->
+    <article class="manuscript-page">
+      <header class="page-running-header">
+        <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+        <span>अध्याय V • कार्य एवं जीवन दिशा</span>
+      </header>
+
+      <div class="page-content-wrapper">
+        <div class="chapter-opening-slate">
+          <span class="chapter-number-tag">अध्याय V</span>
+          <h2 class="chapter-title-slate">कार्य एवं जीवन दिशा</h2>
+          <div class="ornamental-fleuron-rule">❧ ❧ ❧</div>
+        </div>
+
+        <blockquote class="literary-chapter-quote">
+          "स्वधर्मे निधनं श्रेयः परधर्मो भयावहः — अपनी स्वाभाविक प्रतिभा के अनुसार किया गया कर्म ही शाश्वत यश का कारण बनता है।"
+        </blockquote>
+
+        <p class="manuscript-paragraph has-dropcap">
+          <span class="dropcap">आ</span>पकी भाग्य रेखा का उद्गम चंद्र पर्वत से होना सामुद्रिक परंपरा में यह स्पष्ट करता है कि आपकी आजीविका एवं भाग्योदय किसी परंपरागत या पैतृक सीमाओं में बंधकर नहीं रह सकता। आपका उत्कर्ष स्वतंत्र निर्णय, बौद्धिक संपदा, कला, परामर्श अथवा स्वायत्त उद्यम के माध्यम से ही संभव है।
+        </p>
+
+        <!-- Career Milestones Table -->
+        <div class="career-epoch-table">
+          <div class="epoch-header-row">
+            <span>आयु काल</span>
+            <span>शास्त्रीय फलक</span>
+            <span>दिशा एवं प्रभाव</span>
+          </div>
+          <div class="epoch-item">
+            <span class="epoch-age">२४ से २८ वर्ष</span>
+            <span class="epoch-state">प्रारंभिक अन्वेषण</span>
+            <span class="epoch-detail">आत्मिक प्रतिभा की पहचान, विभिन्न मार्गों का परीक्षण, स्वावलंबन की नींव।</span>
+          </div>
+          <div class="epoch-item epoch-highlight">
+            <span class="epoch-age">३२ से ३८ वर्ष</span>
+            <span class="epoch-state">सर्वोच्च भाग्योदय काल</span>
+            <span class="epoch-detail">सूर्य रेखा का हृदय रेखा से मिलन; सामाजिक सम्मान, वित्तीय स्वायत्तता एवं स्वतंत्र पहचान।</span>
+          </div>
+          <div class="epoch-item">
+            <span class="epoch-age">४२ वर्ष से आगे</span>
+            <span class="epoch-state">स्थिर प्रतिष्ठा व मार्गदर्शन</span>
+            <span class="epoch-detail">संस्थागत अधिकार, दूसरों का मार्गदर्शन, स्थायी परिसंपत्तियों का निर्माण।</span>
+          </div>
+        </div>
+
+        <p class="manuscript-paragraph">
+          सूर्य पर्वत पर उपस्थित ऊर्ध्वमुखी रेखा यह प्रमाणित करती है कि आपके कार्य को केवल धनोपार्जन का साधन नहीं, अपितु समाज में मान-सम्मान व गरिमा का स्रोत होना चाहिए। जब आप अपने नैतिक मूल्यों के अनुरूप कार्य करते हैं, तो आपकी वित्तीय संपन्नता स्वतः आकर्षित होती है।
+        </p>
+      </div>
+
+      <footer class="page-running-footer">
+        <span>पृष्ठ ०७ • निजी अभिलेख • गोपनीय</span>
+        <span>हस्तरेखा अभिलेख संकलन</span>
+      </footer>
+    </article>
+
+    <!-- ========================================================
+         PAGE 8: CHAPTER VI — संबंध एवं भावनात्मक संकेत
+         ======================================================== -->
+    <article class="manuscript-page">
+      <header class="page-running-header">
+        <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+        <span>अध्याय VI • संबंध एवं भावना</span>
+      </header>
+
+      <div class="page-content-wrapper">
+        <div class="chapter-opening-slate">
+          <span class="chapter-number-tag">अध्याय VI</span>
+          <h2 class="chapter-title-slate">संबंध एवं भावनात्मक संकेत</h2>
+          <div class="ornamental-fleuron-rule">❧ ❧ ❧</div>
+        </div>
+
+        <p class="manuscript-paragraph has-dropcap">
+          <span class="dropcap">हृ</span>दय रेखा का वक्र गति में गुरु पर्वत की ओर अग्रसर होना यह स्पष्ट करता है कि आपके लिए प्रेम एवं दांपत्य केवल एक सामाजिक व्यवस्था नहीं, अपितु आत्मा का पवित्र अनुष्ठान है। आप सतही आकर्षण अथवा अल्पकालिक संबंधों से स्वतः विरक्त रहते हैं।
+        </p>
+
+        <div class="manuscript-specimen-ledger">
+          <div class="ledger-row">
+            <span class="ledger-label">भावनात्मक निष्ठा:</span>
+            <span class="ledger-val">अत्यंत उच्च • गुरु पर्वत छत्रछाया</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-label">दांपत्य का स्वरूप:</span>
+            <span class="ledger-val">पारस्परिक सम्मान, बौद्धिक समरसता एवं आध्यात्मिक संगति</span>
+          </div>
+          <div class="ledger-row">
+            <span class="ledger-label">प्रमुख कर्म चक्र फल:</span>
+            <span class="ledger-val">२७ से ३४ वर्ष की आयु में स्थायित्व एवं प्रगाढ़ता</span>
+          </div>
+        </div>
+
+        <p class="manuscript-paragraph">
+          आप अपने जीवनसाथी से केवल शारीरिक या भौतिक उपस्थिति की अपेक्षा नहीं करते, अपितु मानसिक स्तर पर सत्यवादिता, बौद्धिक संवाद और परस्पर स्वावलंबन का सम्मान चाहते हैं। जब तक आपको कोई ऐसा व्यक्ति न मिले जो आपके इस उच्च नैतिक मानक को समझ सके, तब तक आप अकेले रहना अधिक श्रेयस्कर मानते हैं।
+        </p>
+
+        <div class="marginal-scholarly-note">
+          <strong>आत्मीय सूत्र:</strong> आपकी हृदय रेखा की तीन सूक्ष्म ऊर्ध्वगामी शाखाएं यह संकेत देती हैं कि आपके जीवन में वास्तविक प्रेम केवल वासना से नहीं, बल्कि आत्मिक पहचान से प्रस्फुटित होता है।
+        </div>
+      </div>
+
+      <footer class="page-running-footer">
+        <span>पृष्ठ ०८ • निजी अभिलेख • गोपनीय</span>
+        <span>हस्तरेखा अभिलेख संकलन</span>
+      </footer>
+    </article>
+
+    <!-- ========================================================
+         PAGE 9: CHAPTER VII — प्रमुख अवलोकन (Rare Markings)
+         ======================================================== -->
+    <article class="manuscript-page">
+      <header class="page-running-header">
+        <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+        <span>अध्याय VII • प्रमुख अवलोकन</span>
+      </header>
+
+      <div class="page-content-wrapper">
+        <div class="chapter-opening-slate">
+          <span class="chapter-number-tag">अध्याय VII</span>
+          <h2 class="chapter-title-slate">प्रमुख अवलोकन</h2>
+          <div class="ornamental-fleuron-rule">❧ ❧ ❧</div>
+        </div>
+
+        <p class="manuscript-paragraph has-dropcap">
+          <span class="dropcap">सा</span>मान्य रेखाओं के अतिरिक्त कुछ विशिष्ट चिह्न ऐसे होते हैं जो मनुष्य की चेतना को सामान्य जनसमूह से पृथक एक विशिष्ट ओज प्रदान करते हैं। आपके हस्त में ऐसे तीन दुर्लभ लक्षण स्पष्ट रूप से अंकित पाए गए हैं:
+        </p>
+
+        <div class="rare-signs-stack">
+          <!-- Sign 1: Mystic Cross -->
+          <div class="rare-sign-entry">
+            <div class="entry-header">
+              <span class="sign-fleuron">✦</span>
+              <h4 class="sign-title">गुह्य क्रॉस (LA CROIX MYSTIQUE)</h4>
+              <span class="sign-tag">विश्व में ४% से कम</span>
+            </div>
+            <p class="sign-body">
+              हृदय एवं मस्तिष्क रेखा के मध्य, शनि पर्वत के ठीक नीचे स्थित यह स्पष्ट क्रॉस संकेत करता है कि आपके पास जन्मजात गूढ़ अंतर्दृष्टि, आध्यात्मिक सुरक्षा तथा पूर्व-आभास की अद्वितीय क्षमता है। किसी भी संकट में आपको सही दिशा की अंतःप्रेरणा समय से पूर्व प्राप्त हो जाती है।
+            </p>
+          </div>
+
+          <!-- Sign 2: Writer's Fork -->
+          <div class="rare-sign-entry">
+            <div class="entry-header">
+              <span class="sign-fleuron">✦</span>
+              <h4 class="sign-title">लेखक-द्विमुख सिरा (THE WRITER'S FORK)</h4>
+              <span class="sign-tag">बुध-चंद्र संगम</span>
+            </div>
+            <p class="sign-body">
+              मस्तिष्क रेखा का चंद्र पर्वत की ओर द्विमुखी होकर झुकना यह प्रमाणित करता है कि आप गूढ़ अथवा अमूर्त ज्ञान को अत्यंत सरल, प्रभावशाली तथा तार्किक भाषा में रूपांतरित कर जन-जन तक पहुंचाने में दक्ष हैं।
+            </p>
+          </div>
+
+          <!-- Sign 3: Ancestral Mars Shield -->
+          <div class="rare-sign-entry">
+            <div class="entry-header">
+              <span class="sign-fleuron">✦</span>
+              <h4 class="sign-title">कुल-रक्षा रेखा (ANCESTRAL LINEAGE SHIELD)</h4>
+              <span class="sign-tag">मंगल सहायक रेखा</span>
+            </div>
+            <p class="sign-body">
+              जीवन रेखा के भीतरी भाग में समानांतर बहती यह सूक्ष्म रेखा पूर्वजों के आशीर्वाद तथा विषम शारीरिक व मानसिक परिस्थितियों में अद्भुत दैवीय सुरक्षा का प्रतीक मानी जाती है।
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-running-footer">
+        <span>पृष्ठ ०९ • निजी अभिलेख • गोपनीय</span>
+        <span>हस्तरेखा अभिलेख संकलन</span>
+      </footer>
+    </article>
+
+    <!-- ========================================================
+         PAGE 10: COLOPHON & DISCLAIMER (अंतिम पृष्ठ • अभिलेखीय टिप्पणी)
+         ======================================================== -->
+    <article class="manuscript-page book-colophon-page">
+      <header class="page-running-header">
+        <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+        <span>अंतिम पृष्ठ • उपसंहार</span>
+      </header>
+
+      <div class="page-content-wrapper colophon-content">
+        <div class="colophon-seal-box">
+          <div class="colophon-vermillion-stamp">
+            <span>ह</span>
+          </div>
+          <span class="colophon-seal-caption">मुद्रित एवं प्रमाणित अभिलेख</span>
+        </div>
+
+        <div class="chapter-opening-slate">
+          <span class="chapter-number-tag">उपसंहार</span>
+          <h2 class="chapter-title-slate">अभिलेखीय टिप्पणी</h2>
+          <div class="ornamental-fleuron-rule">❧ ❧ ❧</div>
+        </div>
+
+        <div class="colophon-disclaimer-card">
+          <p class="colophon-disclaimer-text">
+            यह पठन पारंपरिक हस्तरेखा शास्त्र की व्याख्यात्मक परंपराओं पर आधारित है। इसे निश्चित वैज्ञानिक भविष्यवाणी या चिकित्सा, वित्तीय अथवा कानूनी सलाह के रूप में न लें।
+          </p>
+          <div class="colophon-rule"></div>
+          <p class="colophon-english-disclaimer">
+            This reading is an authentic interpretive experience inspired by classical Samudrika Shastra traditions. It should not be treated as deterministic scientific prediction or professional medical, financial, or legal advice.
+          </p>
+        </div>
+
+        <!-- Archival Colophon Scribe Block -->
+        <div class="colophon-scribe-slate">
+          <div class="scribe-grid">
+            <div>
+              <span class="scribe-label">संग्रहालय संख्या:</span>
+              <strong class="scribe-val">HST-2026-0184</strong>
+            </div>
+            <div>
+              <span class="scribe-label">पठन तिथि:</span>
+              <strong class="scribe-val">आश्विन कृष्ण पक्ष • 2026</strong>
+            </div>
+            <div>
+              <span class="scribe-label">मुद्रण कोटि:</span>
+              <strong class="scribe-val">डिजिटल पाण्डुलिपि संस्करण</strong>
+            </div>
+            <div>
+              <span class="scribe-label">संरक्षक ग्रंथालय:</span>
+              <strong class="scribe-val">हस्तरेखा अभिलेख संग्रहालय</strong>
+            </div>
+          </div>
+          <div class="scribe-sign-line">
+            <span class="scribe-sign-caption">॥ शुभं भवतु • कल्याणमस्तु ॥</span>
+          </div>
+        </div>
+      </div>
+
+      <footer class="page-running-footer">
+        <span>पृष्ठ १० • निजी अभिलेख • मुद्रण समाप्त</span>
+        <span>HASTAREKHA ARCHIVE • 2026</span>
+      </footer>
+    </article>
+
+  </div>
+
+  <script is:inline>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Restore user palm image if available
+      try {
+        const savedImg = sessionStorage.getItem('aurapalm_scan_image');
+        const printImg = document.getElementById('print-palm-img');
+        if (savedImg && printImg) {
+          printImg.src = savedImg;
+        }
+      } catch (e) {
+        console.warn('Session image read failed', e);
+      }
+
+      // Restore polarity label
+      try {
+        const scanDataStr = sessionStorage.getItem('aurapalm_scan_result');
+        if (scanDataStr) {
+          const scanData = JSON.parse(scanDataStr);
+          const polarityEl = document.getElementById('print-polarity-val');
+          if (polarityEl && scanData.polarity) {
+            polarityEl.innerText = scanData.polarity === 'left' ? 'वाम हस्त (बायां • अकर्मक)' : 'दक्षिण हस्त (दायां • कर्मक)';
+          }
+        }
+      } catch (e) {
+        console.warn('Scan data read failed', e);
+      }
+
+      // Print trigger button
+      const printBtn = document.getElementById('toolbar-btn-print');
+      if (printBtn) {
+        printBtn.addEventListener('click', () => {
+          window.print();
+        });
+      }
+
+      // Auto-trigger print if query param ?print=true is present
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('print') === 'true') {
+        setTimeout(() => {
+          window.print();
+        }, 600);
+      }
+    });
+  </script>
+</Layout>

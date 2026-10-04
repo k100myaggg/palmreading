@@ -393,6 +393,246 @@ const jsonLd = {
             </div>
           </section>
 
+          <!-- ========================================================
+               PHASE 3: 1. REPORT PREVIEW (आपका अभिलेख ऐसा दिखाई देगा)
+               ======================================================== -->
+          <section class="report-preview-section" id="report-preview-section" aria-label="अभिलेख पूर्वावलोकन • Report Preview">
+            <div class="section-subheading-bar">
+              <span class="subheading-mono">PRESERVATION PREVIEW • पाण्डुलिपि पूर्वावलोकन</span>
+              <span class="subheading-ornament">❧</span>
+            </div>
+
+            <div class="report-preview-header">
+              <h2 class="preview-main-title">आपका अभिलेख ऐसा दिखाई देगा</h2>
+              <p class="preview-sub-title">A PERSONAL PALMISTRY FOLIO, PRESERVED AS A DIGITAL MANUSCRIPT.</p>
+              <p class="preview-editorial-note">
+                नीचे दिए गए तीनों पत्रों का अवलोकन करें। आपका सम्पूर्ण हस्त-पठन इसी ऐतिहासिक ग्रंथ शैली में मुद्रण योग्य रूप में उपलब्ध होगा:
+              </p>
+            </div>
+
+            <!-- Realistic Manuscript Pages Carousel / Selector -->
+            <div class="manuscript-preview-tabs">
+              <button class="preview-tab-btn active" data-folio-tab="folio-01" type="button">
+                <span>FOLIO 01 — COVER</span>
+              </button>
+              <button class="preview-tab-btn" data-folio-tab="folio-07" type="button">
+                <span>FOLIO 07 — MAJOR LINES</span>
+              </button>
+              <button class="preview-tab-btn" data-folio-tab="folio-14" type="button">
+                <span>FOLIO 14 — INTERPRETATION</span>
+              </button>
+            </div>
+
+            <!-- Preview Plates Container -->
+            <div class="manuscript-preview-display">
+
+              <!-- PLATE 1: FOLIO 01 — COVER -->
+              <div class="preview-manuscript-plate active" id="tab-folio-01">
+                <div class="preview-plate-frame">
+                  <div class="preview-plate-inner cover-style">
+                    <span class="plate-corner corner-tl">❦</span>
+                    <span class="plate-corner corner-tr">❦</span>
+                    <span class="plate-corner corner-bl">❦</span>
+                    <span class="plate-corner corner-br">❦</span>
+
+                    <span class="plate-mini-meta">SAMUDRIKA SHASTRA HISTORICAL MANUSCRIPT SERIES</span>
+                    <div class="plate-thin-rule"></div>
+
+                    <h3 class="plate-title-red">हस्तरेखा अभिलेख</h3>
+                    <h4 class="plate-subtitle-latin">HASTAREKHA ARCHIVE</h4>
+
+                    <div class="plate-fleuron">❦</div>
+
+                    <p class="plate-folio-type">व्यक्तिगत हस्त-पठन • PERSONAL FOLIO</p>
+                    <div class="plate-number-box">FOLIO NO. 184</div>
+                    <p class="plate-series-tag">SAMUDRIKA SHASTRA SERIES</p>
+
+                    <div class="plate-ornamental-seal">
+                      <span>ह</span>
+                    </div>
+                    <span class="plate-seal-caption">यथा हस्ते तथा भाव्ये</span>
+
+                    <div class="plate-thin-rule"></div>
+                    <span class="plate-colophon-date">संकलित एवं संरक्षित • 2026</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PLATE 2: FOLIO 07 — MAJOR LINES -->
+              <div class="preview-manuscript-plate" id="tab-folio-07">
+                <div class="preview-plate-frame">
+                  <div class="preview-plate-inner lines-style">
+                    <div class="plate-running-head">
+                      <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+                      <span>अध्याय II • प्रमुख रेखाएँ</span>
+                    </div>
+                    <div class="plate-thin-rule"></div>
+
+                    <h4 class="plate-inner-chap">अध्याय II • रेखा-विन्यास</h4>
+                    <p class="plate-inner-desc">
+                      जीवन, मस्तिष्क, हृदय तथा भाग्य रेखाओं का शास्त्रीय चाप एवं सूक्ष्म सहायक रेखाओं का अंकन:
+                    </p>
+
+                    <div class="preview-sample-diagram">
+                      <div class="sample-diagram-art">
+                        <img src="/images/palm-base.jpg" alt="रेखा-विन्यास प्रतिदर्श" class="sample-img-mini" />
+                        <svg class="sample-svg-lines" viewBox="0 0 400 300">
+                          <path d="M150 180 C120 220 120 270 180 290" stroke="#8E1D12" stroke-width="2.5" fill="none" />
+                          <path d="M110 210 C160 220 220 230 260 250" stroke="#95663D" stroke-width="2" fill="none" />
+                          <path d="M120 190 C180 195 230 170 280 150" stroke="#8E1D12" stroke-width="2.5" fill="none" />
+                          <path d="M200 290 L200 160" stroke="#95663D" stroke-dasharray="4 3" stroke-width="1.5" fill="none" />
+                        </svg>
+                      </div>
+                      <div class="sample-diagram-labels">
+                        <span class="diag-label">01 — जीवन रेखा (Ayur Rekha)</span>
+                        <span class="diag-label">02 — मस्तिष्क रेखा (Matisha Rekha)</span>
+                        <span class="diag-label">03 — हृदय रेखा (Hridaya Rekha)</span>
+                        <span class="diag-label">04 — भाग्य रेखा (Bhagya Rekha)</span>
+                      </div>
+                    </div>
+
+                    <div class="plate-thin-rule"></div>
+                    <div class="plate-running-foot">
+                      <span>पृष्ठ ०४ • निजी अभिलेख • गोपनीय</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- PLATE 3: FOLIO 14 — INTERPRETATION -->
+              <div class="preview-manuscript-plate" id="tab-folio-14">
+                <div class="preview-plate-frame">
+                  <div class="preview-plate-inner literature-style">
+                    <div class="plate-running-head">
+                      <span>HASTAREKHA ARCHIVE • FOLIO 184</span>
+                      <span>अध्याय IV • स्वभाव का अभिलेख</span>
+                    </div>
+                    <div class="plate-thin-rule"></div>
+
+                    <h4 class="plate-inner-chap">अध्याय IV • स्वभाव का अभिलेख</h4>
+                    <blockquote class="plate-inner-quote">
+                      "हस्त केवल रेखाओं का समूह नहीं; परंपरा में इसे जीवन के संस्कारों का दृश्य मानचित्र माना गया है।"
+                    </blockquote>
+
+                    <p class="plate-inner-novel-text">
+                      <span class="plate-dropcap">य</span>ह पाण्डुलिपि प्रमाणित करती है कि आपका मूल स्वभाव बाह्य आडंबर से विरक्त तथा आंतरिक आत्मसम्मान से परिपूर्ण है। न्यायप्रियता एवं सत्यनिष्ठा के प्रति आपकी अडिग आस्था किसी भी बाह्य प्रलोभन के सम्मुख झुकने से इंकार करती है।
+                    </p>
+
+                    <div class="plate-thin-rule"></div>
+                    <div class="plate-running-foot">
+                      <span>पृष्ठ ०६ • निजी अभिलेख • गोपनीय</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </section>
+
+          <!-- ========================================================
+               PHASE 3: 2. ARCHIVAL PRICING PANEL (अपना निजी अभिलेख प्राप्त करें)
+               ======================================================== -->
+          <section class="archival-pricing-panel-section" id="pricing-section" aria-label="अभिलेख क्रय फलक • Archival Pricing">
+            <div class="archival-pricing-plate">
+              <div class="pricing-label-row">
+                <span class="pricing-plate-badge">PERSONAL FOLIO • DIGITAL EDITION</span>
+                <span class="pricing-guarantee-tag">एक बार का भुगतान • कोई सदस्यता नहीं</span>
+              </div>
+
+              <h2 class="pricing-plate-title">अपना निजी अभिलेख प्राप्त करें</h2>
+              <p class="pricing-plate-subtitle">विस्तृत हस्तरेखा रिपोर्ट — ऐतिहासिक पाण्डुलिपि संस्करण</p>
+
+              <div class="pricing-cost-display">
+                <span class="currency-symbol">₹</span>
+                <span class="cost-number">199</span>
+                <span class="cost-net">नेट मूल्य • पूर्ण अधिकार</span>
+              </div>
+
+              <!-- Included Items Checklist -->
+              <div class="pricing-inclusions-grid">
+                <div class="inclusion-item">
+                  <span class="inc-glyph">✓</span>
+                  <span class="inc-text">प्रमुख रेखाओं का विश्लेषण (आयु, मति, हृदय, भाग्य)</span>
+                </div>
+                <div class="inclusion-item">
+                  <span class="inc-glyph">✓</span>
+                  <span class="inc-text">पर्वतों का अध्ययन (सप्त ग्रहों का उत्थान)</span>
+                </div>
+                <div class="inclusion-item">
+                  <span class="inc-glyph">✓</span>
+                  <span class="inc-text">व्यक्तित्व एवं स्वभाव संकेत (दार्शनिक अध्ययन)</span>
+                </div>
+                <div class="inclusion-item">
+                  <span class="inc-glyph">✓</span>
+                  <span class="inc-text">करियर एवं जीवन दिशा (भाग्योदय काल गणना)</span>
+                </div>
+                <div class="inclusion-item">
+                  <span class="inc-glyph">✓</span>
+                  <span class="inc-text">संबंध एवं आत्मीय संकेत (पवित्र निष्ठा योग)</span>
+                </div>
+                <div class="inclusion-item">
+                  <span class="inc-glyph">✓</span>
+                  <span class="inc-text">प्रमुख अवलोकन (गुह्य क्रॉस एवं दुर्लभ चिह्न)</span>
+                </div>
+                <div class="inclusion-item inclusion-highlight">
+                  <span class="inc-glyph">★</span>
+                  <span class="inc-text"><strong>व्यक्तिगत PDF अभिलेख (१० पृष्ठों की ऐतिहासिक पाण्डुलिपि)</strong></span>
+                </div>
+              </div>
+
+              <!-- Primary Purchase CTA -->
+              <div class="pricing-cta-row">
+                <button id="btn-purchase-folio" class="btn-archive-primary btn-purchase-primary" type="button">
+                  <span>मेरा अभिलेख तैयार करें — ₹199</span>
+                </button>
+              </div>
+
+              <div class="pricing-footnote">
+                सुरक्षित भारतीय UPI / QR कोड / नेटबैंकिंग द्वारा त्वरित अभिलेख संरक्षण।
+              </div>
+            </div>
+          </section>
+
+          <!-- ========================================================
+               PHASE 3: 4. DOWNLOAD EXPERIENCE TRAY (When Unlocked)
+               ======================================================== -->
+          <section id="download-experience-box" class="download-experience-card" aria-label="अभिलेख डाउनलोड फलक">
+            <div class="download-complete-header">
+              <span class="download-complete-stamp">ARCHIVE COMPLETE</span>
+              <h2 class="download-complete-title">आपका व्यक्तिगत अभिलेख तैयार है।</h2>
+              <div class="download-folio-ref">FOLIO NO. HST-2026-0184</div>
+            </div>
+
+            <p class="download-complete-desc">
+              आपकी हस्तरेखा पाण्डुलिपि १८वीं शताब्दी की सामुद्रिक ग्रंथ शैली में पूर्ण शास्त्रीय अध्यायों सहित संकलित कर दी गई है। इसे सुरक्षित PDF के रूप में डाउनलोड करें अथवा डिजिटल ग्रंथालय में तुरंत खोलें।
+            </p>
+
+            <div class="download-buttons-cluster">
+              <button id="btn-download-historical-pdf" class="btn-archive-primary btn-lg" type="button">
+                <span>[ PDF डाउनलोड करें ]</span>
+              </button>
+              <button id="btn-view-digital-folio" class="btn-archive-secondary btn-lg" type="button">
+                <span>[ अभिलेख खोलें ]</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- 6. TRUST / DISCLAIMER (Required Archival Box) -->
+          <section class="archival-disclaimer-section" aria-label="अभिलेखीय टिप्पणी • Disclaimer">
+            <div class="archival-disclaimer-box">
+              <div class="disclaimer-stamp-title">
+                <span class="disclaimer-seal">अ</span>
+                <span class="disclaimer-heading">अभिलेखीय टिप्पणी</span>
+              </div>
+              <p class="disclaimer-text">
+                यह पठन पारंपरिक हस्तरेखा शास्त्र की व्याख्यात्मक परंपराओं पर आधारित है। इसे निश्चित वैज्ञानिक भविष्यवाणी या चिकित्सा, वित्तीय अथवा कानूनी सलाह के रूप में न लें।
+              </p>
+              <div class="disclaimer-footer-line">
+                HASTAREKHA ARCHIVE • TRADITIONAL CHIROMANCY CODEX • 2026
+              </div>
+            </div>
+          </section>
+
           <!-- 7. REPORT ACTIONS / CTA -->
           <section class="report-action-tray" aria-label="अभिलेख डाउनलोड एवं साझा • Report Actions">
             <div class="report-action-buttons">
@@ -418,6 +658,98 @@ const jsonLd = {
 
     </div>
   </main>
+
+  <!-- ========================================================
+       PHASE 3: 3. ARCHIVAL PAYMENT & CONFIRMATION MODAL
+       ======================================================== -->
+  <div id="payment-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="payment-modal-title">
+    <div class="archival-modal-card payment-modal-plate">
+      <button id="close-payment-modal" class="modal-close-plate" aria-label="Close modal">✕</button>
+
+      <!-- STAGE 1: PAYMENT CHECKOUT LEDGER -->
+      <div id="payment-checkout-stage">
+        <span class="modal-folio-stamp">FOLIO ACQUISITION • मुद्रा विनिमय</span>
+        <h3 id="payment-modal-title" class="modal-plate-title">अभिलेख संरक्षण शुल्क</h3>
+        <p class="modal-plate-desc">
+          हस्तरेखा अभिलेख संकलन हेतु व्यक्तिगत पाण्डुलिपि HST-2026-0184 को अधिकृत करें:
+        </p>
+
+        <!-- Payment Ledger Breakdown -->
+        <div class="payment-ledger-box">
+          <div class="ledger-item-row">
+            <span>व्यक्तिगत हस्तरेखा पाण्डुलिपि (१० पृष्ठ)</span>
+            <strong>₹199</strong>
+          </div>
+          <div class="ledger-item-row">
+            <span>शास्त्रीय आरेखन एवं पर्वत विश्लेषण</span>
+            <span class="text-free">समाहित</span>
+          </div>
+          <div class="ledger-item-row">
+            <span>डिजिटल अभिलेखीय प्रमाण-पत्र</span>
+            <span class="text-free">समाहित</span>
+          </div>
+          <div class="ledger-total-row">
+            <span>कुल विनिमय राशि:</span>
+            <strong class="total-price-val">₹199</strong>
+          </div>
+        </div>
+
+        <!-- Archival Payment Methods Selection -->
+        <div class="payment-methods-stack">
+          <label class="payment-method-option active">
+            <input type="radio" name="payment_method" value="upi" checked />
+            <div class="method-details">
+              <span class="method-name">📱 UPI / QR कोड (Google Pay, PhonePe, Paytm)</span>
+              <span class="method-sub">त्वरित एवं सुरक्षित सत्यापन</span>
+            </div>
+          </label>
+
+          <label class="payment-method-option">
+            <input type="radio" name="payment_method" value="card" />
+            <div class="method-details">
+              <span class="method-name">🏛️ नेटबैंकिंग / डेबिट व क्रेडिट कार्ड</span>
+              <span class="method-sub">सभी भारतीय बैंक स्वीकृत</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="payment-submit-block">
+          <button id="btn-confirm-payment" class="btn-archive-primary btn-lg btn-pay-action" type="button">
+            <span>भुगतान पुष्टि करें — ₹199</span>
+          </button>
+          <span class="payment-safe-note">🔒 २५६-बिट एन्क्रिप्टेड सुरक्षित बैंक विनिमय</span>
+        </div>
+      </div>
+
+      <!-- STAGE 2: ARCHIVE ENTRY CONFIRMED STATE (Exact Required Format) -->
+      <div id="payment-confirmed-stage" style="display:none;">
+        <span class="modal-folio-stamp confirmed-badge">ARCHIVE ENTRY CONFIRMED</span>
+        <h3 class="modal-plate-title confirmed-title">आपका अभिलेख सुरक्षित कर लिया गया है।</h3>
+        
+        <div class="confirmed-folio-box">
+          <span class="confirmed-folio-label">FOLIO REFERENCE:</span>
+          <strong class="confirmed-folio-num">FOLIO NO. HST-2026-0184</strong>
+        </div>
+
+        <div class="confirmed-progress-slate">
+          <div class="confirmed-quill-icon">✒</div>
+          <div class="confirmed-status-text">अभिलेख तैयार किया जा रहा है...</div>
+          <div class="confirmed-ink-bar">
+            <div class="confirmed-ink-fill" id="confirmed-ink-progress"></div>
+          </div>
+        </div>
+
+        <div class="confirmed-cta-block">
+          <button id="btn-open-confirmed-folio" class="btn-archive-primary btn-lg" type="button" disabled>
+            <span>अपना अभिलेख खोलें →</span>
+          </button>
+          <p class="confirmed-note">अभिलेखीय पाण्डुलिपि के पृष्ठ मुद्रित हो रहे हैं...</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
 
   <!-- PDF Export Language Selection Modal -->
   <div id="pdf-lang-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title">
@@ -468,5 +800,7 @@ const jsonLd = {
   </div>
 
   <script is:inline src="/js/main.js"></script>
+  <script is:inline src="/js/report.js"></script>
+
   <script is:inline src="/js/report.js"></script>
 </Layout>

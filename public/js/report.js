@@ -350,4 +350,127 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   }
+
+  // ========================================================
+  // PHASE 3: REPORT PREVIEW TABS (FOLIO 01, FOLIO 07, FOLIO 14)
+  // ========================================================
+  const previewTabBtns = document.querySelectorAll('.preview-tab-btn[data-folio-tab]');
+  const previewPlates = document.querySelectorAll('.preview-manuscript-plate');
+
+  previewTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetId = 'tab-' + btn.dataset.folioTab;
+      previewTabBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      previewPlates.forEach(plate => {
+        if (plate.id === targetId) {
+          plate.classList.add('active');
+        } else {
+          plate.classList.remove('active');
+        }
+      });
+      if (window.SoundFX) window.SoundFX.click();
+    });
+  });
+
+  // ========================================================
+  // PHASE 3: ARCHIVAL PAYMENT & CONFIRMATION FLOW
+  // ========================================================
+  const btnPurchaseFolio = document.getElementById('btn-purchase-folio');
+  const paymentModal = document.getElementById('payment-modal');
+  const closePaymentModal = document.getElementById('close-payment-modal');
+  const btnConfirmPayment = document.getElementById('btn-confirm-payment');
+  const checkoutStage = document.getElementById('payment-checkout-stage');
+  const confirmedStage = document.getElementById('payment-confirmed-stage');
+  const inkProgressBar = document.getElementById('confirmed-ink-progress');
+  const btnOpenConfirmedFolio = document.getElementById('btn-open-confirmed-folio');
+  const downloadExperienceBox = document.getElementById('download-experience-box');
+  const btnDownloadHistoricalPdf = document.getElementById('btn-download-historical-pdf');
+  const btnViewDigitalFolio = document.getElementById('btn-view-digital-folio');
+
+  // Check if user already purchased
+  const hasPurchased = sessionStorage.getItem('hastarekha_paid') === 'true';
+  if (hasPurchased && downloadExperienceBox) {
+    downloadExperienceBox.style.display = 'block';
+  }
+
+  if (btnPurchaseFolio && paymentModal) {
+    btnPurchaseFolio.addEventListener('click', () => {
+      // Reset stages
+      if (checkoutStage) checkoutStage.style.display = 'block';
+      if (confirmedStage) confirmedStage.style.display = 'none';
+      if (inkProgressBar) inkProgressBar.style.width = '0%';
+      if (btnOpenConfirmedFolio) btnOpenConfirmedFolio.disabled = true;
+
+      paymentModal.classList.add('open');
+      if (window.SoundFX) window.SoundFX.chime();
+    });
+  }
+
+  if (closePaymentModal && paymentModal) {
+    closePaymentModal.addEventListener('click', () => {
+      paymentModal.classList.remove('open');
+    });
+  }
+
+  // Confirm payment click -> show ARCHIVE ENTRY CONFIRMED
+  if (btnConfirmPayment) {
+    btnConfirmPayment.addEventListener('click', () => {
+      if (window.SoundFX) window.SoundFX.scanPulse();
+      if (checkoutStage) checkoutStage.style.display = 'none';
+      if (confirmedStage) confirmedStage.style.display = 'block';
+
+      // Animate archival ink progress
+      if (inkProgressBar) {
+        inkProgressBar.style.width = '0%';
+        setTimeout(() => {
+          inkProgressBar.style.transition = 'width 1.8s cubic-bezier(0.2, 0.8, 0.2, 1)';
+          inkProgressBar.style.width = '100%';
+        }, 100);
+      }
+
+      // Activate Open Folio button after 1.8s
+      setTimeout(() => {
+        if (btnOpenConfirmedFolio) {
+          btnOpenConfirmedFolio.disabled = false;
+          btnOpenConfirmedFolio.classList.add('pulse-ready');
+          if (window.SoundFX) window.SoundFX.chime();
+        }
+      }, 1900);
+    });
+  }
+
+  // Open Confirmed Folio CTA
+  if (btnOpenConfirmedFolio) {
+    btnOpenConfirmedFolio.addEventListener('click', () => {
+      sessionStorage.setItem('hastarekha_paid', 'true');
+      if (paymentModal) paymentModal.classList.remove('open');
+
+      if (downloadExperienceBox) {
+        downloadExperienceBox.style.display = 'block';
+        downloadExperienceBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+
+      if (window.showToast) {
+        window.showToast('अभिलेख संख्या HST-2026-0184 सफलतापूर्वक सुरक्षित एवं उपलब्ध!');
+      }
+    });
+  }
+
+  // Download Historical PDF button
+  if (btnDownloadHistoricalPdf) {
+    btnDownloadHistoricalPdf.addEventListener('click', () => {
+      if (window.SoundFX) window.SoundFX.chime();
+      window.open('/folio-print.html?print=true', '_blank');
+    });
+  }
+
+  // Open Digital Folio button
+  if (btnViewDigitalFolio) {
+    btnViewDigitalFolio.addEventListener('click', () => {
+      if (window.SoundFX) window.SoundFX.click();
+      window.open('/folio-print.html', '_blank');
+    });
+  }
 });

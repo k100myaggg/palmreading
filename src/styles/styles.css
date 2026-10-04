@@ -4129,6 +4129,792 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--ink-soft);
 }
 
+/* ==========================================================================
+   PHASE 3: 1. REPORT PREVIEW (आपका अभिलेख ऐसा दिखाई देगा)
+   ========================================================================== */
+.report-preview-section {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1.5px solid var(--line-strong);
+}
+
+.report-preview-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.preview-main-title {
+  font-family: var(--font-hindi);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.preview-sub-title {
+  font-family: var(--font-archive);
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  color: var(--copper);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.preview-editorial-note {
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  max-width: 680px;
+  margin: 0 auto;
+  line-height: 1.55;
+}
+
+/* Preview Tabs (Aged parchment buttons) */
+.manuscript-preview-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 20px 0 24px;
+  flex-wrap: wrap;
+}
+
+.preview-tab-btn {
+  background: var(--paper-aged);
+  border: 1.5px solid var(--ink);
+  padding: 9px 18px;
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--ink-soft);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 rgba(43, 35, 29, 0.15);
+  transition: all var(--transition-fast);
+}
+
+.preview-tab-btn:hover {
+  border-color: var(--vermillion);
+  color: var(--vermillion);
+  transform: translateY(-1px);
+}
+
+.preview-tab-btn.active {
+  background: var(--paper-light);
+  border-color: var(--vermillion);
+  color: var(--vermillion);
+  box-shadow: 2px 2px 0 var(--vermillion);
+}
+
+/* Manuscript Plate Container */
+.manuscript-preview-display {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto 36px;
+}
+
+.preview-manuscript-plate {
+  display: none;
+  animation: fadeInPlate 0.3s ease-out forwards;
+}
+
+.preview-manuscript-plate.active {
+  display: block;
+}
+
+@keyframes fadeInPlate {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Realistic Aged Manuscript Plate Aesthetics */
+.preview-plate-frame {
+  background: #F8F3EA;
+  background-image: 
+    radial-gradient(ellipse at 50% 50%, rgba(247, 239, 231, 0.95), rgba(228, 215, 196, 0.85)),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(149, 102, 61, 0.02) 4px);
+  border: 2px solid #2B231D;
+  outline: 1.5px solid rgba(142, 29, 18, 0.45);
+  outline-offset: -8px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(43, 35, 29, 0.14), inset 0 0 40px rgba(149, 102, 61, 0.12);
+  position: relative;
+  min-height: 480px;
+}
+
+.preview-plate-inner {
+  border: 1px solid rgba(149, 102, 61, 0.35);
+  padding: 24px 20px;
+  position: relative;
+  min-height: 430px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Corner Fleurons */
+.plate-corner {
+  position: absolute;
+  font-size: 1.1rem;
+  color: var(--vermillion);
+  line-height: 1;
+  user-select: none;
+}
+.corner-tl { top: 6px; left: 6px; }
+.corner-tr { top: 6px; right: 6px; }
+.corner-bl { bottom: 6px; left: 6px; }
+.corner-br { bottom: 6px; right: 6px; }
+
+.plate-mini-meta {
+  font-family: var(--font-archive);
+  font-size: 0.62rem;
+  letter-spacing: 0.18em;
+  color: var(--copper);
+  text-align: center;
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.plate-thin-rule {
+  height: 1px;
+  background: repeating-linear-gradient(90deg, #8E1D12, #8E1D12 4px, transparent 4px, transparent 8px);
+  margin: 8px auto 14px;
+  width: 80%;
+}
+
+/* Cover Plate Styles */
+.preview-plate-inner.cover-style {
+  text-align: center;
+  align-items: center;
+}
+
+.plate-title-red {
+  font-family: var(--font-hindi);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  letter-spacing: 0.04em;
+  margin: 6px 0 2px;
+}
+
+.plate-subtitle-latin {
+  font-family: var(--font-archive);
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.plate-fleuron {
+  font-size: 1.4rem;
+  color: var(--copper);
+  margin: 6px 0;
+}
+
+.plate-folio-type {
+  font-family: var(--font-hindi);
+  font-size: 0.96rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.plate-number-box {
+  display: inline-block;
+  border: 1.5px solid var(--ink);
+  padding: 3px 12px;
+  font-family: var(--font-archive);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  background: var(--paper-aged);
+  color: var(--ink);
+  margin: 4px 0;
+}
+
+.plate-series-tag {
+  font-family: var(--font-archive);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+
+.plate-ornamental-seal {
+  width: 58px;
+  height: 58px;
+  border: 2px solid var(--vermillion);
+  border-radius: 50%;
+  margin: 16px auto 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(142, 29, 18, 0.06);
+  box-shadow: inset 0 0 10px rgba(142, 29, 18, 0.15);
+}
+
+.plate-ornamental-seal span {
+  font-family: var(--font-hindi);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--vermillion);
+}
+
+.plate-seal-caption {
+  font-family: var(--font-hindi);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: var(--copper);
+  display: block;
+  margin-bottom: 12px;
+}
+
+.plate-colophon-date {
+  font-family: var(--font-archive);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-muted);
+}
+
+/* Running Header / Footer for inner manuscript plates */
+.plate-running-head,
+.plate-running-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-archive);
+  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+}
+
+.plate-inner-chap {
+  font-family: var(--font-hindi);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  margin-bottom: 8px;
+}
+
+.plate-inner-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+  margin-bottom: 16px;
+}
+
+.preview-sample-diagram {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: rgba(247, 239, 231, 0.6);
+  border: 1px dashed var(--line-strong);
+  padding: 12px;
+  margin-bottom: 16px;
+}
+
+.sample-diagram-art {
+  position: relative;
+  width: 140px;
+  height: 150px;
+  flex-shrink: 0;
+  border: 1px solid var(--ink);
+  overflow: hidden;
+}
+
+.sample-img-mini {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.6) contrast(1.1);
+}
+
+.sample-svg-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.sample-diagram-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.diag-label {
+  font-family: var(--font-hindi);
+  font-size: 0.78rem;
+  color: var(--ink);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+/* Literature Style / Old Novel */
+.plate-inner-quote {
+  font-family: var(--font-hindi);
+  font-size: 0.98rem;
+  font-style: italic;
+  color: var(--vermillion);
+  border-left: 3px solid var(--vermillion);
+  padding: 6px 14px;
+  margin: 10px 0 16px;
+  background: rgba(142, 29, 18, 0.04);
+  line-height: 1.5;
+}
+
+.plate-inner-novel-text {
+  font-family: var(--font-hindi);
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.7;
+  text-align: justify;
+  margin-bottom: 16px;
+}
+
+.plate-dropcap {
+  font-family: var(--font-hindi);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  float: left;
+  line-height: 0.85;
+  padding-right: 8px;
+  padding-top: 4px;
+}
+
+/* ==========================================================================
+   PHASE 3: 2. ARCHIVAL PRICING PANEL (अपना निजी अभिलेख प्राप्त करें)
+   ========================================================================== */
+.archival-pricing-panel-section {
+  margin: 40px 0 32px;
+}
+
+.archival-pricing-plate {
+  background: #FDF9F3;
+  border: 2px solid #2B231D;
+  outline: 1.5px solid rgba(149, 102, 61, 0.5);
+  outline-offset: -7px;
+  padding: 32px 30px;
+  box-shadow: 0 8px 24px rgba(43, 35, 29, 0.12);
+  position: relative;
+  text-align: center;
+}
+
+.pricing-label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.pricing-plate-badge {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--vermillion);
+  text-transform: uppercase;
+}
+
+.pricing-guarantee-tag {
+  font-family: var(--font-hindi);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+.pricing-plate-title {
+  font-family: var(--font-hindi);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+
+.pricing-plate-subtitle {
+  font-family: var(--font-hindi);
+  font-size: 1.05rem;
+  color: var(--copper);
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.pricing-cost-display {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  background: var(--paper-aged);
+  border: 1.5px solid var(--ink);
+  padding: 10px 24px;
+  margin-bottom: 24px;
+  box-shadow: inset 0 0 10px rgba(149, 102, 61, 0.08);
+}
+
+.currency-symbol {
+  font-family: var(--font-hindi), serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--vermillion);
+}
+
+.cost-number {
+  font-family: var(--font-archive);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+
+.cost-net {
+  font-family: var(--font-hindi);
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  margin-left: 8px;
+}
+
+/* Inclusions Grid */
+.pricing-inclusions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: left;
+  max-width: 680px;
+  margin: 0 auto 28px;
+}
+
+.inclusion-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.inclusion-item .inc-glyph {
+  color: var(--vermillion);
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.inclusion-highlight {
+  grid-column: 1 / -1;
+  background: rgba(142, 29, 18, 0.06);
+  border: 1px dashed var(--vermillion);
+  padding: 8px 12px;
+}
+
+.pricing-cta-row {
+  margin-bottom: 12px;
+}
+
+.btn-purchase-primary {
+  font-size: 1.12rem !important;
+  padding: 14px 34px !important;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+}
+
+.pricing-footnote {
+  font-family: var(--font-hindi);
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+}
+
+/* ==========================================================================
+   PHASE 3: 4. DOWNLOAD EXPERIENCE TRAY (When Unlocked)
+   ========================================================================== */
+.download-experience-card {
+  display: none;
+  background: #FAF3E8;
+  border: 2px solid var(--vermillion);
+  outline: 1.5px solid rgba(43, 35, 29, 0.5);
+  outline-offset: -7px;
+  padding: 30px;
+  margin: 32px 0;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(142, 29, 18, 0.15);
+  animation: fadeInPlate 0.4s ease-out forwards;
+}
+
+.download-complete-header {
+  margin-bottom: 14px;
+}
+
+.download-complete-stamp {
+  font-family: var(--font-archive);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--vermillion);
+  display: inline-block;
+  border: 1px solid var(--vermillion);
+  padding: 3px 10px;
+  background: rgba(142, 29, 18, 0.08);
+  margin-bottom: 8px;
+}
+
+.download-complete-title {
+  font-family: var(--font-hindi);
+  font-size: 1.7rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.download-folio-ref {
+  font-family: var(--font-archive);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--copper);
+}
+
+.download-complete-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  max-width: 620px;
+  margin: 0 auto 20px;
+  line-height: 1.6;
+}
+
+.download-buttons-cluster {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   PHASE 3: 3. ARCHIVAL PAYMENT & CONFIRMATION MODAL
+   ========================================================================== */
+.payment-modal-plate {
+  max-width: 520px;
+  text-align: left;
+}
+
+.payment-ledger-box {
+  background: var(--paper-aged);
+  border: 1px solid var(--line-strong);
+  padding: 14px 16px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ledger-item-row {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-hindi);
+  font-size: 0.86rem;
+  color: var(--ink);
+}
+
+.text-free {
+  color: var(--copper);
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.ledger-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1.5px solid var(--ink);
+  padding-top: 8px;
+  margin-top: 4px;
+  font-family: var(--font-hindi);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.total-price-val {
+  font-family: var(--font-archive);
+  font-size: 1.35rem;
+  color: var(--vermillion);
+}
+
+.payment-methods-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.payment-method-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: var(--paper-light);
+  border: 1px solid var(--line-strong);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.payment-method-option:hover {
+  border-color: var(--vermillion);
+}
+
+.method-name {
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--ink);
+  display: block;
+}
+
+.method-sub {
+  font-family: var(--font-hindi);
+  font-size: 0.74rem;
+  color: var(--ink-muted);
+  display: block;
+}
+
+.payment-submit-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
+}
+
+.btn-pay-action {
+  width: 100%;
+  cursor: pointer;
+}
+
+.payment-safe-note {
+  font-family: var(--font-hindi);
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+}
+
+/* STAGE 2: ARCHIVE ENTRY CONFIRMED STATE */
+.confirmed-badge {
+  background: rgba(142, 29, 18, 0.08);
+  border: 1px solid var(--vermillion);
+  padding: 3px 8px;
+  color: var(--vermillion) !important;
+}
+
+.confirmed-title {
+  color: var(--vermillion);
+  font-size: 1.55rem;
+  margin: 8px 0;
+  text-align: center;
+}
+
+.confirmed-folio-box {
+  background: var(--paper-aged);
+  border: 1px solid var(--ink);
+  padding: 10px 14px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.confirmed-folio-label {
+  font-family: var(--font-archive);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-muted);
+  display: block;
+}
+
+.confirmed-folio-num {
+  font-family: var(--font-archive);
+  font-size: 1.15rem;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.confirmed-progress-slate {
+  background: #F8F3EA;
+  border: 1px dashed var(--line-strong);
+  padding: 16px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.confirmed-quill-icon {
+  font-size: 1.6rem;
+  color: var(--vermillion);
+  animation: quillWriting 1.2s infinite ease-in-out;
+}
+
+@keyframes quillWriting {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(-8deg); }
+}
+
+.confirmed-status-text {
+  font-family: var(--font-hindi);
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 8px 0;
+}
+
+.confirmed-ink-bar {
+  width: 100%;
+  height: 6px;
+  background: var(--paper-aged);
+  border: 1px solid var(--line-strong);
+  overflow: hidden;
+}
+
+.confirmed-ink-fill {
+  width: 0%;
+  height: 100%;
+  background: var(--vermillion);
+}
+
+.confirmed-cta-block {
+  text-align: center;
+}
+
+.confirmed-cta-block button {
+  width: 100%;
+  cursor: pointer;
+}
+
+.confirmed-cta-block button:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  background: var(--line-strong);
+  border-color: var(--ink-faint);
+}
+
+.confirmed-note {
+  font-family: var(--font-hindi);
+  font-size: 0.74rem;
+  color: var(--ink-faint);
+  margin-top: 8px;
+}
+
+.pulse-ready {
+  animation: pulseButton 1.5s infinite;
+}
+
+@keyframes pulseButton {
+  0%, 100% { box-shadow: 2px 2px 0 var(--ink); }
+  50% { box-shadow: 0 0 12px var(--vermillion); }
+}
+
 /* --------------------------------------------------------------------------
    STRICT MOBILE HIERARCHY FOR RESULT PAGE (Screen < 992px)
    Order:
@@ -4900,3 +5686,844 @@ h1, h2, h3, h4, h5, h6 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==========================================================================
+   HISTORICAL MANUSCRIPT BOOK & PRINTABLE REPORT CODEX (folio-print.astro)
+   Authentic 1800s Indian scholarly manuscript book / old novel aesthetic
+   ========================================================================== */
+
+/* Top Floating Print Toolbar */
+.print-toolbar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: #F4ECE1;
+  border-bottom: 2px solid #2B231D;
+  box-shadow: 0 4px 12px rgba(43, 35, 29, 0.12);
+  z-index: 500;
+  padding: 10px 0;
+}
+
+.toolbar-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.toolbar-back-btn {
+  font-family: var(--font-hindi);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  text-decoration: none;
+}
+
+.toolbar-back-btn:hover {
+  text-decoration: underline;
+}
+
+.toolbar-folio-id {
+  font-family: var(--font-archive);
+  font-size: 0.74rem;
+  letter-spacing: 0.14em;
+  color: var(--copper);
+  font-weight: 700;
+}
+
+/* Historical Book Root Container */
+.historical-book-canvas {
+  max-width: 860px;
+  margin: 30px auto 60px;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+/* Manuscript Page (Each represents an A4 leaf) */
+.manuscript-page {
+  background: #FDFBF7;
+  background-image: 
+    radial-gradient(ellipse at 50% 50%, rgba(253, 251, 247, 0.95), rgba(242, 233, 219, 0.85)),
+    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(149, 102, 61, 0.015) 4px);
+  border: 2px solid #2B231D;
+  outline: 1.5px solid rgba(149, 102, 61, 0.55);
+  outline-offset: -8px;
+  padding: 44px 44px;
+  min-height: 1100px;
+  box-shadow: 0 12px 35px rgba(43, 35, 29, 0.14), inset 0 0 50px rgba(149, 102, 61, 0.08);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+/* Running Header & Footer */
+.page-running-header,
+.page-running-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: #7E5835;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.page-running-header {
+  border-bottom: 1px solid rgba(149, 102, 61, 0.35);
+  padding-bottom: 8px;
+  margin-bottom: 24px;
+}
+
+.page-running-footer {
+  border-top: 1px solid rgba(149, 102, 61, 0.35);
+  padding-top: 8px;
+  margin-top: 24px;
+}
+
+.page-content-wrapper {
+  flex: 1;
+}
+
+/* Chapter Opening Slate (Old Indian Book Style) */
+.chapter-opening-slate {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.chapter-number-tag {
+  font-family: var(--font-archive);
+  font-size: 0.76rem;
+  letter-spacing: 0.2em;
+  color: var(--vermillion);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.chapter-title-slate {
+  font-family: var(--font-hindi);
+  font-size: 1.85rem;
+  font-weight: 700;
+  color: #2B231D;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.ornamental-fleuron-rule {
+  font-size: 1rem;
+  color: var(--vermillion);
+  letter-spacing: 0.4em;
+  margin-bottom: 14px;
+}
+
+/* Quotes, Paragraphs & Drop Caps */
+.manuscript-quote {
+  font-family: var(--font-hindi);
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--vermillion);
+  border-left: 3px solid var(--vermillion);
+  background: rgba(142, 29, 18, 0.04);
+  padding: 12px 18px;
+  margin: 16px 0 22px;
+  line-height: 1.6;
+}
+
+.manuscript-quote cite {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  color: var(--copper);
+  display: block;
+  margin-top: 6px;
+  font-style: normal;
+  letter-spacing: 0.08em;
+}
+
+.manuscript-paragraph {
+  font-family: var(--font-hindi);
+  font-size: 1.02rem;
+  color: #2B231D;
+  line-height: 1.8;
+  text-align: justify;
+  margin-bottom: 18px;
+}
+
+.has-dropcap .dropcap {
+  font-family: var(--font-hindi);
+  font-size: 3.4rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  float: left;
+  line-height: 0.8;
+  padding-right: 12px;
+  padding-top: 6px;
+}
+
+.marginal-scholarly-note {
+  background: rgba(247, 239, 231, 0.75);
+  border: 1px dashed rgba(149, 102, 61, 0.6);
+  padding: 12px 16px;
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: #4A3E36;
+  line-height: 1.55;
+  margin: 18px 0;
+}
+
+.marginal-scholarly-note strong {
+  color: var(--vermillion);
+}
+
+/* ========================================================
+   BOOK COVER PAGE
+   ======================================================== */
+.book-cover-page {
+  padding: 24px;
+}
+
+.cover-frame-outer {
+  border: 3px double #2B231D;
+  padding: 16px;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.cover-frame-inner {
+  border: 1.5px solid var(--vermillion);
+  padding: 32px 24px;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.cover-corner {
+  position: absolute;
+  font-size: 1.3rem;
+  color: var(--vermillion);
+  line-height: 1;
+}
+
+.cover-top-meta {
+  margin-bottom: 16px;
+}
+
+.cover-series-name {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  letter-spacing: 0.22em;
+  color: var(--copper);
+  font-weight: 700;
+  display: block;
+}
+
+.cover-rule {
+  height: 1px;
+  background: repeating-linear-gradient(90deg, #8E1D12, #8E1D12 4px, transparent 4px, transparent 8px);
+  margin: 10px auto;
+  width: 70%;
+}
+
+.cover-main-title-hi {
+  font-family: var(--font-hindi);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.cover-main-title-en {
+  font-family: var(--font-archive);
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  color: #2B231D;
+  margin-bottom: 14px;
+}
+
+.cover-fleuron-divider {
+  font-size: 1.6rem;
+  color: var(--copper);
+  margin: 8px 0;
+}
+
+.cover-sub-title-hi {
+  font-family: var(--font-hindi);
+  font-size: 1.45rem;
+  font-weight: 600;
+  color: #2B231D;
+  margin-bottom: 2px;
+}
+
+.cover-sub-title-en {
+  font-family: var(--font-archive);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--copper);
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.cover-folio-badge {
+  display: inline-block;
+  border: 1.5px solid #2B231D;
+  padding: 4px 18px;
+  font-family: var(--font-archive);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  background: var(--paper-aged);
+  color: #2B231D;
+  margin-bottom: 8px;
+}
+
+.cover-series-sub {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+}
+
+.cover-seal-wrapper {
+  margin: 24px 0;
+}
+
+.cover-double-seal {
+  width: 80px;
+  height: 80px;
+  border: 3px double var(--vermillion);
+  border-radius: 50%;
+  margin: 0 auto 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(142, 29, 18, 0.05);
+}
+
+.seal-inner-glyph {
+  font-family: var(--font-hindi);
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--vermillion);
+}
+
+.seal-sanskrit-motto {
+  font-family: var(--font-hindi);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  display: block;
+}
+
+.seal-motto-sub {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  color: var(--copper);
+  font-style: italic;
+  display: block;
+}
+
+.cover-bottom-meta {
+  margin-top: 14px;
+}
+
+.cover-preservation-text {
+  font-family: var(--font-hindi);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #2B231D;
+  margin-bottom: 2px;
+}
+
+.cover-year-text {
+  font-family: var(--font-archive);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--vermillion);
+  margin-bottom: 6px;
+}
+
+.cover-archive-id {
+  font-family: var(--font-archive);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-muted);
+}
+
+/* ========================================================
+   TABLE OF CONTENTS & LEDGERS
+   ======================================================== */
+.toc-slate-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 24px 0;
+  background: rgba(247, 239, 231, 0.5);
+  border: 1px solid rgba(149, 102, 61, 0.4);
+  padding: 18px 24px;
+}
+
+.toc-row {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-hindi);
+  font-size: 0.98rem;
+  color: #2B231D;
+}
+
+.toc-chap {
+  font-family: var(--font-archive);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  width: 90px;
+  flex-shrink: 0;
+}
+
+.toc-name {
+  font-weight: 600;
+}
+
+.toc-dots {
+  flex: 1;
+  border-bottom: 1px dotted rgba(149, 102, 61, 0.5);
+  margin: 0 10px;
+}
+
+.toc-page {
+  font-family: var(--font-archive);
+  font-size: 0.78rem;
+  color: var(--copper);
+  font-weight: 700;
+}
+
+.manuscript-specimen-ledger {
+  background: var(--paper-aged);
+  border: 1.5px solid #2B231D;
+  padding: 16px 20px;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ledger-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed rgba(149, 102, 61, 0.35);
+  padding-bottom: 6px;
+  font-family: var(--font-hindi);
+  font-size: 0.92rem;
+}
+
+.ledger-label {
+  font-weight: 700;
+  color: #2B231D;
+}
+
+.ledger-val {
+  color: var(--vermillion);
+  font-weight: 600;
+}
+
+/* ========================================================
+   DIAGRAM PLATE (Page 4)
+   ======================================================== */
+.print-diagram-plate {
+  border: 1.5px solid #2B231D;
+  padding: 12px;
+  background: rgba(247, 239, 231, 0.6);
+  margin-bottom: 20px;
+}
+
+.diagram-caption-top {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--vermillion);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.diagram-render-wrap {
+  position: relative;
+  max-width: 440px;
+  height: 380px;
+  margin: 0 auto;
+  border: 1px solid #2B231D;
+  overflow: hidden;
+}
+
+.print-palm-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: sepia(0.65) contrast(1.1);
+}
+
+.print-svg-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.print-callout {
+  position: absolute;
+  background: rgba(253, 251, 247, 0.92);
+  border: 1px solid #2B231D;
+  padding: 2px 8px;
+  font-family: var(--font-archive);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #2B231D;
+  box-shadow: 1px 1px 0 rgba(43, 35, 29, 0.3);
+}
+
+.callout-life { top: 58%; left: 16%; }
+.callout-head { top: 50%; right: 10%; }
+.callout-heart { top: 32%; right: 8%; }
+.callout-fate { bottom: 18%; left: 42%; }
+
+.rekha-narrative-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.rekha-block {
+  background: rgba(247, 239, 231, 0.4);
+  border-left: 2px solid var(--vermillion);
+  padding: 8px 12px;
+}
+
+.rekha-name {
+  font-family: var(--font-hindi);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  margin-bottom: 4px;
+}
+
+.rekha-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.86rem;
+  color: #4A3E36;
+  line-height: 1.5;
+}
+
+/* ========================================================
+   MOUNTS & TIMING & RARE SIGNS
+   ======================================================== */
+.mounts-detail-stack,
+.rare-signs-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 18px 0;
+}
+
+.mount-entry-plate,
+.rare-sign-entry {
+  background: rgba(247, 239, 231, 0.55);
+  border: 1px solid rgba(149, 102, 61, 0.45);
+  padding: 14px 18px;
+}
+
+.mount-entry-header,
+.entry-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  border-bottom: 1px dashed rgba(149, 102, 61, 0.3);
+  padding-bottom: 4px;
+}
+
+.mount-name,
+.sign-title {
+  font-family: var(--font-hindi);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #2B231D;
+}
+
+.mount-elevation-badge,
+.sign-tag {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  background: var(--paper-aged);
+  border: 1px solid var(--vermillion);
+  padding: 2px 6px;
+}
+
+.mount-body,
+.sign-body {
+  font-family: var(--font-hindi);
+  font-size: 0.9rem;
+  color: #4A3E36;
+  line-height: 1.55;
+}
+
+.timing-phase-slate {
+  background: var(--paper-aged);
+  border: 1.5px solid #2B231D;
+  padding: 16px 20px;
+  margin: 20px 0;
+}
+
+.timing-milestone-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  border-bottom: 1px dashed rgba(149, 102, 61, 0.35);
+  padding: 8px 0;
+  font-family: var(--font-hindi);
+}
+
+.milestone-years {
+  font-family: var(--font-archive);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  width: 110px;
+  flex-shrink: 0;
+}
+
+.milestone-event {
+  font-size: 0.92rem;
+  color: #2B231D;
+}
+
+/* ========================================================
+   COLOPHON & DISCLAIMER PAGE (Page 10)
+   ======================================================== */
+.book-colophon-page .colophon-content {
+  text-align: center;
+}
+
+.colophon-seal-box {
+  margin-bottom: 16px;
+}
+
+.colophon-vermillion-stamp {
+  width: 64px;
+  height: 64px;
+  border: 2px solid var(--vermillion);
+  border-radius: 50%;
+  margin: 0 auto 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(142, 29, 18, 0.08);
+}
+
+.colophon-vermillion-stamp span {
+  font-family: var(--font-hindi);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--vermillion);
+}
+
+.colophon-seal-caption {
+  font-family: var(--font-hindi);
+  font-size: 0.82rem;
+  color: var(--copper);
+  font-weight: 600;
+}
+
+.colophon-disclaimer-card {
+  background: rgba(247, 239, 231, 0.7);
+  border: 1.5px solid #2B231D;
+  padding: 20px 24px;
+  max-width: 640px;
+  margin: 0 auto 24px;
+  text-align: center;
+}
+
+.colophon-disclaimer-text {
+  font-family: var(--font-hindi);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #2B231D;
+  line-height: 1.6;
+}
+
+.colophon-rule {
+  height: 1px;
+  background: repeating-linear-gradient(90deg, #8E1D12, #8E1D12 4px, transparent 4px, transparent 8px);
+  margin: 12px auto;
+  width: 60%;
+}
+
+.colophon-english-disclaimer {
+  font-family: var(--font-archive);
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+.colophon-scribe-slate {
+  background: var(--paper-aged);
+  border: 1px solid rgba(149, 102, 61, 0.6);
+  padding: 16px 20px;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+.scribe-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  text-align: left;
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  margin-bottom: 12px;
+}
+
+.scribe-label {
+  color: var(--ink-muted);
+  display: block;
+  font-size: 0.78rem;
+}
+
+.scribe-val {
+  color: #2B231D;
+}
+
+.scribe-sign-line {
+  border-top: 1px dashed rgba(149, 102, 61, 0.4);
+  padding-top: 10px;
+}
+
+.scribe-sign-caption {
+  font-family: var(--font-hindi);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--vermillion);
+}
+
+/* ========================================================
+   PRINT MEDIA QUERY (@media print)
+   Strict, beautiful A4 book formatting with clean breaks
+   ======================================================== */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm 14mm 14mm 14mm;
+  }
+
+  *, *:before, *:after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  html, body {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #FFFFFF !important;
+    font-size: 11pt !important;
+  }
+
+  /* Hide website chrome and interactive UI in print */
+  .no-print,
+  .print-toolbar,
+  .site-header,
+  .site-footer,
+  .archive-header,
+  .archive-footer,
+  .modal-overlay,
+  .toast-notice {
+    display: none !important;
+  }
+
+  .historical-book-canvas {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 0 !important;
+  }
+
+  .manuscript-page {
+    background: #FFFFFF !important;
+    border: 1.5pt solid #2B231D !important;
+    outline: 1pt solid #95663D !important;
+    outline-offset: -5pt !important;
+    padding: 20pt 24pt !important;
+    margin: 0 0 0 0 !important;
+    min-height: 260mm !important;
+    box-sizing: border-box !important;
+    page-break-before: always !important;
+    break-before: page !important;
+    page-break-after: always !important;
+    break-after: page !important;
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  .book-cover-page {
+    page-break-before: auto !important;
+    break-before: auto !important;
+  }
+
+  .cover-frame-outer {
+    border: 2pt double #2B231D !important;
+    height: 100% !important;
+  }
+
+  .cover-frame-inner {
+    border: 1pt solid #8E1D12 !important;
+    height: 100% !important;
+  }
+
+  .plate-title-red,
+  .cover-main-title-hi,
+  .chapter-number-tag,
+  .ornamental-fleuron-rule,
+  .dropcap,
+  .has-dropcap .dropcap,
+  .scribe-sign-caption {
+    color: #8E1D12 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-palm-photo {
+    filter: grayscale(0.2) contrast(1.2) !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  .print-svg-overlay path {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
