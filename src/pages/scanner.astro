@@ -4,11 +4,11 @@ import Layout from '../layouts/Layout.astro';
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "AuraPalm Free Interactive Palm Reading AI Scanner",
+  "name": "Hastarekha Archive • Folio VII Hasta Pariksha",
   "url": "https://palmreading-b0v.pages.dev/scanner.html",
   "applicationCategory": "LifestyleApplication",
   "operatingSystem": "All",
-  "description": "Real-time biometric palm reading scanner tool providing instant accurate chiromancy analysis for male and female seekers.",
+  "description": "Archival palm examination plate based on 18th-century Vedic Samudrika Shastra manuscript traditions.",
   "offers": {
     "@type": "Offer",
     "price": "0",
@@ -18,305 +18,296 @@ const jsonLd = {
 ---
 
 <Layout
-  title="Interactive Palm Reading AI Scanner: Free Online Tool for Male & Female | AuraPalm"
-  description="Use our free AI palm reading scanner tool online. Real-time biometric chiromancy analyzes Heart, Head, Life, and Fate lines with planetary mount calibration."
-  keywords="palm reading ai, scanner, tool, free, palm reading online, palm reading for male, palm reading for female, palmistry scanner"
+  title="FOLIO VII • HASTA PARIKSHA | हस्तरेखा अभिलेख"
+  description="अपनी हथेली प्रस्तुत करें। स्पष्ट प्रकाश में हथेली का चित्र लें। रेखाएँ जितनी स्पष्ट होंगी, पठन उतना ही विस्तृत होगा।"
+  keywords="hasta pariksha, palm examination, hastarekha archive, samudrika shastra, palm reading"
   activePage="scanner"
   jsonLd={jsonLd}
 >
-  <main class="scanner-page">
-    <div class="container-wide">
-      
-      <!-- Stepper Progress Bar -->
-      <div class="stepper-bar">
-        <div class="step-chip completed">
-          <span class="step-num">✓</span>
-          <div class="step-text">
-            <span class="step-status">Step 01</span>
-            <span class="step-name">Hand Polarity</span>
+  <main class="archive-examination-page">
+    <div class="archive-container">
+
+      <!-- Folio Header -->
+      <header class="examination-folio-header">
+        <div class="folio-tag-row">
+          <span class="folio-num-badge">FOLIO VII • HASTA PARIKSHA</span>
+          <span class="folio-meta-stamp">पत्र संख्या ०७ • हस्तचिह्न परीक्षण</span>
+        </div>
+        <h1 class="examination-folio-title">अपनी हथेली प्रस्तुत करें</h1>
+        <p class="examination-folio-desc">
+          स्पष्ट प्रकाश में हथेली का चित्र लें। रेखाएँ जितनी स्पष्ट होंगी, पठन उतना ही विस्तृत होगा।
+        </p>
+        <div class="header-divider-ornament">
+          <span class="ornament-line"></span>
+          <span class="ornament-glyph">❧</span>
+          <span class="ornament-line"></span>
+        </div>
+      </header>
+
+      <!-- Polarity Selector Bar (Archival Manuscript Style) -->
+      <section class="polarity-manuscript-section">
+        <div class="polarity-plate">
+          <div class="polarity-label-col">
+            <span class="polarity-plate-tag">हस्त ध्रुवता • POLARITY</span>
+            <span class="polarity-plate-instruction">परीक्षण हेतु हथेली चुनें:</span>
+          </div>
+
+          <div class="polarity-options-cluster">
+            <button class="polarity-btn active" data-polarity="right" type="button">
+              <span class="polarity-main">दायां हाथ (कर्मक)</span>
+              <span class="polarity-sub">MANIFESTED REALITY</span>
+            </button>
+            <button class="polarity-btn" data-polarity="left" type="button">
+              <span class="polarity-main">बायां हाथ (अकर्मक)</span>
+              <span class="polarity-sub">KARMA &amp; POTENTIAL</span>
+            </button>
+          </div>
+
+          <div class="polarity-note-box">
+            <span class="note-glyph">ℹ</span>
+            <span>कर्मक हाथ प्रकट कर्म दर्शाता है, अकर्मक हाथ मूल संस्कार।</span>
           </div>
         </div>
+      </section>
 
-        <div class="step-chip active">
-          <span class="step-num">2</span>
-          <div class="step-text">
-            <span class="step-status">Active Stage</span>
-            <span class="step-name">Palm Alignment</span>
+      <!-- Main Examination Workspace Grid -->
+      <div class="examination-workspace-grid">
+
+        <!-- Left: Archival Examination Frame (Image Preview & Scanning Experience) -->
+        <div class="examination-plate-col" id="specimen-plate-container">
+          <div class="archival-plate-heading">
+            <span class="plate-ref">PLATE VII-A</span>
+            <span class="plate-title-text">HASTA SPECIMEN • हस्त प्रतिदर्श</span>
           </div>
-        </div>
 
-        <div class="step-chip">
-          <span class="step-num">3</span>
-          <div class="step-text">
-            <span class="step-status">Step 03</span>
-            <span class="step-name">Meridian Detection</span>
-          </div>
-        </div>
+          <!-- Archival Examination Frame -->
+          <div class="archival-examination-frame">
+            <!-- Manuscript Corner Marks -->
+            <span class="archival-corner corner-tl">⌜</span>
+            <span class="archival-corner corner-tr">⌝</span>
+            <span class="archival-corner corner-bl">⌞</span>
+            <span class="archival-corner corner-br">⌟</span>
 
-        <div class="step-chip">
-          <span class="step-num">4</span>
-          <div class="step-text">
-            <span class="step-status">Step 04</span>
-            <span class="step-name">Destiny Synthesis</span>
-          </div>
-        </div>
-      </div>
+            <!-- Marginal Measurement Marks (Ruler) -->
+            <div class="ruler-vertical ruler-left" aria-hidden="true">
+              <span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span><span>14</span>
+            </div>
+            <div class="ruler-horizontal ruler-bottom" aria-hidden="true">
+              <span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span><span>12</span>
+            </div>
 
-      <!-- Hand Polarity Selector -->
-      <div class="polarity-bar">
-        <div class="polarity-options">
-          <button class="polarity-btn" data-polarity="left">
-            <span>Left Hand</span>
-            <span class="polarity-sub">(Karma &amp; Potential)</span>
-          </button>
-          <button class="polarity-btn active" data-polarity="right">
-            <span>Right Hand</span>
-            <span class="polarity-sub">(Manifested Reality)</span>
-          </button>
-        </div>
-        <button class="polarity-help-btn" title="Learn hand polarity rules for male and female seekers" onclick="showToast('Right hand reveals manifested action; Left hand reveals subconscious karma.')">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <circle cx="12" cy="12" r="10"></circle>
-            <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-            <line x1="12" y1="17" x2="12.01" y2="17"></line>
-          </svg>
-        </button>
-      </div>
+            <!-- Header inside preview -->
+            <div class="frame-inner-header">
+              <span class="frame-tag">FOLIO VII</span>
+              <span class="frame-folio-name">HASTA PARIKSHA</span>
+            </div>
 
-      <!-- Scanner Workspace Grid -->
-      <div class="scanner-viewport-grid">
-        
-        <!-- Left: Biometric Camera Viewport -->
-        <div>
-          <div class="scanner-chamber">
-            <video id="camera-feed" class="chamber-video-feed" autoplay playsinline muted style="display:none;"></video>
-            <img id="image-feed" class="chamber-image-feed" src="/images/palm-base.jpg" alt="Calibrated Palm Specimen for AI Scanning">
+            <!-- Specimen Display (Image Feed / Camera Feed) -->
+            <div class="specimen-canvas-wrap">
+              <video id="camera-feed" class="specimen-video" autoplay playsinline muted style="display:none;"></video>
+              <img id="image-feed" class="specimen-img" src="/images/palm-base.jpg" alt="परीक्षण हेतु हस्त प्रतिदर्श • Calibrated Palm Specimen" />
 
-            <!-- Biometric HUD Overlay -->
-            <div class="hud-overlay">
-              <div class="scan-laser-line"></div>
-
-              <div class="reticle-corner reticle-tl"></div>
-              <div class="reticle-corner reticle-tr"></div>
-              <div class="reticle-corner reticle-bl"></div>
-              <div class="reticle-corner reticle-br"></div>
-
-              <div class="hud-top-bar">
-                <div class="hud-pill">
-                  <span class="hud-dot-pulse"></span>
-                  <span>BIOMETRIC TRACK: LOCK</span>
-                </div>
-                <div class="hud-pill" style="border-color: rgba(229, 185, 88, 0.4); color: var(--color-gold-primary);">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
-                  <span>Lighting: 94% Optimal</span>
-                </div>
-              </div>
-
-              <!-- Biometric Tracking Wireframe Overlay -->
-              <svg style="position: absolute; inset: 0; width: 100%; height: 100%;" viewBox="0 0 500 600">
-                <line x1="50" y1="350" x2="450" y2="350" stroke="var(--color-gold-primary)" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.7"/>
-                <line x1="250" y1="200" x2="250" y2="520" stroke="#fff" stroke-width="1.5" stroke-dasharray="4 4" opacity="0.6"/>
-
-                <path d="M160 520 C140 500 120 400 100 320 C85 260 70 200 80 160 C90 130 120 140 135 180 C145 140 160 85 180 80 C200 75 210 110 220 160 C230 110 245 50 265 45 C285 40 295 80 300 150 C315 100 330 90 350 95 C370 100 370 150 365 210 C385 160 410 155 425 175 C440 195 430 260 410 310 C390 360 415 440 375 500 C340 540 200 550 160 520 Z"
-                      fill="none" stroke="var(--color-gold-primary)" stroke-width="2" opacity="0.85" />
+              <!-- Subtle manuscript grid lines -->
+              <svg class="specimen-grid-svg" viewBox="0 0 500 620" preserveAspectRatio="none" aria-hidden="true">
+                <!-- Center vertical axis of Saturn -->
+                <line x1="250" y1="40" x2="250" y2="580" stroke="rgba(149, 102, 61, 0.35)" stroke-width="1" stroke-dasharray="4 4" />
+                <!-- Horizontal axis across mounts -->
+                <line x1="40" y1="310" x2="460" y2="310" stroke="rgba(149, 102, 61, 0.35)" stroke-width="1" stroke-dasharray="4 4" />
                 
-                <circle cx="250" cy="350" r="14" fill="none" stroke="var(--color-cyan-biometric)" stroke-width="2" class="pulse-node" />
-                <circle cx="250" cy="350" r="4" fill="var(--color-gold-primary)" />
+                <!-- Crosshairs -->
+                <circle cx="250" cy="310" r="18" fill="none" stroke="rgba(142, 29, 18, 0.4)" stroke-width="1" stroke-dasharray="2 2" />
+                <circle cx="250" cy="310" r="2" fill="#8E1D12" />
+
+                <!-- Subtle measurement ticks -->
+                <line x1="240" y1="180" x2="260" y2="180" stroke="rgba(149, 102, 61, 0.5)" stroke-width="1" />
+                <line x1="240" y1="450" x2="260" y2="450" stroke="rgba(149, 102, 61, 0.5)" stroke-width="1" />
+              </svg>
+            </div>
+
+            <!-- SCANNING EXPERIENCE OVERLAY (Hidden until user clicks हस्तपठन प्रारम्भ करें) -->
+            <div id="scanning-overlay" class="scanning-experience-overlay" aria-live="polite">
+              <div class="scan-parchment-backdrop"></div>
+              
+              <!-- Slow ink scanning line (NOT futuristic laser) -->
+              <div class="slow-ink-scan-line"></div>
+
+              <!-- In-progress drawn annotations -->
+              <svg class="scanning-sketch-svg" viewBox="0 0 500 620" preserveAspectRatio="none">
+                <!-- Dynamic ink paths appearing -->
+                <path class="ink-draw-path path-heart" d="M160 300 C240 310 330 270 410 240" stroke="#8E1D12" stroke-width="2" fill="none" />
+                <path class="ink-draw-path path-head" d="M150 335 C230 350 340 375 425 435" stroke="#95663D" stroke-width="2" fill="none" />
+                <path class="ink-draw-path path-life" d="M230 260 C190 330 180 470 265 570" stroke="#8E1D12" stroke-width="2" fill="none" />
+                <path class="ink-draw-path path-fate" d="M250 560 L250 280" stroke="#95663D" stroke-dasharray="4 4" stroke-width="1.5" fill="none" />
               </svg>
 
-              <!-- Floating Real-Time Biometric Badges -->
-              <div class="hud-floating-badge hud-badge-gold" style="top: 38%; right: 40px;">
-                <span class="hud-dot-pulse" style="background:var(--color-gold-primary);"></span>
-                <span>Heart Resonance: <strong>98.4% Confidence</strong></span>
-              </div>
+              <!-- Archival Inspection Card -->
+              <div class="scanning-inspection-card">
+                <div class="inspection-header">
+                  <span class="inspection-folio">FOLIO VII</span>
+                  <span class="inspection-title">HASTA PARIKSHA</span>
+                </div>
 
-              <div class="hud-floating-badge hud-badge-violet" style="top: 48%; right: 40px;">
-                <span class="hud-dot-pulse" style="background:var(--color-violet-mystic);"></span>
-                <span>Vitality Arc (Life): <strong>96.8% Mapped</strong></span>
-              </div>
+                <div class="inspection-headline">हस्तचिह्न का निरीक्षण जारी है...</div>
 
-              <div class="hud-guidance-pill" style="left: 50%; transform: translateX(-50%);">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
-                </svg>
-                <span>Hold still: Distance 11–13 in • <strong>OPTIMAL</strong></span>
+                <!-- Animated message -->
+                <div class="inspection-animated-box">
+                  <div class="inspection-quill-glyph">✒</div>
+                  <div id="scan-animated-msg" class="inspection-animated-msg">
+                    रेखा-संरचना अंकित की जा रही है...
+                  </div>
+                </div>
+
+                <!-- Status Checklist -->
+                <div class="inspection-checklist">
+                  <div class="scan-status-item" id="scan-status-lines">
+                    <span class="status-glyph">◌</span>
+                    <span class="status-text">मुख्य रेखाएँ (रेखा-विन्यास)</span>
+                  </div>
+                  <div class="scan-status-item" id="scan-status-mounts">
+                    <span class="status-glyph">◌</span>
+                    <span class="status-text">पर्वत (ग्रह उत्थान)</span>
+                  </div>
+                  <div class="scan-status-item" id="scan-status-direction">
+                    <span class="status-glyph">◌</span>
+                    <span class="status-text">रेखा की दिशा (प्रवाह गति)</span>
+                  </div>
+                  <div class="scan-status-item" id="scan-status-signs">
+                    <span class="status-glyph">◌</span>
+                    <span class="status-text">पारंपरिक संकेतों का मिलान</span>
+                  </div>
+                </div>
+
+                <div class="inspection-note">
+                  समुद्र संहिता एवं हस्तसंजीवन के आधार पर अभिलेख तैयार हो रहा है।
+                </div>
               </div>
+            </div>
+
+            <!-- Footer archival label -->
+            <div class="frame-inner-footer">
+              <span>REF: HASTA-PARIKSHA-007</span>
+              <span>18TH CENTURY VEDIC TRADITION</span>
             </div>
           </div>
 
-          <!-- Action Controls Below Viewport -->
-          <div class="scanner-controls-row">
-            <button id="btn-toggle-flash" class="scanner-btn-icon" title="Toggle Lighting Compensation" aria-label="Toggle flash">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
-              </svg>
+          <!-- Primary CTA (Right below preview) -->
+          <div class="preview-cta-block">
+            <button id="btn-scan-trigger" class="btn-archive-primary btn-scan-primary" type="button">
+              <span>हस्तपठन प्रारम्भ करें →</span>
             </button>
-
-            <button id="btn-toggle-reticle" class="scanner-btn-icon" title="Toggle Reticle Overlay" aria-label="Toggle reticle">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <line x1="22" y1="12" x2="18" y2="12"></line>
-                <line x1="6" y1="12" x2="2" y2="12"></line>
-                <line x1="12" y1="6" x2="12" y2="2"></line>
-                <line x1="12" y1="22" x2="12" y2="18"></line>
-              </svg>
-            </button>
-
-            <!-- Main Scan Trigger -->
-            <button id="btn-scan-trigger" class="scanner-btn-scan">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
-              </svg>
-              <span>SCAN &amp; ALIGN PALM MERIDIAN</span>
-            </button>
-
-            <!-- Upload Photo Trigger -->
-            <button id="btn-upload-trigger" class="scanner-btn-upload">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                <polyline points="17 8 12 3 7 8"></polyline>
-                <line x1="12" y1="3" x2="12" y2="15"></line>
-              </svg>
-              <span>Upload Photo</span>
-            </button>
-            <input type="file" id="file-upload-input" accept="image/*" style="display:none;" />
+            <div class="scan-sub-hint">
+              पठन प्रारम्भ करते ही हस्तचिह्न का विस्तृत अभिलेखीय विश्लेषण प्रस्तुत होगा।
+            </div>
           </div>
         </div>
 
-        <!-- Right: Real-Time Biometrics Panel -->
-        <div class="biometrics-panel">
-          <div class="panel-card">
-            <div class="panel-header-row">
-              <span class="panel-eyebrow">REAL-TIME BIOMETRICS</span>
-              <span class="badge-pill badge-violet">Chiromancy Engine 3.4</span>
+        <!-- Right: Manuscript Upload Box & Instructions -->
+        <div class="manuscript-controls-col">
+
+          <!-- Framed Manuscript Upload Plate (NOT generic drag & drop) -->
+          <div class="manuscript-upload-plate" id="manuscript-upload-plate">
+            <div class="upload-plate-inner">
+              <span class="upload-plate-tag">हस्तचिह्न संकलन • SPECIMEN ENTRY</span>
+
+              <div class="upload-seal-mark">
+                <span>ह</span>
+              </div>
+
+              <h2 class="upload-plate-title">हस्तचिह्न प्रस्तुत करें</h2>
+              <p class="upload-plate-formats">JPG / PNG • अधिकतम 10 MB</p>
+
+              <div class="upload-action-wrap">
+                <button id="btn-upload-trigger" class="btn-manuscript-select" type="button">
+                  [ चित्र चुनें ]
+                </button>
+                <input type="file" id="file-upload-input" accept="image/jpeg,image/png,image/webp" style="display:none;" />
+              </div>
+
+              <div class="camera-fallback-row">
+                <button id="btn-toggle-camera" class="btn-camera-link" type="button">
+                  <span>📷 कैमरा द्वारा हथेली दिखाएं</span>
+                </button>
+              </div>
+
+              <div class="upload-plate-footer">
+                <span>ARCHIVAL DOCUMENTATION PROTOCOL</span>
+              </div>
             </div>
-            <h3 class="panel-title">Preparing Your Meridian Reading</h3>
-            <p class="panel-desc">
-              The optical sensor decodes the micro-elevations of the Mounts of Venus and Apollo while tracing sacred crease vectors.
+          </div>
+
+          <!-- Archival Examination Directives (Guidelines) -->
+          <div class="directives-plate">
+            <div class="directives-heading">
+              <span class="directives-badge">विधि निर्देश</span>
+              <h3 class="directives-title">हस्त परीक्षण के शुद्ध नियम</h3>
+            </div>
+
+            <ol class="directives-list">
+              <li>
+                <span class="dir-num">१.</span>
+                <div class="dir-content">
+                  <strong>पर्याप्त व सम प्रकाश:</strong>
+                  हथेली पर परछाई न पड़ने दें। प्राकृतिक दिन का प्रकाश सर्वोत्तम है।
+                </div>
+              </li>
+              <li>
+                <span class="dir-num">२.</span>
+                <div class="dir-content">
+                  <strong>तनावमुक्त हथेली:</strong>
+                  उंगलियों को स्वाभाविक रूप से फैलाएं, हथेली को सिकोड़ें नहीं।
+                </div>
+              </li>
+              <li>
+                <span class="dir-num">३.</span>
+                <div class="dir-content">
+                  <strong>आभूषण मुक्त कलाई:</strong>
+                  स्पष्ट पठन हेतु अंगूठियां व धागे यथासंभव हटा लें।
+                </div>
+              </li>
+              <li>
+                <span class="dir-num">४.</span>
+                <div class="dir-content">
+                  <strong>सीधा कोण:</strong>
+                  कैमरा हथेली के ठीक सामने ९० अंश के समानांतर रखें।
+                </div>
+              </li>
+            </ol>
+          </div>
+
+          <!-- Confidentiality & Scholarly Trust Note -->
+          <div class="scholarly-trust-plate">
+            <div class="trust-plate-header">
+              <span class="trust-glyph">🔒</span>
+              <span class="trust-title">अभिलेखीय शुचिता एवं गोपनीयता</span>
+            </div>
+            <p class="trust-desc">
+              आपके द्वारा प्रस्तुत किया गया चित्र केवल इस पठन चक्र के दौरान ही विश्लेषित होता है। किसी बाह्य सर्वर पर आपकी निजी छवि स्थायी रूप से संचित नहीं की जाती।
             </p>
-
-            <div class="metric-checklist">
-              <div class="metric-item">
-                <span class="metric-name">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-cyan-biometric)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  Mount of Venus &amp; Lunar Hill elevation
-                </span>
-                <span class="metric-status status-identified">Identified</span>
-              </div>
-
-              <div class="metric-item">
-                <span class="metric-name">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-cyan-biometric)" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                  Skin micro-grain &amp; crease clarity
-                </span>
-                <span id="status-crease" class="metric-status status-identified">Locked (HD)</span>
-              </div>
-
-              <div class="metric-item">
-                <span class="metric-name">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-primary)" stroke-width="2"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
-                  Fate &amp; Sun line intersection vectors
-                </span>
-                <span id="status-vectors" class="metric-status status-analyzing">Analyzing...</span>
-              </div>
-            </div>
-
-            <!-- Resonance Progress Bar -->
-            <div class="resonance-container">
-              <div class="resonance-labels">
-                <span>Biometric Matrix Resonance</span>
-                <span id="resonance-percent-val" class="text-gold">38%</span>
-              </div>
-              <div class="resonance-bar-track">
-                <div id="resonance-bar-fill" class="resonance-bar-fill" style="width: 38%;"></div>
-              </div>
-            </div>
           </div>
 
-          <!-- Guidelines for Accuracy -->
-          <div class="panel-card">
-            <h4 style="font-size:0.85rem; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; color:var(--color-gold-primary); margin-bottom:12px; display:flex; align-items:center; gap:6px;">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-              Guidelines for Accuracy
-            </h4>
-
-            <div class="guidelines-grid">
-              <div class="guideline-box">
-                <div class="guideline-title">Relaxed Extension</div>
-                <div class="guideline-desc">Spread fingers naturally without straining skin tension.</div>
-              </div>
-
-              <div class="guideline-box">
-                <div class="guideline-title">Flat Stance</div>
-                <div class="guideline-desc">Avoid cupping the palm; maintain a level horizontal angle.</div>
-              </div>
-
-              <div class="guideline-box">
-                <div class="guideline-title">Warm Radiance</div>
-                <div class="guideline-desc">Prefer daylight or warm lamp; evade heavy cast shadows.</div>
-              </div>
-
-              <div class="guideline-box">
-                <div class="guideline-title">Clean Canvas</div>
-                <div class="guideline-desc">Remove heavy rings or metallic wristwear before scanning.</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sanctuary Privacy Protocol -->
-          <div class="privacy-card" id="privacy">
-            <div class="privacy-icon">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-              </svg>
-            </div>
-            <div>
-              <div class="privacy-title">Sanctuary Privacy Protocol</div>
-              <div class="privacy-desc">
-                Your biometric palm geometry is tokenized on-device, encrypted via celestial zero-knowledge hashing, and permanently cleared post-reading.
-              </div>
-            </div>
-          </div>
         </div>
 
       </div>
 
-      <!-- Ancient Wisdom & Guidance Accordion -->
-      <section style="margin-top: 40px; margin-bottom: 60px;">
-        <div class="section-header" style="text-align: left; margin-bottom: 24px;">
-          <span class="section-eyebrow">ANCIENT WISDOM &amp; GUIDANCE</span>
-          <h2 class="section-title" style="font-size: 1.6rem;">Dominant vs. Non-Dominant Palm Dynamics</h2>
-          <p class="section-subtitle" style="margin: 0;">Select a question below to unfold celestial notes.</p>
-        </div>
-
-        <div class="faq-list">
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span>Why scan both palms?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-content">
-              Comparing both palms reveals your soul’s blueprint versus your realized accomplishments. Differences indicate your free will altering fate.
-            </div>
+      <!-- Historical Examination Note -->
+      <section class="examination-scholarly-notes">
+        <div class="scholarly-notes-frame">
+          <div class="scholarly-notes-header">
+            <span class="notes-tag">शास्त्रीय संदर्भ</span>
+            <h3 class="notes-title">हस्तरेखा परीक्षण की प्राचीन विधि</h3>
           </div>
-
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span>Do lines evolve over time?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-content">
-              Yes. Minor lines, breaks, and branches change dynamically every 6–18 months in response to mental shifts, dietary changes, and major life decisions.
+          <div class="scholarly-notes-grid">
+            <div class="note-box">
+              <h4 class="note-box-title">कर्मक बनाम अकर्मक हस्त</h4>
+              <p class="note-box-desc">
+                दक्षिण हस्त (दायां हाथ) वर्तमान जीवन में अर्जित कर्म, निर्णय और बाह्य उपलब्धियों को व्यक्त करता है; जबकि वाम हस्त (बायां हाथ) संचित प्रारब्ध, आंतरिक चेतना और वंशानुगत गुणों का दर्पण है।
+              </p>
             </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-trigger" aria-expanded="false">
-              <span>Does line length mean lifespan?</span>
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </button>
-            <div class="faq-content">
-              A common myth. The Life Line indicates vitality, stamina, and immune resilience—not calendar longevity. Deep clarity signifies high inner energy.
+            <div class="note-box">
+              <h4 class="note-box-title">रेखाओं का गतिक स्वभाव</h4>
+              <p class="note-box-desc">
+                हस्तरेखा शास्त्र के अनुसार सूक्ष्म रेखाएं और शाखाएं चेतना के विकास, आहार-विहार और संकल्प के अनुसार प्रति ६ से १८ माह में परिवर्तित होती रहती हैं।
+              </p>
             </div>
           </div>
         </div>
@@ -327,16 +318,4 @@ const jsonLd = {
 
   <script is:inline src="/js/main.js"></script>
   <script is:inline src="/js/scanner.js"></script>
-  <script is:inline>
-    document.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.faq-trigger').forEach(trigger => {
-        trigger.addEventListener('click', () => {
-          const item = trigger.closest('.faq-item');
-          const isExpanded = trigger.getAttribute('aria-expanded') === 'true';
-          trigger.setAttribute('aria-expanded', !isExpanded);
-          item.classList.toggle('active');
-        });
-      });
-    });
-  </script>
 </Layout>

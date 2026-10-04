@@ -4,464 +4,465 @@ import Layout from '../layouts/Layout.astro';
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Report",
-  "name": "AuraPalm Sacred Destiny Blueprint",
-  "description": "Comprehensive biometric palmistry report decoding Heart, Head, Life, and Fate lines with planetary mount calculations.",
-  "inLanguage": ["en-IN", "hi-IN"]
+  "name": "Hastarekha Personal Folio • Hasta 001",
+  "description": "Authentic archival palmistry folio decoding Ayur, Matisha, Hridaya, and Bhagya rekhas based on 18th-century Vedic Samudrika Shastra traditions.",
+  "inLanguage": ["hi-IN", "en-IN"]
 };
 ---
 
 <Layout
-  title="My Destiny Report: Sacred Chiromancy Blueprint | AuraPalm"
-  description="View your personalized biometric palm reading analysis, line resonance metrics, Mount of Moon/Venus balance, and consecrated Vedic remedies."
-  keywords="palm reading report, palmistry analysis, destiny blueprint, samudrika shastra results, palm lines reading"
+  title="PERSONAL FOLIO • HASTA 001 | आपकी हस्तरेखा का अभिलेख"
+  description="आपकी हस्तरेखा का व्यक्तिगत अभिलेख। जीवन, मस्तिष्क, हृदय एवं भाग्य रेखाओं का ऐतिहासिक पाण्डुलिपि विश्लेषण।"
+  keywords="hastarekha record, palmistry folio, samudrika shastra report, ayur rekha, matisha rekha, hridaya rekha, bhagya rekha"
   activePage="report"
   jsonLd={jsonLd}
 >
-  <main class="report-page">
-    <div class="container-wide">
+  <main class="folio-report-page">
+    <div class="archive-container">
 
-      <!-- Breadcrumbs & Status -->
-      <div style="display:flex; justify-content:space-between; align-items:center; font-size:0.75rem; color:var(--color-text-muted); margin-bottom:16px;">
-        <div style="display:flex; align-items:center; gap:8px;">
-          <span>✦ SANCTUARY ARCHIVE: #AP-92881-C</span>
-          <span>•</span>
-          <span class="text-gold">Archived in Celestial Vaults</span>
-        </div>
-        <div style="display:flex; align-items:center; gap:16px;">
-          <span>Tracking Orbiters: 14 Sensors</span>
-          <span class="badge-pill badge-cyan" style="font-size:0.65rem;">Live In Transit (27°)</span>
-        </div>
-      </div>
+      <!-- Main Result Layout: Configured for Desktop Split & Exact Mobile Order -->
+      <div class="folio-examination-layout">
 
-      <!-- Dedicated Report Language Switcher -->
-      <div class="report-lang-bar" style="display:flex; justify-content:space-between; align-items:center; background:var(--color-bg-surface); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:10px 18px; margin-bottom:20px; flex-wrap:wrap; gap:12px;">
-        <div style="display:flex; align-items:center; gap:8px;">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--color-gold-primary)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-          <span style="font-size:0.84rem; font-weight:700;" data-i18n="report.langSelector">Report Language / रिपोर्ट भाषा:</span>
-        </div>
-        <div style="display:flex; gap:8px;">
-          <button id="btn-report-lang-en" class="btn btn-sm btn-secondary active" style="font-weight:700;">🇬🇧 English</button>
-          <button id="btn-report-lang-hi" class="btn btn-sm btn-secondary" style="font-weight:700;">🇮🇳 हिन्दी (Hindi)</button>
-        </div>
-      </div>
-
-      <!-- Hero Header Card with Destiny Score Gauge -->
-      <section class="report-hero-card">
-        <div class="report-hero-meta">
-          <span class="section-eyebrow" data-i18n="report.badge">AUTHENTIC VEDIC &amp; SAMUDRIKA SHASTRA PROTOCOL</span>
-          <h1 class="hero-title" style="font-size: clamp(2rem, 3.2vw, 2.8rem); margin-bottom: 8px;">
-            <span id="report-title-prefix" data-i18n="report.titlePrefix">Sacred Destiny Blueprint for</span> <br />
-            <span class="font-accent text-gold">Elena Vance (एलेना वेंस)</span>
-          </h1>
-          <p id="report-hero-desc" style="font-size: 0.94rem; color: var(--color-text-secondary); line-height: 1.6; max-width: 660px;">
-            Synthesized through ancient Vedic Samudrika Shastra codices and astral alignment vectors. Your dermal crests reveal an unbroken path of spiritual intuition, catalytic intellectual breakthroughs, and profound karmic partnerships.
-          </p>
-
-          <div class="report-meta-chips">
-            <span class="meta-chip">✋ Active Palm: Right Solar Scarp</span>
-            <span class="meta-chip">✨ Element: Water, Air Synthesis</span>
-            <span class="meta-chip">🪐 Epoch: Venus UTC Direct</span>
-          </div>
-        </div>
-
-        <!-- Circular Score Gauge -->
-        <div class="score-gauge-box">
-          <div class="gauge-circle">
-            <span class="gauge-val">94</span>
-            <span class="gauge-max">/ 100</span>
-          </div>
-          <span class="gauge-label" data-i18n="report.resonanceLabel">DESTINY RESONANCE</span>
-          <span style="font-size: 0.7rem; color: var(--color-cyan-biometric); font-weight: 600;" data-i18n="report.resonanceSub">High Harmonious Alignment</span>
-        </div>
-      </section>
-
-      <!-- Action Bar (Download PDF, Share, Consult) -->
-      <div class="report-action-bar">
-        <div class="report-btn-group">
-          <button id="btn-download-pdf" class="btn btn-primary btn-glow">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-            <span data-i18n="report.downloadPdf">DOWNLOAD DESTINY BLUEPRINT PDF</span>
-          </button>
-
-          <button id="btn-share-summary" class="btn btn-secondary">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="18" cy="5" r="3"></circle>
-              <circle cx="6" cy="12" r="3"></circle>
-              <circle cx="18" cy="19" r="3"></circle>
-              <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"></line>
-              <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"></line>
-            </svg>
-            <span data-i18n="report.shareSummary">SHARE COSMIC SUMMARY</span>
-          </button>
-        </div>
-
-        <a href="/palmists.html" style="font-size: 0.86rem; font-weight: 600; color: var(--color-gold-primary); display: flex; align-items: center; gap: 6px;">
-          <span data-i18n="report.consultPalmist">Consult Vedic Palmist on this report (₹499)</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"></polyline></svg>
-        </a>
-      </div>
-
-      <!-- Inspector Grid: Interactive Hand Canvas + Mounts & Markings -->
-      <div class="inspector-grid">
-        
-        <!-- Left: Hand Visualization Card with interactive SVG overlay -->
-        <div class="inspector-hand-card">
-          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px;">
-            <div>
-              <span style="font-size:0.7rem; font-weight:700; text-transform:uppercase; letter-spacing:0.1em; color:var(--color-gold-primary);">BIOMETRIC CHIROMANCY SCARP</span>
-              <h3 style="font-size:1.25rem; font-weight:700;">Right Solar Astral Scarp</h3>
+        <!-- Folio Header Bar (Desktop: Spans across top / Mobile: Order 2) -->
+        <header class="folio-header-plate">
+          <div class="folio-top-meta">
+            <div class="folio-identity-stamp">
+              <span class="stamp-seal">ह</span>
+              <div class="stamp-text">
+                <span class="stamp-category">PERSONAL FOLIO • HASTA 001</span>
+                <span class="stamp-sub">हस्तरेखा अभिलेखीय पाण्डुलिपि • पत्र संख्या ०१</span>
+              </div>
             </div>
-            <span style="font-size:0.75rem; color:var(--color-text-muted);">Click lines or buttons below</span>
-          </div>
 
-          <!-- Interactive Line Toggles -->
-          <div class="hand-toggles-row">
-            <button class="hand-line-toggle active" data-line="heart">Heart Line (Resonance)</button>
-            <button class="hand-line-toggle" data-line="head">Head Line (Intellect)</button>
-            <button class="hand-line-toggle" data-line="life">Life Line (Vitality)</button>
-            <button class="hand-line-toggle" data-line="fate">Fate Line (Destiny)</button>
-            <button class="hand-line-toggle" data-line="apollo">Apollo &amp; Mounts</button>
-          </div>
-
-          <!-- Hand Canvas with SVG overlay lines -->
-          <div class="interactive-hand-canvas">
-            <img src="/images/palm-base.jpg" alt="Decoded Palm Biometrics" />
-
-            <svg viewBox="0 0 600 700">
-              <circle cx="310" cy="420" r="140" stroke="rgba(229,185,88,0.2)" stroke-width="1" fill="none" stroke-dasharray="6 4" />
-              <circle cx="310" cy="420" r="210" stroke="rgba(229,185,88,0.12)" stroke-width="1" fill="none" stroke-dasharray="4 6" />
-
-              <path class="line-path-svg active" data-line="heart" d="M160 300 C240 310 330 270 410 240" stroke="#f3cf7a" />
-              <path class="line-path-svg" data-line="head" d="M150 335 C230 350 340 375 425 435" stroke="#3de0b6" />
-              <path class="line-path-svg" data-line="life" d="M230 260 C190 330 180 470 265 570" stroke="#e85566" />
-              <path class="line-path-svg" data-line="fate" d="M310 590 L300 270" stroke="#9c7cf8" stroke-dasharray="8 6" />
-              <path class="line-path-svg" data-line="apollo" d="M365 420 L370 250" stroke="#ffd875" />
-
-              <circle cx="210" cy="450" r="28" stroke="rgba(229, 185, 88, 0.4)" stroke-width="1.5" fill="rgba(229, 185, 88, 0.08)" />
-              <text x="210" y="454" fill="#e5b958" font-size="10" text-anchor="middle" font-weight="700">VENUS</text>
-
-              <circle cx="410" cy="510" r="28" stroke="rgba(156, 124, 248, 0.4)" stroke-width="1.5" fill="rgba(156, 124, 248, 0.08)" />
-              <text x="410" y="514" fill="#9c7cf8" font-size="10" text-anchor="middle" font-weight="700">LUNA</text>
-
-              <circle cx="220" cy="230" r="24" stroke="rgba(61, 224, 182, 0.4)" stroke-width="1.5" fill="rgba(61, 224, 182, 0.08)" />
-              <text x="220" y="234" fill="#3de0b6" font-size="10" text-anchor="middle" font-weight="700">JUPITER</text>
-
-              <g transform="translate(305, 345)">
-                <line x1="-10" y1="-10" x2="10" y2="10" stroke="#ffd875" stroke-width="2.5" />
-                <line x1="10" y1="-10" x2="-10" y2="10" stroke="#ffd875" stroke-width="2.5" />
-                <circle cx="0" cy="0" r="14" stroke="#ffd875" stroke-width="1" fill="none" stroke-dasharray="2 2" />
-              </g>
-            </svg>
-          </div>
-
-          <div id="inspector-detail-box" style="margin-top:14px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:var(--radius-md); padding:16px;">
-            <!-- Populated via js/report.js -->
-          </div>
-        </div>
-
-        <!-- Right: Planetary Mounts Equilibrium & Rare Markings -->
-        <div class="inspector-metrics-col">
-          <div class="card-glass">
-            <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:12px;">
-              <span class="panel-eyebrow">CHALDEAN DERMIC TENSIONS</span>
-              <span style="font-size:0.7rem; color:var(--color-gold-primary); font-weight:700;">Topography v4.1</span>
+            <!-- Bilingual Switcher -->
+            <div class="folio-lang-cluster">
+              <span class="lang-label">भाषा / LANGUAGE:</span>
+              <div class="lang-btn-group">
+                <button id="btn-report-lang-hi" class="btn-archive-primary btn-sm" type="button">हिन्दी (Devanagari)</button>
+                <button id="btn-report-lang-en" class="btn-archive-secondary btn-sm" type="button">English (Latin)</button>
+              </div>
             </div>
-            <h3 style="font-size:1.25rem; font-weight:700; margin-bottom:6px;">Planetary Mounts Equilibrium</h3>
-            <p style="font-size:0.8rem; color:var(--color-text-secondary); margin-bottom:16px;">
-              The elevation of fleshy mounts beneath each finger channel specific planetary frequencies into somato-sensory traits.
+          </div>
+
+          <!-- Main Title Block -->
+          <div class="folio-title-block">
+            <h1 class="folio-main-title">आपकी हस्तरेखा का अभिलेख</h1>
+            <p class="folio-main-subtitle">PERSONAL PALMISTRY RECORD</p>
+            <p class="folio-editorial-desc">
+              यह पाण्डुलिपि १८वीं शताब्दी की समुद्र-संहिता एवं प्राचीन हस्तसंजीवन ग्रंथों के आधार पर हस्त-चिह्नों, पर्वतों तथा रेखा-प्रवाह का अभिलेख प्रस्तुत करती है।
             </p>
 
-            <div class="mount-bar-item">
-              <div class="mount-meta">
-                <span>1. Mount of Moon (Luna)</span>
-                <span class="text-gold">98%</span>
-              </div>
-              <div class="mount-sub">Intuition, Psychic Conduit &amp; Lucid Dreaming</div>
-              <div class="resonance-bar-track">
-                <div class="resonance-bar-fill" style="width: 98%;"></div>
-              </div>
-            </div>
-
-            <div class="mount-bar-item">
-              <div class="mount-meta">
-                <span>2. Mount of Venus</span>
-                <span class="text-gold">95%</span>
-              </div>
-              <div class="mount-sub">Sensory Passion, Magnetism &amp; Artistic Grace</div>
-              <div class="resonance-bar-track">
-                <div class="resonance-bar-fill" style="width: 95%;"></div>
-              </div>
-            </div>
-
-            <div class="mount-bar-item">
-              <div class="mount-meta">
-                <span>3. Mount of Jupiter</span>
-                <span class="text-gold">90%</span>
-              </div>
-              <div class="mount-sub">Sovereign Leadership, Honor &amp; Expansion</div>
-              <div class="resonance-bar-track">
-                <div class="resonance-bar-fill" style="width: 90%;"></div>
-              </div>
-            </div>
-
-            <div class="mount-bar-item">
-              <div class="mount-meta">
-                <span>4. Mount of Mercury</span>
-                <span class="text-gold">86%</span>
-              </div>
-              <div class="mount-sub">Commercial Eloquence, Alchemy &amp; Wit</div>
-              <div class="resonance-bar-track">
-                <div class="resonance-bar-fill" style="width: 86%;"></div>
-              </div>
+            <div class="folio-chips-row">
+              <span class="folio-chip" id="report-polarity-stamp">✋ दक्षिण हस्त (दायां • कर्मक)</span>
+              <span class="folio-chip">📜 संकलन कोटि: प्रथम श्रेणी अभिलेख</span>
+              <span class="folio-chip">✦ परीक्षण तिथि: आश्विन कृष्ण पक्ष</span>
             </div>
           </div>
+        </header>
 
-          <!-- Rare Markings Detected Card -->
-          <div class="card-glass">
-            <h4 style="font-size:0.95rem; font-weight:700; color:var(--color-gold-primary); display:flex; align-items:center; gap:8px; margin-bottom:12px;">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+        <!-- ====================================================
+             1. MOBILE ORDER 1 / DESKTOP LEFT: ANNOTATED PALM PLATE
+             ==================================================== -->
+        <section class="folio-palm-column" aria-label="हस्तरेखा आरेखन • Annotated Palm Plate">
+          <div class="archival-plate-card">
+            <div class="plate-top-legend">
+              <span class="plate-number-tag">PLATE VII-01</span>
+              <h2 class="plate-heading-title">हस्तरेखा आरेखन • ANNOTATED PALM</h2>
+            </div>
+
+            <!-- Interactive Line Toggles -->
+            <div class="hand-toggles-cluster">
+              <button class="hand-line-toggle" data-line="life" type="button">०१ — जीवन रेखा</button>
+              <button class="hand-line-toggle" data-line="head" type="button">०२ — मस्तिष्क रेखा</button>
+              <button class="hand-line-toggle active" data-line="heart" type="button">०३ — हृदय रेखा</button>
+              <button class="hand-line-toggle" data-line="fate" type="button">०४ — भाग्य रेखा</button>
+              <button class="hand-line-toggle" data-line="apollo" type="button">०५ — सूर्य रेखा</button>
+            </div>
+
+            <!-- Annotated Palm Canvas Frame -->
+            <div class="archival-palm-canvas-frame">
+              <!-- Corner Ticks -->
+              <span class="canvas-corner corner-tl">⌜</span>
+              <span class="canvas-corner corner-tr">⌝</span>
+              <span class="canvas-corner corner-bl">⌞</span>
+              <span class="canvas-corner corner-br">⌟</span>
+
+              <!-- Ruler Marginal Ticks -->
+              <div class="canvas-ruler-left" aria-hidden="true">
+                <span>0</span><span>3</span><span>6</span><span>9</span><span>12</span><span>15</span>
+              </div>
+              <div class="canvas-ruler-bottom" aria-hidden="true">
+                <span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span>10</span>
+              </div>
+
+              <!-- Base Palm Image -->
+              <img id="annotated-palm-img" class="base-palm-image" src="/images/palm-base.jpg" alt="परीक्षित हस्त प्रतिदर्श • Examined Palm Specimen" />
+
+              <!-- Overlay SVG: Historical Vermillion & Copper Ink Lines + Measurements -->
+              <svg class="archival-lines-svg" viewBox="0 0 600 720">
+                <!-- Subtle Archival Grid & Measurement Rings -->
+                <circle cx="300" cy="420" r="140" stroke="rgba(149, 102, 61, 0.25)" stroke-width="1" fill="none" stroke-dasharray="6 4" />
+                <circle cx="300" cy="420" r="210" stroke="rgba(149, 102, 61, 0.18)" stroke-width="1" fill="none" stroke-dasharray="4 6" />
+
+                <!-- Dashed measurement axis lines -->
+                <line x1="60" y1="360" x2="540" y2="360" stroke="rgba(149, 102, 61, 0.4)" stroke-width="1" stroke-dasharray="4 4" />
+                <line x1="300" y1="120" x2="300" y2="660" stroke="rgba(149, 102, 61, 0.4)" stroke-width="1" stroke-dasharray="4 4" />
+
+                <!-- 01: AYUR REKHA (Life Line) — Vermillion Line -->
+                <path class="line-path-svg" data-line="life" d="M225 255 C185 325 175 465 260 565" stroke="#8E1D12" stroke-width="2.5" />
+                <!-- 02: MATISHA REKHA (Head Line) — Copper Line -->
+                <path class="line-path-svg" data-line="head" d="M145 330 C225 345 335 370 420 430" stroke="#95663D" stroke-width="2.5" />
+                <!-- 03: HRIDAYA REKHA (Heart Line) — Vermillion Line (Active Default) -->
+                <path class="line-path-svg active" data-line="heart" d="M155 295 C235 305 325 265 405 235" stroke="#8E1D12" stroke-width="3" />
+                <!-- 04: BHAGYA REKHA (Fate Line) — Dashed Copper Line -->
+                <path class="line-path-svg" data-line="fate" d="M305 580 L295 260" stroke="#95663D" stroke-width="2" stroke-dasharray="6 4" />
+                <!-- 05: SURYA REKHA (Apollo Line) -->
+                <path class="line-path-svg" data-line="apollo" d="M360 415 L365 245" stroke="#B78A43" stroke-width="2" />
+
+                <!-- Mount Indicators (Subtle copper seals) -->
+                <g class="mount-seal" transform="translate(205, 445)">
+                  <circle cx="0" cy="0" r="22" stroke="rgba(149, 102, 61, 0.5)" stroke-width="1" fill="rgba(247, 239, 231, 0.75)" />
+                  <text x="0" y="4" fill="#95663D" font-family="'Courier Prime', monospace" font-size="9" text-anchor="middle" font-weight="700">VENUS</text>
+                </g>
+                <g class="mount-seal" transform="translate(405, 505)">
+                  <circle cx="0" cy="0" r="22" stroke="rgba(149, 102, 61, 0.5)" stroke-width="1" fill="rgba(247, 239, 231, 0.75)" />
+                  <text x="0" y="4" fill="#95663D" font-family="'Courier Prime', monospace" font-size="9" text-anchor="middle" font-weight="700">LUNA</text>
+                </g>
+                <g class="mount-seal" transform="translate(215, 225)">
+                  <circle cx="0" cy="0" r="20" stroke="rgba(142, 29, 18, 0.5)" stroke-width="1" fill="rgba(247, 239, 231, 0.75)" />
+                  <text x="0" y="4" fill="#8E1D12" font-family="'Courier Prime', monospace" font-size="8" text-anchor="middle" font-weight="700">JUPITER</text>
+                </g>
+
+                <!-- Rare Marking: Mystic Cross -->
+                <g transform="translate(300, 335)">
+                  <line x1="-8" y1="-8" x2="8" y2="8" stroke="#8E1D12" stroke-width="2" />
+                  <line x1="8" y1="-8" x2="-8" y2="8" stroke="#8E1D12" stroke-width="2" />
+                  <circle cx="0" cy="0" r="12" stroke="#95663D" stroke-width="1" fill="none" stroke-dasharray="2 2" />
+                </g>
               </svg>
-              Rare Markings Detected
-            </h4>
 
-            <div class="rare-marking-item">
-              <div class="rare-marking-title">
-                <span>✦ The Mystic Cross (La Croix Mystique)</span>
+              <!-- Numbered Markers Overlay (Pins for interactive clicking) -->
+              <div class="annotated-marker-pin" data-line="life" style="top: 55%; left: 34%;">
+                <span class="marker-dot"></span>
+                <span class="marker-tag">01 — जीवन रेखा<br /><small>AYUR REKHA</small></span>
               </div>
-              <div class="rare-marking-desc">
-                Found precisely centered between Heart and Head lines. Present in fewer than 4% of palms: confirms intuitive foresight and occult protection.
+
+              <div class="annotated-marker-pin" data-line="head" style="top: 52%; right: 30%;">
+                <span class="marker-dot"></span>
+                <span class="marker-tag">02 — मस्तिष्क रेखा<br /><small>MATISHA REKHA</small></span>
+              </div>
+
+              <div class="annotated-marker-pin active" data-line="heart" style="top: 36%; right: 28%;">
+                <span class="marker-dot"></span>
+                <span class="marker-tag">03 — हृदय रेखा<br /><small>HRIDAYA REKHA</small></span>
+              </div>
+
+              <div class="annotated-marker-pin" data-line="fate" style="bottom: 25%; left: 47%;">
+                <span class="marker-dot"></span>
+                <span class="marker-tag">04 — भाग्य रेखा<br /><small>BHAGYA REKHA</small></span>
               </div>
             </div>
 
-            <div class="rare-marking-item">
-              <div class="rare-marking-title">
-                <span>✦ The Writer’s Fork (Mercury Fork)</span>
-              </div>
-              <div class="rare-marking-desc">
-                Head line terminates with an observant dual prong signaling mastery in translating complex esoteric knowledge into persuasive communication.
-              </div>
+            <!-- Selected Line Reading Box (Beneath palm canvas) -->
+            <div id="inspector-detail-box" class="inspector-detail-wrapper">
+              <!-- Populated dynamically via js/report.js -->
             </div>
           </div>
+        </section>
+
+        <!-- ====================================================
+             2. DESKTOP RIGHT / MOBILE REMAINING SECTIONS
+             ==================================================== -->
+        <div class="folio-content-column">
+
+          <!-- 2. MAIN FINDING / SUMMARY OVERVIEW -->
+          <section class="main-finding-section" aria-label="मुख्य निष्कर्ष • Main Finding">
+            <div class="finding-plate-card">
+              <div class="finding-top-row">
+                <span class="section-tag-mono">SANCTUARY SYNTHESIS • मुख्य निष्कर्ष</span>
+                <span class="score-badge">९४ / १०० • सामंजस्य सूचकांक</span>
+              </div>
+              <h2 class="finding-title">प्राकृतिक रेखा-सामंजस्य एवं आत्मिक संधान</h2>
+              <p class="finding-desc">
+                परीक्षण उपरांत आपके हस्तचिह्न में जीवन, मस्तिष्क तथा हृदय रेखाओं का परस्पर समन्वय उत्कृष्ट स्थिति में पाया गया है। गुरु पर्वत की ओर हृदय रेखा का झुकाव तथा चंद्र पर्वत पर द्विमुखी मस्तिष्क रेखा आपकी प्रखर दूरदर्शिता, निश्छल नैतिक निष्ठा तथा स्वतंत्र उद्यमिता की पुष्टि करती है।
+              </p>
+            </div>
+          </section>
+
+          <!-- 3. MAJOR LINES SUMMARY (Show: जीवन रेखा / मस्तिष्क रेखा / हृदय रेखा / भाग्य रेखा) -->
+          <section class="major-lines-summary-section" aria-label="प्रमुख चतुर्विध रेखाएँ • Major Lines">
+            <div class="section-subheading-bar">
+              <span class="subheading-mono">CORE MERIDIANS • चार प्रमुख रेखाएँ</span>
+              <span class="subheading-ornament">❧</span>
+            </div>
+
+            <div class="major-lines-grid">
+              <div class="major-line-summary-item" data-line-target="life">
+                <div class="line-badge-num">01</div>
+                <div class="line-summary-text">
+                  <span class="line-title-hi">जीवन रेखा</span>
+                  <span class="line-title-en">AYUR REKHA</span>
+                  <span class="line-quick-val">दीर्घायु • सुदृढ़ प्राण शक्ति</span>
+                </div>
+              </div>
+
+              <div class="major-line-summary-item" data-line-target="head">
+                <div class="line-badge-num">02</div>
+                <div class="line-summary-text">
+                  <span class="line-title-hi">मस्तिष्क रेखा</span>
+                  <span class="line-title-en">MATISHA REKHA</span>
+                  <span class="line-quick-val">द्विमुख • प्रखर विवेक</span>
+                </div>
+              </div>
+
+              <div class="major-line-summary-item" data-line-target="heart">
+                <div class="line-badge-num">03</div>
+                <div class="line-summary-text">
+                  <span class="line-title-hi">हृदय रेखा</span>
+                  <span class="line-title-en">HRIDAYA REKHA</span>
+                  <span class="line-quick-val">गुरु पर्वत गामी • निर्मल निष्ठा</span>
+                </div>
+              </div>
+
+              <div class="major-line-summary-item" data-line-target="fate">
+                <div class="line-badge-num">04</div>
+                <div class="line-summary-text">
+                  <span class="line-title-hi">भाग्य रेखा</span>
+                  <span class="line-title-en">BHAGYA REKHA</span>
+                  <span class="line-quick-val">स्वअर्जित यश • स्वतंत्र कर्म</span>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- 4. DETAILED INTERPRETATION: ARCHIVAL FOLIO PANELS (Plates I, II, III, IV) -->
+          <section class="detailed-interpretation-section" aria-label="विस्तृत पठन फलक • Detailed Folio Plates">
+            <div class="section-subheading-bar">
+              <span class="subheading-mono">FOLIO PANELS • विस्तृत पाण्डुलिपि पठन</span>
+              <span class="subheading-ornament">❧</span>
+            </div>
+
+            <!-- PLATE I: AYUR REKHA -->
+            <article class="archival-folio-panel" id="plate-ayur">
+              <div class="panel-meta-header">
+                <span class="panel-folio-ref">PLATE I • AYUR REKHA</span>
+                <span class="panel-meta-sutra">संहिता सूत्र ०८</span>
+              </div>
+              <h3 class="panel-line-name">जीवन रेखा</h3>
+              <p class="panel-reading-body">
+                शुक्र पर्वत को घेरती हुई स्पष्ट, अखण्डित जीवन रेखा शारीरिक आरोग्यता तथा जीवनी शक्ति की प्रचुरता का उद्घोष करती है। किसी भी प्रकार के अवरोध अथवा द्वीप का अभाव यह सिद्ध करता है कि कठिन परिस्थितियों में भी आपकी देह-चेतना तीव्र गति से स्वास्थ्य पुनर्प्राप्त करने में समर्थ है। मध्य भाग में उपस्थित सूक्ष्म मंगल रेखा कुलदेवता तथा पूर्वजों के संरक्षण का संकेत देती है।
+              </p>
+              <div class="panel-interpretation-box">
+                <span class="interpretation-label">ARCHIVAL INTERPRETATION</span>
+                <div class="interpretation-tags-row">
+                  <span class="interpretation-chip">दीर्घ</span>
+                  <span class="chip-sep">•</span>
+                  <span class="interpretation-chip">निर्दोष</span>
+                  <span class="chip-sep">•</span>
+                  <span class="interpretation-chip">गहन</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- PLATE II: MATISHA REKHA -->
+            <article class="archival-folio-panel" id="plate-matisha">
+              <div class="panel-meta-header">
+                <span class="panel-folio-ref">PLATE II • MATISHA REKHA</span>
+                <span class="panel-meta-sutra">संहिता सूत्र ११</span>
+              </div>
+              <h3 class="panel-line-name">मस्तिष्क रेखा</h3>
+              <p class="panel-reading-body">
+                तर्जनी एवं अंगूठे के संगम से निकलकर चंद्र पर्वत की दिशा में अग्रसर यह मस्तिष्क रेखा अंत में द्विमुखी (बुध-शाखा) रूप धारण करती है। सामुद्रिक शास्त्र के अनुसार इसे ‘लेखक-द्विमुख’ कहा गया है। यह आपको व्यावहारिक तार्किक गणना तथा दूरगामी रचनात्मक कल्पनाशीलता का दुर्लभ संतुलन प्रदान करता है। आप जटिल ज्ञान को सहज रूप से ग्रहण व संप्रेषित करने में निपुण हैं।
+              </p>
+              <div class="panel-interpretation-box">
+                <span class="interpretation-label">ARCHIVAL INTERPRETATION</span>
+                <div class="interpretation-tags-row">
+                  <span class="interpretation-chip">द्विमुखी</span>
+                  <span class="chip-sep">•</span>
+                  <span class="interpretation-chip">प्रखर</span>
+                  <span class="chip-sep">•</span>
+                  <span class="interpretation-chip">संतुलित</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- PLATE III: HRIDAYA REKHA (As in user's specification example) -->
+            <article class="archival-folio-panel" id="plate-hridaya">
+              <div class="panel-meta-header">
+                <span class="panel-folio-ref">PLATE III • HRIDAYA REKHA</span>
+                <span class="panel-meta-sutra">संहिता सूत्र १४</span>
+              </div>
+              <h3 class="panel-line-name">हृदय रेखा</h3>
+              <p class="panel-reading-body">
+                हृदय रेखा अनामिका के नीचे से एक सधी हुई वक्र गति में सीधे देवगुरु बृहस्पति के पर्वत पर विलीन होती है। यह पठन भावनात्मक गरिमा, आत्मीय निष्ठा तथा संबंधों में सतहीपन के प्रति स्वाभाविक वितृष्णा को रेखांकित करता है। आपकी संवेदनशीलता अत्यधिक सूक्ष्म है, किंतु गुरु पर्वत की छत्रछाया इसे बौद्धिक आत्मसंयम प्रदान करती है।
+              </p>
+              <div class="panel-interpretation-box">
+                <span class="interpretation-label">ARCHIVAL INTERPRETATION</span>
+                <div class="interpretation-tags-row">
+                  <span class="interpretation-chip">मध्यम</span>
+                  <span class="chip-sep">•</span>
+                  <span class="interpretation-chip">स्पष्ट</span>
+                  <span class="chip-sep">•</span>
+                  <span class="interpretation-chip">संतुलित</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- PLATE IV: BHAGYA REKHA -->
+            <article class="archival-folio-panel" id="plate-bhagya">
+              <div class="panel-meta-header">
+                <span class="panel-folio-ref">PLATE IV • BHAGYA REKHA</span>
+                <span class="panel-meta-sutra">संहिता सूत्र १८</span>
+              </div>
+              <h3 class="panel-line-name">भाग्य रेखा</h3>
+              <p class="panel-reading-body">
+                मणिबंध के समीप चंद्र पर्वत से प्रारंभ होकर मध्यमा उंगली (शनि पर्वत) की ओर अग्रसर यह रेखा स्वअर्जित सफलता का सर्वोच्च प्रमाण है। पैतृक सीमाओं से परे स्वतंत्र उद्यम, कला, वाणिज्य अथवा सार्वजनिक प्रतिष्ठा के माध्यम से आप अपने भाग्य का निर्माण स्वयं करते हैं। ३२वें वर्ष के उपरांत भाग्य रेखा में विशेष प्रखरता दृष्टिगोचर होती है।
+              </p>
+              <div class="panel-interpretation-box">
+                <span class="interpretation-label">ARCHIVAL INTERPRETATION</span>
+                <div class="interpretation-tags-row">
+                  <span class="interpretation-chip">ऊर्ध्वगामी</span>
+                  <span class="chip-sep">•</span>
+                  <span class="interpretation-chip">स्वतंत्र</span>
+                  <span class="chip-sep">•</span>
+                  <span class="interpretation-chip">तेजस्वी</span>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- 5. OTHER OBSERVATIONS (Mounts & Rare Signs) -->
+          <section class="other-observations-section" aria-label="अन्य शास्त्रीय लक्षण • Other Observations">
+            <div class="section-subheading-bar">
+              <span class="subheading-mono">SECONDARY OBSERVATIONS • ग्रह पर्वत व विशेष चिह्न</span>
+              <span class="subheading-ornament">❧</span>
+            </div>
+
+            <div class="observations-grid">
+              <!-- Mount of Moon -->
+              <div class="observation-card">
+                <div class="obs-header">
+                  <span class="obs-planet">चंद्र पर्वत (LUNA)</span>
+                  <span class="obs-pct">९८% उत्थान</span>
+                </div>
+                <p class="obs-desc">गहन अंतर्ज्ञान, स्वप्न-चेतना तथा अज्ञात की पूर्व-अनुभूति का सशक्त केंद्र।</p>
+              </div>
+
+              <!-- Mount of Venus -->
+              <div class="observation-card">
+                <div class="obs-header">
+                  <span class="obs-planet">शुक्र पर्वत (VENUS)</span>
+                  <span class="obs-pct">९५% उत्थान</span>
+                </div>
+                <p class="obs-desc">सौंदर्य बोध, कलात्मक अभिरुचि, आत्मीय आकर्षण एवं शारीरिक आभा की संपन्नता।</p>
+              </div>
+
+              <!-- Rare Sign: Mystic Cross -->
+              <div class="observation-card obs-rare-highlight">
+                <div class="obs-header">
+                  <span class="obs-planet">✦ गुह्य क्रॉस (LA CROIX MYSTIQUE)</span>
+                  <span class="obs-badge">दुर्लभ चिह्न</span>
+                </div>
+                <p class="obs-desc">हृदय एवं मस्तिष्क रेखा के मध्य उपस्थित यह समकोण क्रॉस गूढ़ विद्याओं तथा आध्यात्मिक अंतर्दृष्टि की प्रत्यक्ष पुष्टि करता है।</p>
+              </div>
+
+              <!-- Rare Sign: Writer's Fork -->
+              <div class="observation-card">
+                <div class="obs-header">
+                  <span class="obs-planet">✦ बुध द्विमुख सिरा (WRITER'S FORK)</span>
+                  <span class="obs-badge">विशिष्ट</span>
+                </div>
+                <p class="obs-desc">मस्तिष्क रेखा का चंद्र-गामी सिरा प्रखर विचार-संप्रेषण तथा प्रभावशाली अभिव्यक्ति का वरदान देता है।</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- 6. TRUST / DISCLAIMER (Required Archival Box) -->
+          <section class="archival-disclaimer-section" aria-label="अभिलेखीय टिप्पणी • Disclaimer">
+            <div class="archival-disclaimer-box">
+              <div class="disclaimer-stamp-title">
+                <span class="disclaimer-seal">अ</span>
+                <span class="disclaimer-heading">अभिलेखीय टिप्पणी</span>
+              </div>
+              <p class="disclaimer-text">
+                यह पठन पारंपरिक हस्तरेखा शास्त्र की व्याख्यात्मक परंपराओं पर आधारित है। इसे निश्चित वैज्ञानिक भविष्यवाणी या चिकित्सा, वित्तीय अथवा कानूनी सलाह के रूप में न लें।
+              </p>
+              <div class="disclaimer-footer-line">
+                HASTAREKHA ARCHIVE • TRADITIONAL CHIROMANCY CODEX • 2026
+              </div>
+            </div>
+          </section>
+
+          <!-- 7. REPORT ACTIONS / CTA -->
+          <section class="report-action-tray" aria-label="अभिलेख डाउनलोड एवं साझा • Report Actions">
+            <div class="report-action-buttons">
+              <button id="btn-download-pdf" class="btn-archive-primary btn-lg" type="button">
+                <span>अभिलेख पाण्डुलिपि डाउनलोड करें (PDF)</span>
+              </button>
+              <button id="btn-share-summary" class="btn-archive-secondary btn-lg" type="button">
+                <span>अभिलेख साझा करें</span>
+              </button>
+            </div>
+
+            <div class="expert-consult-link-plate">
+              <span class="consult-intro">इस पाण्डुलिपि पर वरिष्ठ हस्तरेखा शास्त्री से व्यक्तिगत परामर्श हेतु:</span>
+              <a href="/palmists.html" class="consult-anchor">
+                <span>विद्वान सामुद्रिक शास्त्री से संवाद करें (₹४९९) →</span>
+              </a>
+            </div>
+          </section>
 
         </div>
+
       </div>
-
-      <!-- The Three Celestial Pillars of Elena's Destiny -->
-      <section class="pillars-section">
-        <div class="section-header">
-          <span class="section-eyebrow">IN-DEPTH SYNTHESIS</span>
-          <h2 class="section-title">The Three Celestial Pillars of Elena's Destiny</h2>
-          <p class="section-subtitle">
-            Detailed translation of your primary meridians mapped against the planetary transits of your natal chart.
-          </p>
-        </div>
-
-        <div class="pillars-grid">
-          <article class="pillar-card">
-            <div>
-              <div class="pillar-badge-bar">
-                <span class="badge-pill badge-violet">Section I • Heart Line</span>
-                <span class="text-gold" style="font-size: 0.78rem; font-weight: 700;">92% Depth</span>
-              </div>
-              <h3 class="pillar-title">Devotional Depth &amp; Soulmate Timing</h3>
-              <p class="pillar-desc">
-                Your Heart Line curves upwards gracefully directly into the space of Jupiter’s mount. This is the mark of "plutonique devotion"—an aversion to half-hearted, ephemeral sexuality in resonance with sacred loyalty.
-              </p>
-              <div class="pillar-highlight-box">
-                <strong>True Aperture of Awakening:</strong> Three subtle upward branches signify romantic encounters where spiritual awakening precedes physical communion.
-              </div>
-            </div>
-            <div style="font-size: 0.74rem; color: var(--color-gold-primary); font-weight: 600; padding-top: 10px; border-top: 1px solid var(--border-subtle);">
-              ✦ Major Karmic Cycle: Ages 27 to 34
-            </div>
-          </article>
-
-          <article class="pillar-card">
-            <div>
-              <div class="pillar-badge-bar">
-                <span class="badge-pill badge-gold">Section II • Apollo &amp; Sun Line</span>
-                <span class="text-gold" style="font-size: 0.78rem; font-weight: 700;">89% Potency</span>
-              </div>
-              <h3 class="pillar-title">Wealth Architecture &amp; Sun Line Rise</h3>
-              <p class="pillar-desc">
-                Ascending solar line originating from the Saturnian Mount reveals an individual who dictates their own economic honor rather than relying on unearned providence. You build lasting structures.
-              </p>
-              <div class="pillar-highlight-box">
-                <strong>Breakthrough Epoch (2026–2032):</strong> The Sun line crossing the heart line marks a window of marked public recognition and sovereign financial enterprise.
-              </div>
-            </div>
-            <div style="font-size: 0.74rem; color: var(--color-gold-primary); font-weight: 600; padding-top: 10px; border-top: 1px solid var(--border-subtle);">
-              ✦ Chakra Correlation: Manipura &amp; Ajna
-            </div>
-          </article>
-
-          <article class="pillar-card">
-            <div>
-              <div class="pillar-badge-bar">
-                <span class="badge-pill badge-cyan">Section III • Life Line</span>
-                <span class="text-gold" style="font-size: 0.78rem; font-weight: 700;">96% Vitality</span>
-              </div>
-              <h3 class="pillar-title">Vital Prana &amp; Mystic Awakening</h3>
-              <p class="pillar-desc">
-                A sweeping, uninterrupted line forming a well-padded Mount of Venus indicates exceptional somatic stamina, resilience, and sensory vitality. Recoveries from exhaustion occur at accelerated speed.
-              </p>
-              <div class="pillar-highlight-box">
-                <strong>Ancestral Lineage Shield:</strong> Presence of a faint inner Life Line (Mars Line) provides spiritual shielding during stressful transit transitions.
-              </div>
-            </div>
-            <div style="font-size: 0.74rem; color: var(--color-gold-primary); font-weight: 600; padding-top: 10px; border-top: 1px solid var(--border-subtle);">
-              ✦ Bio-Regenerative Index: 9.6 / 10
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- Consecrated Crystals & Behavioral Remedies -->
-      <section class="remedies-section">
-        <div class="section-header">
-          <span class="section-eyebrow">KARMIC HARMONIZATION</span>
-          <h2 class="section-title">Consecrated Crystals &amp; Behavioral Remedies</h2>
-          <p class="section-subtitle">
-            Curated remedies to modulate hyper-stimulated Mount of Luna while elevating the Saturnian and Jupiterian vectors.
-          </p>
-        </div>
-
-        <div class="remedies-grid">
-          <div class="remedy-card">
-            <div class="remedy-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-              </svg>
-            </div>
-            <span class="remedy-tag">PRIMARY GEMSTONE</span>
-            <h4 class="remedy-name">Golden Topaz or Citrine</h4>
-            <p class="remedy-desc">Wear a set yellow gold or copper on the Index finger (Jupiter) on Thursdays during sunrise to amplify commercial intuition.</p>
-          </div>
-
-          <div class="remedy-card">
-            <div class="remedy-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-              </svg>
-            </div>
-            <span class="remedy-tag">PSYCHIC TALISMAN</span>
-            <h4 class="remedy-name">Rainbow Moonstone</h4>
-            <p class="remedy-desc">Mount in the reverse pocket or left wrist to pacify your Mystic Cross; keep subconscious dreaming clear during full moons.</p>
-          </div>
-
-          <div class="remedy-card">
-            <div class="remedy-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 8v8M8 12h8"/>
-              </svg>
-            </div>
-            <span class="remedy-tag">SACRED ANOINTING</span>
-            <h4 class="remedy-name">Sandalwood Palm Anointing</h4>
-            <p class="remedy-desc">Apply pure chandan essential oil in clockwise circular motions over the Mount of Venus before bedtime to soothe active mental prana.</p>
-          </div>
-
-          <div class="remedy-card">
-            <div class="remedy-icon">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 6v6l4 2"/>
-              </svg>
-            </div>
-            <span class="remedy-tag">PRANA &amp; PINEAL MUDRA</span>
-            <h4 class="remedy-name">Om Hreem Brihaspataye</h4>
-            <p class="remedy-desc">Chant for 108 repetitions in Gyan Mudra to clear impediments along your Fate line and activate higher intellectual channels.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- Upsell Banner -->
-      <section class="consult-upsell-banner" style="margin-bottom: 60px;">
-        <div class="upsell-left">
-          <div class="upsell-avatar">
-            <img src="/images/master-sophia.jpg" alt="Master Palmist Sophia Thorne" />
-          </div>
-          <div>
-            <div style="font-size: 0.74rem; font-weight: 700; color: var(--color-gold-primary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 4px;">
-              ✦ 4.98 (890+ Consultations) • 25 Yrs Vedic Practice
-            </div>
-            <h3 class="upsell-title">Deepen This Blueprint with Master Chiromancer Sophia Thorne</h3>
-            <p class="upsell-desc">
-              Discuss your unique Mystic Cross, explore exact timing for your 2026 Sun Line convergence, and unlock detailed Kundali-hastarekha answers in a private 30-minute audio-video chamber.
-            </p>
-          </div>
-        </div>
-
-        <div style="text-align: right; flex-shrink: 0;">
-          <div style="margin-bottom: 10px;">
-            <span style="font-size: 0.85rem; text-decoration: line-through; color: var(--color-text-muted);">₹1,199</span>
-            <span style="font-size: 1.6rem; font-weight: 700; color: var(--color-gold-primary); margin-left: 6px;">₹499</span>
-            <div style="font-size: 0.7rem; color: var(--color-cyan-biometric); font-weight: 600;">Special India Offer • 58% Off</div>
-          </div>
-          <a href="/palmists.html" class="btn btn-primary btn-lg btn-glow">BOOK 30-MIN VEDIC CONSULT - ₹499</a>
-        </div>
-      </section>
 
     </div>
   </main>
 
-  <!-- PDF Language Selection Modal -->
-  <div id="pdf-lang-modal" class="modal-overlay">
-    <div class="modal-card" style="max-width:460px; text-align:center;">
-      <button id="close-pdf-lang-modal" class="modal-close-btn" aria-label="Close modal">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
+  <!-- PDF Export Language Selection Modal -->
+  <div id="pdf-lang-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="pdf-modal-title">
+    <div class="archival-modal-card">
+      <button id="close-pdf-lang-modal" class="modal-close-plate" aria-label="Close modal">✕</button>
 
-      <span class="badge-pill badge-gold" style="margin-bottom:10px;">PDF EXPORT PREFERENCE</span>
-      <h3 style="font-size:1.45rem; font-weight:700; margin-bottom:8px;">Select Blueprint Language</h3>
-      <p style="font-size:0.86rem; color:var(--color-text-secondary); margin-bottom:24px;">
-        Choose your desired language for your downloadable Sacred Destiny Blueprint PDF:
+      <span class="modal-folio-stamp">FOLIO EXPORT PROTOCOL</span>
+      <h3 id="pdf-modal-title" class="modal-plate-title">अभिलेख पाण्डुलिपि भाषा चुनें</h3>
+      <p class="modal-plate-desc">
+        आपकी हस्तरेखा पाण्डुलिपि A4 मुद्रण हेतु तैयार है। कृपया अपनी इच्छित भाषा का चयन करें:
       </p>
 
-      <div style="display:flex; flex-direction:column; gap:12px;">
-        <button id="btn-export-pdf-en" class="btn btn-primary btn-lg" style="width:100%; justify-content:center; gap:10px;">
-          <span>🇬🇧 Download in English (PDF)</span>
+      <div class="modal-export-actions">
+        <button id="btn-export-pdf-hi" class="btn-archive-primary btn-lg" type="button">
+          <span>🇮🇳 हिन्दी पाण्डुलिपि डाउनलोड करें (Hindi PDF)</span>
         </button>
-        <button id="btn-export-pdf-hi" class="btn btn-secondary btn-lg" style="width:100%; justify-content:center; gap:10px; border-color:var(--color-gold-primary);">
-          <span>🇮🇳 हिन्दी में डाउनलोड करें (Hindi PDF)</span>
+        <button id="btn-export-pdf-en" class="btn-archive-secondary btn-lg" type="button">
+          <span>🇬🇧 Download Archival PDF (English)</span>
         </button>
       </div>
 
-      <p style="font-size:0.72rem; color:var(--color-text-muted); margin-top:16px;">
-        ✨ Formatted for high-resolution A4 printout with astral talisman charts.
-      </p>
+      <div class="modal-plate-note">
+        ✦ हस्तरेखा आरेखन, पर्वत उत्थान एवं शास्त्रीय व्याख्या सहित पूर्ण अभिलेख।
+      </div>
     </div>
   </div>
 
-  <!-- Share Cosmic Summary Modal -->
-  <div id="share-modal" class="modal-overlay">
-    <div class="modal-card">
-      <button id="close-share-modal" class="modal-close-btn" aria-label="Close modal">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-      </button>
+  <!-- Share Summary Modal -->
+  <div id="share-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="share-modal-title">
+    <div class="archival-modal-card">
+      <button id="close-share-modal" class="modal-close-plate" aria-label="Close modal">✕</button>
 
-      <div style="text-align: center; margin-bottom: 20px;">
-        <span class="badge-pill badge-gold" style="margin-bottom: 8px;">ASTRAL SANCTUARY TRANSMISSION</span>
-        <h3 style="font-size: 1.5rem; font-weight: 700;">Share Sacred Destiny Blueprint</h3>
-        <p style="font-size: 0.85rem; color: var(--color-text-secondary); margin-top: 6px;">
-          Transmit your celestial meridian score and planetary mount alignment to kin or social channels.
-        </p>
+      <span class="modal-folio-stamp">TRANSMISSION OF FOLIO</span>
+      <h3 id="share-modal-title" class="modal-plate-title">अभिलेख पाण्डुलिपि साझा करें</h3>
+      <p class="modal-plate-desc">
+        अपने हस्तरेखा परीक्षण का सार एवं सामंजस्य सूचकांक परिजनों या मित्रों को प्रेषित करें:
+      </p>
+
+      <div class="modal-quote-slate">
+        "मेरी हस्तरेखा के अभिलेख में ९४% सामंजस्य सूचकांक तथा गुह्य क्रॉस की उपस्थिति प्रमाणित हुई है। हस्तरेखा अभिलेख पर अपना प्राचीन हस्त-पठन देखें।"
       </div>
 
-      <div style="background: var(--color-bg-subtle); border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 18px; margin-bottom: 20px; font-family: var(--font-accent); font-size: 1.05rem; line-height: 1.5; color: var(--color-text-main);">
-        "My palms revealed an unbroken path with 94% Destiny Resonance and a rare Mystic Cross marking. Uncover your living celestial map on AuraPalm."
-      </div>
-
-      <div style="display: flex; gap: 10px;">
-        <input type="text" readonly value="https://palmreading-b0v.pages.dev/report.html?archive=AP-92881-C" style="flex: 1; background: var(--color-bg-base); border: 1px solid var(--border-light); border-radius: var(--radius-full); padding: 10px 16px; font-size: 0.8rem; color: var(--color-text-muted);" />
-        <button id="btn-copy-share-link" class="btn btn-primary">Copy Link</button>
+      <div class="modal-copy-cluster">
+        <input type="text" readonly value="https://palmreading-b0v.pages.dev/report.html?folio=HASTA-001" class="archival-copy-input" />
+        <button id="btn-copy-share-link" class="btn-archive-primary" type="button">लिंक कॉपी करें</button>
       </div>
     </div>
   </div>

@@ -1,7 +1,8 @@
 /**
- * AuraPalm Sacred Destiny Blueprint Report Controller
- * Handles interactive line inspector, bilingual English/Hindi interpretations,
- * PDF language selection modal, and share functionality.
+ * Hastarekha Archive — Personal Folio Report Controller
+ * Folio Ref: PERSONAL FOLIO • HASTA 001
+ * Manages annotated palm inspection, archival folio panels,
+ * bilingual rendering, PDF export modal, and summary transmission.
  */
 
 import { getLanguage, setLanguage } from './i18n.js';
@@ -9,7 +10,9 @@ import { getLanguage, setLanguage } from './i18n.js';
 document.addEventListener('DOMContentLoaded', () => {
   const lineToggles = document.querySelectorAll('.hand-line-toggle');
   const svgPaths = document.querySelectorAll('.line-path-svg');
+  const numberedMarkers = document.querySelectorAll('.annotated-marker-pin');
   const inspectorDetailBox = document.getElementById('inspector-detail-box');
+  const palmImg = document.getElementById('annotated-palm-img');
   const btnDownloadPdf = document.getElementById('btn-download-pdf');
   const btnShareSummary = document.getElementById('btn-share-summary');
   const shareModal = document.getElementById('share-modal');
@@ -22,86 +25,130 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnExportPdfEn = document.getElementById('btn-export-pdf-en');
   const btnExportPdfHi = document.getElementById('btn-export-pdf-hi');
 
-  // Report Language Switcher buttons directly on report
+  // Language Switcher Buttons
   const btnReportLangEn = document.getElementById('btn-report-lang-en');
   const btnReportLangHi = document.getElementById('btn-report-lang-hi');
 
   let currentLineKey = 'heart';
 
-  // Bilingual Palm Line Database (English & Vedic Hindi)
+  // Restore uploaded image from session if present
+  try {
+    const savedImg = sessionStorage.getItem('aurapalm_scan_image');
+    if (savedImg && palmImg) {
+      palmImg.src = savedImg;
+    }
+  } catch (err) {
+    console.warn('Could not read session image', err);
+  }
+
+  // Restore scan session metadata if present
+  try {
+    const scanDataStr = sessionStorage.getItem('aurapalm_scan_result');
+    if (scanDataStr) {
+      const scanData = JSON.parse(scanDataStr);
+      const polarityBadge = document.getElementById('report-polarity-stamp');
+      if (polarityBadge && scanData.polarity) {
+        polarityBadge.innerText = scanData.polarity === 'left' ? 'वाम हस्त (बायां • अकर्मक)' : 'दक्षिण हस्त (दायां • कर्मक)';
+      }
+    }
+  } catch (err) {
+    console.warn('Could not parse scan data', err);
+  }
+
+  // Archival Palm Line Database (Vedic Samudrika & Classical Archival Interpretation)
   const lineData = {
-    en: {
-      heart: {
-        name: 'Heart Line (Resonance & Devotion)',
-        element: 'Water • Element of Soul',
-        confidence: '98.4% Confidence • Deep Curvature',
-        summary: 'Your Heart Line sweeps upwards in a graceful arc towards the Mount of Jupiter. This signifies high emotional vulnerability balanced by deep devotion, intuitive empathy, and an unbreakable standard for spiritual partnership.',
-        timing: 'Key Karmic Harmonization: Ages 27 to 34.'
+    hi: {
+      life: {
+        num: '01',
+        name: 'जीवन रेखा — AYUR REKHA',
+        element: 'पृथ्वी तत्व • प्राण शक्ति एवं जीवनी ऊर्जा',
+        confidence: 'स्पष्ट • निर्दोष चाप • ९६.८% शुद्धता',
+        summary: 'शुक्र पर्वत को परिपूर्ण चाप में घेरती हुई यह जीवन रेखा दीर्घायु, सुदृढ़ जीवनी शक्ति तथा शारीरिक रोग प्रतिरोधक क्षमता का प्रत्यक्ष प्रमाण है। मध्य भाग में सूक्ष्म सहायक रेखा (मंगल रेखा) संकटों में दैवीय व कुल संरक्षण प्रदान करती है।',
+        timing: 'स्थिर ऊर्जा व स्वास्थ्य काल: २४ से ६८+ वर्ष',
+        archival: 'दीर्घ • निर्दोष • गहन'
       },
       head: {
-        name: 'Head Line (Intellect & Visionary Bifurcation)',
-        element: 'Air • Element of Mind',
-        confidence: '97.2% Confidence • Dual Fork Termination',
-        summary: 'Your Head Line demonstrates a classic Writer’s Fork (Mercury Bifurcation) terminating between Upper Mars and Moon mounts. This grants both analytical acumen and vivid lateral imagination—ideal for synthesis, philosophy, and strategic architecture.',
-        timing: 'Major Creative Renaissance: Ages 31 to 38.'
+        num: '02',
+        name: 'मस्तिष्क रेखा — MATISHA REKHA',
+        element: 'वायु तत्व • विवेक, प्रज्ञा एवं निर्णय क्षमता',
+        confidence: 'द्विमुख अंत • प्रखर मेधा • ९७.२% शुद्धता',
+        summary: 'मस्तिष्क रेखा का अंत चंद्र पर्वत की ओर मुड़कर सुंदर द्विमुखी (बुध-शाखा) बनाता है। यह तार्किक बुद्धि, गहन रचनात्मकता तथा दर्शन व व्यावहारिक उद्यमशीलता के समन्वय का सूचक है।',
+        timing: 'बौद्धिक व व्यापारिक उत्कर्ष: ३१ से ३८ वर्ष',
+        archival: 'द्विमुखी • प्रखर • संतुलित'
       },
-      life: {
-        name: 'Life Line (Vitality Arc & Prana Shield)',
-        element: 'Earth • Element of Somatic Stamina',
-        confidence: '96.8% Confidence • Wide Lunar Sweep',
-        summary: 'An unbroken, deeply etched curve encompassing the Mount of Venus with a secondary sister line (Mars Sister Line). This represents extraordinary physical resilience, rapid immune recovery, and an innate spiritual safeguard during crises.',
-        timing: 'Peak Grounding & Vital Prana: Ages 24 through 68+.'
+      heart: {
+        num: '03',
+        name: 'हृदय रेखा — HRIDAYA REKHA',
+        element: 'जल तत्व • आत्मीय निष्ठा एवं संवेदनशीलता',
+        confidence: 'गुरु पर्वत गामी • ९८.४% शुद्धता',
+        summary: 'हृदय रेखा का वक्र देवगुरु बृहस्पति के पर्वत पर प्रतिष्ठित होता है। यह निश्छल प्रेम, उच्च नैतिक आदर्श, निष्कपट निष्ठा तथा आत्मीय संबंधों में पवित्रता का अभिलेखीय लक्षण है।',
+        timing: 'महत्वपूर्ण कर्म फल काल: २७ से ३४ वर्ष',
+        archival: 'मध्यम • स्पष्ट • संतुलित'
       },
       fate: {
-        name: 'Fate Line (Saturnian Dharma & Destiny Axis)',
-        element: 'Ether • Element of Vocation',
-        confidence: '94.6% Confidence • Lunar Origin',
-        summary: 'Rising from the Mount of the Moon towards Saturn, your Fate Line indicates a destiny driven by public magnetism, creative autonomy, and synchronistic mentors rather than rigid hereditary family traditions.',
-        timing: 'Breakthrough Epoch: Ages 32 to 37.'
+        num: '04',
+        name: 'भाग्य रेखा — BHAGYA REKHA',
+        element: 'आकाश तत्व • स्वतंत्र उद्यम एवं यश',
+        confidence: 'चंद्र पर्वत से उद्गम • ९४.६% शुद्धता',
+        summary: 'चंद्र पर्वत से प्रारंभ होकर शनि पर्वत की ओर ऊर्ध्वगामी होने वाली यह भाग्य रेखा दर्शाती है कि आपका भाग्योदय स्वअर्जित प्रतिभा, लोक-स्वीकृति तथा स्वतंत्र निर्णय क्षमता द्वारा होगा।',
+        timing: 'महत्वपूर्ण भाग्योदय काल: ३२ से ३७ वर्ष',
+        archival: 'ऊर्ध्वगामी • स्वतंत्र • तेजस्वी'
       },
       apollo: {
-        name: 'Apollo / Sun Line & Planetary Mounts',
-        element: 'Fire • Solar Radiance',
-        confidence: '92.1% Confidence • Ascending Pillar',
-        summary: 'Clear vertical striations ascending beneath the ring finger signify recognized mastery, aesthetic appreciation, and financial elevation through personal authenticity and sacred creative projects.',
-        timing: 'Recognition Zenith: Ages 36 onward.'
+        num: '05',
+        name: 'सूर्य रेखा व पर्वत — SURYA REKHA',
+        element: 'अग्नि तत्व • कीर्ति, पद-प्रतिष्ठा एवं संपन्नता',
+        confidence: 'ऊर्ध्वमुखी स्तंभ • ९२.१% शुद्धता',
+        summary: 'अनामिका उंगली के नीचे ऊर्ध्वमुखी रेखा समाज में सम्मान, स्वाभिमान तथा कलात्मक व वित्तीय स्वायत्तता का संधान करती है।',
+        timing: 'सर्वोच्च प्रतिष्ठा योग: ३६ वर्ष से आगे',
+        archival: 'स्पष्ट • गरिमामयी • स्थिर'
       }
     },
-    hi: {
-      heart: {
-        name: 'हृदय रेखा (प्रेम, दांपत्य व भावनात्मक योग)',
-        element: 'जल तत्व • आत्मिक समर्पण',
-        confidence: '98.4% सटीकता • गुरु पर्वत की ओर झुकाव',
-        summary: 'आपकी हृदय रेखा एक सुंदर चाप बनाकर देवगुरु बृहस्पति के पर्वत की ओर अग्रसर है। यह निश्छल प्रेम, उच्च नैतिक मूल्य, गहरी संवेदनशीलता और दांपत्य जीवन में पवित्र निष्ठा का सूचक है।',
-        timing: 'मुख्य कर्म चक्र फल: 27 से 34 वर्ष की आयु में।'
+    en: {
+      life: {
+        num: '01',
+        name: 'AYUR REKHA — Life Line',
+        element: 'Earth Element • Somatic Vitality & Prana',
+        confidence: 'Deep Etch • Unbroken Arc • 96.8% Fidelity',
+        summary: 'Encompassing the Mount of Venus in a graceful, sweeping perimeter, the Ayur Rekha indicates exceptional constitutional endurance, cellular recovery, and generational vitality shield.',
+        timing: 'Peak Grounding & Vital Prana: Ages 24 through 68+',
+        archival: 'Long • Unbroken • Profound'
       },
       head: {
-        name: 'मस्तिष्क रेखा (बुद्धि, विवेक व निर्णय शक्ति)',
-        element: 'वायु तत्व • प्रखर मेधा',
-        confidence: '97.2% सटीकता • बुध द्विमुख सिरा',
-        summary: 'आपकी मस्तिष्क रेखा का अंत चंद्र व मंगल पर्वत के संगम पर द्विमुखी होकर समाप्त होता है। यह तार्किक बुद्धि के साथ-साथ उत्कृष्ट दूरदर्शिता, रचनात्मक लेखन और रणनीतिक व्यापारिक दक्षता प्रदान करता है।',
-        timing: 'बौद्धिक व व्यापारिक उत्कर्ष: 31 से 38 वर्ष।'
+        num: '02',
+        name: 'MATISHA REKHA — Head Line',
+        element: 'Air Element • Intellectual Acumen & Strategy',
+        confidence: 'Bifurcated Apex • 97.2% Fidelity',
+        summary: 'Terminating towards the Mount of Moon with a distinct secondary fork, revealing a mind balanced between analytical rigor and intuitive visionary synthesis.',
+        timing: 'Major Intellectual Renaissance: Ages 31 to 38',
+        archival: 'Bifurcated • Keen • Balanced'
       },
-      life: {
-        name: 'जीवन रेखा (प्राण शक्ति व स्वास्थ्य बल)',
-        element: 'पृथ्वी तत्व • उत्तम स्वास्थ्य',
-        confidence: '96.8% सटीकता • शुक्र पर्वत को घेरती रेखा',
-        summary: 'शुक्र पर्वत को घेरती हुई स्पष्ट, निर्दोष जीवन रेखा के साथ सहायक मंगल रेखा उपस्थित है। यह उत्कृष्ट रोग प्रतिरोधक क्षमता, दीर्घायु बल और संकटों में अदृश्य दैवीय रक्षा का प्रतीक है।',
-        timing: 'स्थिर ऊर्जा व स्वास्थ्य काल: 24 से 68+ वर्ष।'
+      heart: {
+        num: '03',
+        name: 'HRIDAYA REKHA — Heart Line',
+        element: 'Water Element • Devotion & Resonance',
+        confidence: 'Jupiterian Curvature • 98.4% Fidelity',
+        summary: 'Ascending directly toward the Jupiterian mount, indicating high emotional nobility, unyielding loyalty, and an instinctive aversion to superficial entanglements.',
+        timing: 'Key Karmic Harmonization: Ages 27 to 34',
+        archival: 'Moderate • Lucid • Harmonious'
       },
       fate: {
-        name: 'भाग्य रेखा (करियर, आजीविका व धन योग)',
-        element: 'आकाश तत्व • स्वअर्जित सफलता',
-        confidence: '94.6% सटीकता • चंद्र पर्वत से उद्गम',
-        summary: 'चंद्र पर्वत से शनि पर्वत तक जाने वाली स्पष्ट भाग्य रेखा यह दर्शाती है कि आपका भाग्योदय जन-सहयोग, कला, व्यापार अथवा स्वतंत्र उद्यम द्वारा होगा। आपको पैतृक सीमाओं से परे अपार यश प्राप्त होगा।',
-        timing: 'महत्वपूर्ण भाग्योदय काल: 32 से 37 वर्ष।'
+        num: '04',
+        name: 'BHAGYA REKHA — Fate Line',
+        element: 'Ether Element • Sovereign Destiny Axis',
+        confidence: 'Lunar Inception • 94.6% Fidelity',
+        summary: 'Originating from the Mount of Moon, confirming a destiny sculpted through personal charisma, independent enterprise, and public merit rather than hereditary restriction.',
+        timing: 'Breakthrough Epoch: Ages 32 to 37',
+        archival: 'Ascending • Autonomous • Resplendent'
       },
       apollo: {
-        name: 'सूर्य रेखा (मान-सम्मान, पद व राजकीय ख्याति)',
-        element: 'अग्नि तत्व • सूर्य तेज',
-        confidence: '92.1% सटीकता • ऊर्ध्वगामी रेखा',
-        summary: 'अनामिका उंगली के नीचे स्पष्ट सूर्य रेखा समाज में प्रतिष्ठा, उच्च पद, वित्तीय संपन्नता और आपकी प्रतिभा को राष्ट्रीय पहचान दिलाने का सशक्त योग बनाती है।',
-        timing: 'सर्वोच्च सम्मान योग: 36 वर्ष से आगे।'
+        num: '05',
+        name: 'SURYA REKHA — Sun Line & Mounts',
+        element: 'Fire Element • Honor & Solar Eminence',
+        confidence: 'Vertical Pillar • 92.1% Fidelity',
+        summary: 'Clear vertical striations ascending beneath the ring finger manifest enduring social honor, creative authority, and lasting financial dignity.',
+        timing: 'Recognition Zenith: Ages 36 onward',
+        archival: 'Clear • Dignified • Resolute'
       }
     }
   };
@@ -109,33 +156,33 @@ document.addEventListener('DOMContentLoaded', () => {
   function updateReportLangUI(lang) {
     if (btnReportLangEn && btnReportLangHi) {
       if (lang === 'hi') {
-        btnReportLangHi.classList.add('btn-primary');
-        btnReportLangHi.classList.remove('btn-secondary');
-        btnReportLangEn.classList.remove('btn-primary');
-        btnReportLangEn.classList.add('btn-secondary');
+        btnReportLangHi.classList.add('btn-archive-primary');
+        btnReportLangHi.classList.remove('btn-archive-secondary');
+        btnReportLangEn.classList.remove('btn-archive-primary');
+        btnReportLangEn.classList.add('btn-archive-secondary');
       } else {
-        btnReportLangEn.classList.add('btn-primary');
-        btnReportLangEn.classList.remove('btn-secondary');
-        btnReportLangHi.classList.remove('btn-primary');
-        btnReportLangHi.classList.add('btn-secondary');
+        btnReportLangEn.classList.add('btn-archive-primary');
+        btnReportLangEn.classList.remove('btn-archive-secondary');
+        btnReportLangHi.classList.remove('btn-archive-primary');
+        btnReportLangHi.classList.add('btn-archive-secondary');
       }
     }
 
-    // Update toggles labels if in Hindi
+    // Update toggles labels
     lineToggles.forEach(btn => {
       const line = btn.dataset.line;
       if (lang === 'hi') {
-        if (line === 'heart') btn.innerText = 'हृदय रेखा (भावना)';
-        if (line === 'head') btn.innerText = 'मस्तिष्क रेखा (बुद्धि)';
-        if (line === 'life') btn.innerText = 'जीवन रेखा (स्वास्थ्य)';
-        if (line === 'fate') btn.innerText = 'भाग्य रेखा (धन)';
-        if (line === 'apollo') btn.innerText = 'सूर्य व ग्रह पर्वत';
+        if (line === 'life') btn.innerText = '०१ — जीवन रेखा';
+        if (line === 'head') btn.innerText = '०२ — मस्तिष्क रेखा';
+        if (line === 'heart') btn.innerText = '०३ — हृदय रेखा';
+        if (line === 'fate') btn.innerText = '०४ — भाग्य रेखा';
+        if (line === 'apollo') btn.innerText = '०५ — सूर्य रेखा';
       } else {
-        if (line === 'heart') btn.innerText = 'Heart Line (Resonance)';
-        if (line === 'head') btn.innerText = 'Head Line (Intellect)';
-        if (line === 'life') btn.innerText = 'Life Line (Vitality)';
-        if (line === 'fate') btn.innerText = 'Fate Line (Destiny)';
-        if (line === 'apollo') btn.innerText = 'Apollo & Mounts';
+        if (line === 'life') btn.innerText = '01 — AYUR REKHA';
+        if (line === 'head') btn.innerText = '02 — MATISHA REKHA';
+        if (line === 'heart') btn.innerText = '03 — HRIDAYA REKHA';
+        if (line === 'fate') btn.innerText = '04 — BHAGYA REKHA';
+        if (line === 'apollo') btn.innerText = '05 — SURYA REKHA';
       }
     });
 
@@ -145,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function selectLine(lineKey) {
     currentLineKey = lineKey;
     const lang = getLanguage();
-    const localizedData = (lineData[lang] || lineData.en)[lineKey];
+    const localizedData = (lineData[lang] || lineData.hi)[lineKey];
 
     // Update toggle buttons
     lineToggles.forEach(btn => {
@@ -160,47 +207,73 @@ document.addEventListener('DOMContentLoaded', () => {
     svgPaths.forEach(path => {
       if (path.dataset.line === lineKey) {
         path.classList.add('active');
-        path.setAttribute('stroke-width', '6');
       } else {
         path.classList.remove('active');
-        path.setAttribute('stroke-width', '3');
       }
     });
 
-    // Update detail box
+    // Update numbered markers
+    numberedMarkers.forEach(marker => {
+      if (marker.dataset.line === lineKey) {
+        marker.classList.add('active');
+      } else {
+        marker.classList.remove('active');
+      }
+    });
+
+    // Update detail box beneath palm
     if (localizedData && inspectorDetailBox) {
       inspectorDetailBox.innerHTML = `
-        <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px;">
-          <h4 style="color:var(--color-gold-primary); font-size:1.05rem;">${localizedData.name}</h4>
-          <span style="font-size:0.72rem; color:var(--color-cyan-biometric); font-weight:700;">${localizedData.confidence}</span>
+        <div class="inspector-folio-card">
+          <div class="detail-header-row">
+            <span class="detail-marker-num">${localizedData.num}</span>
+            <div class="detail-title-group">
+              <h4 class="detail-line-title">${localizedData.name}</h4>
+              <span class="detail-element-sub">${localizedData.element}</span>
+            </div>
+            <span class="detail-archival-stamp">${localizedData.confidence}</span>
+          </div>
+          <p class="detail-reading-text">${localizedData.summary}</p>
+          <div class="detail-footer-row">
+            <span class="detail-timing-note">✦ ${localizedData.timing}</span>
+            <span class="detail-interpretation-tag">
+              <span class="tag-label">अभिलेखीय निष्कर्ष:</span>
+              <strong class="tag-val">${localizedData.archival}</strong>
+            </span>
+          </div>
         </div>
-        <p style="font-size:0.86rem; color:var(--color-text-secondary); line-height:1.6; margin-bottom:10px;">${localizedData.summary}</p>
-        <div style="font-size:0.78rem; color:var(--color-gold-primary); font-weight:600;">✦ ${localizedData.timing}</div>
       `;
       if (window.SoundFX) window.SoundFX.scanPulse();
     }
   }
 
-  // Bind toggle click
+  // Bind toggle clicks
   lineToggles.forEach(btn => {
     btn.addEventListener('click', () => {
       selectLine(btn.dataset.line);
     });
   });
 
-  // Bind SVG line click
+  // Bind SVG line clicks
   svgPaths.forEach(path => {
     path.addEventListener('click', () => {
       selectLine(path.dataset.line);
     });
   });
 
-  // Report Language Switcher Event Listeners
+  // Bind numbered pin clicks
+  numberedMarkers.forEach(marker => {
+    marker.addEventListener('click', () => {
+      selectLine(marker.dataset.line);
+    });
+  });
+
+  // Language Switcher
   if (btnReportLangEn) {
     btnReportLangEn.addEventListener('click', () => {
       setLanguage('en');
       updateReportLangUI('en');
-      if (window.showToast) window.showToast('Report updated to English.');
+      if (window.showToast) window.showToast('Folio rendered in English.');
     });
   }
 
@@ -208,19 +281,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btnReportLangHi.addEventListener('click', () => {
       setLanguage('hi');
       updateReportLangUI('hi');
-      if (window.showToast) window.showToast('रिपोर्ट हिन्दी में परिवर्तित कर दी गई है।');
+      if (window.showToast) window.showToast('अभिलेख हिन्दी भाषा में रूपांतरित किया गया।');
     });
   }
 
-  // Listen to global language change
-  window.addEventListener('aurapalm:langchange', (e) => {
-    updateReportLangUI(e.detail.lang);
-  });
-
-  // Initialize line inspector
+  // Initialize
   updateReportLangUI(getLanguage());
 
-  // PDF Export Flow with Language Prompt Modal
+  // PDF Export Modal Flow
   if (btnDownloadPdf && pdfLangModal) {
     btnDownloadPdf.addEventListener('click', () => {
       pdfLangModal.classList.add('open');
@@ -234,7 +302,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Export English PDF
   if (btnExportPdfEn) {
     btnExportPdfEn.addEventListener('click', () => {
       setLanguage('en');
@@ -247,7 +314,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Export Hindi PDF
   if (btnExportPdfHi) {
     btnExportPdfHi.addEventListener('click', () => {
       setLanguage('hi');
@@ -260,7 +326,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Share Cosmic Summary
+  // Share Cosmic Summary Modal
   if (btnShareSummary && shareModal) {
     btnShareSummary.addEventListener('click', () => {
       shareModal.classList.add('open');
@@ -278,9 +344,9 @@ document.addEventListener('DOMContentLoaded', () => {
     copyShareLink.addEventListener('click', () => {
       const shareUrl = window.location.href;
       navigator.clipboard.writeText(shareUrl).then(() => {
-        if (window.showToast) window.showToast('Sacred Blueprint link copied to clipboard!');
+        if (window.showToast) window.showToast('हस्तरेखा अभिलेख का लिंक सुरक्षित कॉपी किया गया!');
       }).catch(() => {
-        if (window.showToast) window.showToast('Link ready: ' + shareUrl);
+        if (window.showToast) window.showToast('लिंक: ' + shareUrl);
       });
     });
   }

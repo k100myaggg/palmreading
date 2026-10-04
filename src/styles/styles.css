@@ -2285,919 +2285,1956 @@ h1, h2, h3, h4, h5, h6 {
 
 
 /* ==========================================================================
-   Interactive Scanner Page (Screen 2)
+   PHASE 2 — HASTAREKHA PALM EXAMINATION & FOLIO READING STYLES
+   Direction: Archival Manuscript Examination Plate + Personal Folio Record
    ========================================================================== */
-.scanner-page {
-  padding: 30px 0 60px;
+
+/* --------------------------------------------------------------------------
+   1. FOLIO VII • HASTA PARIKSHA (SCANNER / UPLOAD PAGE)
+   -------------------------------------------------------------------------- */
+.archive-examination-page {
+  padding: 36px 0 70px;
+  background-color: var(--paper);
+  position: relative;
 }
 
-/* Step Bar */
-.stepper-bar {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 24px;
+/* Folio Header */
+.examination-folio-header {
+  text-align: center;
+  max-width: 820px;
+  margin: 0 auto 30px;
+  padding: 0 16px;
 }
 
-.step-chip {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 10px 16px;
-  display: flex;
+.folio-tag-row {
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
-  transition: all var(--transition-fast);
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.step-chip.completed {
-  border-color: var(--color-cyan-biometric);
-  background: rgba(11, 158, 132, 0.08);
+.folio-num-badge {
+  font-family: var(--font-archive);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--paper-aged);
+  border: 1px solid var(--ink);
+  padding: 4px 12px;
+  box-shadow: 1px 1px 0 var(--ink);
 }
 
-.step-chip.active {
-  border-color: var(--color-gold-primary);
-  background: var(--color-gold-subtle);
-  box-shadow: 0 0 14px var(--color-gold-glow);
+.folio-meta-stamp {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--vermillion);
+  font-weight: 700;
 }
 
-.step-num {
-  width: 24px;
-  height: 24px;
-  border-radius: 50%;
-  background: var(--color-bg-subtle);
+.examination-folio-title {
+  font-family: var(--font-hindi);
+  font-size: clamp(2rem, 3.8vw, 2.8rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.examination-folio-desc {
+  font-family: var(--font-hindi);
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.header-divider-ornament {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: var(--color-text-muted);
+  gap: 16px;
+  max-width: 400px;
+  margin: 18px auto 0;
 }
 
-.step-chip.completed .step-num {
-  background: var(--color-cyan-biometric);
-  color: #fff;
+.header-divider-ornament .ornament-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
 }
 
-.step-chip.active .step-num {
-  background: var(--color-gold-primary);
-  color: #120e24;
+.header-divider-ornament .ornament-glyph {
+  color: var(--vermillion);
+  font-size: 1.1rem;
 }
 
-.step-text {
+/* Polarity Selection Manuscript Strip */
+.polarity-manuscript-section {
+  max-width: 1060px;
+  margin: 0 auto 30px;
+}
+
+.polarity-plate {
+  background: var(--paper-light);
+  border: 1px solid var(--line-strong);
+  outline: 1px solid rgba(149, 102, 61, 0.35);
+  outline-offset: -4px;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+}
+
+.polarity-label-col {
   display: flex;
   flex-direction: column;
 }
 
-.step-status {
-  font-size: 0.62rem;
+.polarity-plate-tag {
+  font-family: var(--font-archive);
+  font-size: 0.68rem;
+  letter-spacing: 0.14em;
+  color: var(--copper);
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--color-text-muted);
 }
 
-.step-chip.active .step-status {
-  color: var(--color-gold-primary);
+.polarity-plate-instruction {
+  font-family: var(--font-hindi);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
 }
 
-.step-chip.completed .step-status {
-  color: var(--color-cyan-biometric);
-}
-
-.step-name {
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--color-text-main);
-}
-
-/* Polarity Selector (Left vs Right Hand) */
-.polarity-bar {
+.polarity-options-cluster {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 20px;
-  background: var(--color-bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 6px;
-}
-
-.polarity-options {
-  display: flex;
-  gap: 8px;
-  flex: 1;
+  gap: 12px;
 }
 
 .polarity-btn {
-  flex: 1;
-  padding: 10px 18px;
-  border-radius: var(--radius-sm);
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: var(--color-text-secondary);
+  background: var(--paper-aged);
+  border: 1px solid var(--line-strong);
+  padding: 8px 18px;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  cursor: pointer;
   transition: all var(--transition-fast);
 }
 
+.polarity-btn .polarity-main {
+  font-family: var(--font-hindi);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.polarity-btn .polarity-sub {
+  font-family: var(--font-archive);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+}
+
+.polarity-btn:hover {
+  border-color: var(--vermillion);
+  background: var(--paper-parchment);
+}
+
 .polarity-btn.active {
-  background: var(--color-gold-gradient);
-  color: #120e24;
-  box-shadow: 0 2px 10px var(--color-gold-glow);
+  background: var(--vermillion);
+  border-color: var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
 }
 
-.polarity-sub {
-  font-size: 0.72rem;
-  font-weight: 400;
-  opacity: 0.85;
+.polarity-btn.active .polarity-main {
+  color: var(--paper);
 }
 
-.polarity-help-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+.polarity-btn.active .polarity-sub {
+  color: rgba(247, 239, 231, 0.85);
+}
+
+.polarity-note-box {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: var(--color-text-muted);
-  transition: color var(--transition-fast);
+  gap: 8px;
+  font-family: var(--font-hindi);
+  font-size: 0.82rem;
+  color: var(--ink-soft);
 }
 
-.polarity-help-btn:hover {
-  color: var(--color-gold-primary);
+.polarity-note-box .note-glyph {
+  color: var(--copper);
+  font-weight: 700;
 }
 
-/* Scanner Workspace (Grid 1.25fr : 0.75fr) */
-.scanner-viewport-grid {
+/* Examination Workspace Grid */
+.examination-workspace-grid {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 24px;
-  margin-bottom: 40px;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 32px;
+  max-width: 1180px;
+  margin: 0 auto 40px;
+  align-items: start;
 }
 
-/* Biometric HUD Canvas Area */
-.scanner-chamber {
-  background: #090714;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-xl);
-  height: 600px;
+/* Left Column: Examination Plate */
+.examination-plate-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.archival-plate-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  padding: 0 4px;
+}
+
+.plate-ref {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--copper);
+}
+
+.plate-title-text {
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+/* Archival Examination Frame */
+.archival-examination-frame {
+  background: var(--paper-light);
+  border: 2px solid var(--ink);
+  outline: 1px solid rgba(149, 102, 61, 0.45);
+  outline-offset: -7px;
+  padding: 24px;
   position: relative;
+  box-shadow: var(--shadow-folio);
+  min-height: 520px;
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-smooth);
+}
+
+.archival-examination-frame.is-scanning {
+  animation: manuscript-breath 4s ease-in-out infinite alternate;
+}
+
+@keyframes manuscript-breath {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.003); }
+  100% { transform: scale(1); }
+}
+
+/* Corner Marks */
+.archival-corner {
+  position: absolute;
+  font-family: var(--font-archive);
+  font-size: 1.25rem;
+  color: var(--vermillion);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.archival-corner.corner-tl { top: 12px; left: 12px; }
+.archival-corner.corner-tr { top: 12px; right: 12px; }
+.archival-corner.corner-bl { bottom: 12px; left: 12px; }
+.archival-corner.corner-br { bottom: 12px; right: 12px; }
+
+/* Marginal Rulers */
+.ruler-vertical {
+  position: absolute;
+  left: 12px;
+  top: 48px;
+  bottom: 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--font-archive);
+  font-size: 0.58rem;
+  color: var(--ink-faint);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.ruler-horizontal {
+  position: absolute;
+  bottom: 12px;
+  left: 48px;
+  right: 48px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-archive);
+  font-size: 0.58rem;
+  color: var(--ink-faint);
+  pointer-events: none;
+  z-index: 4;
+}
+
+.frame-inner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed var(--line);
+  margin-bottom: 14px;
+}
+
+.frame-tag {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--vermillion);
+}
+
+.frame-folio-name {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--ink);
+}
+
+.frame-inner-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  margin-top: 14px;
+  font-family: var(--font-archive);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  color: var(--ink-faint);
+}
+
+/* Specimen Canvas */
+.specimen-canvas-wrap {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  background: var(--paper-aged);
+  border: 1px solid var(--line);
   overflow: hidden;
-  box-shadow: var(--shadow-lg);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.chamber-video-feed, .chamber-image-feed {
+.specimen-img, .specimen-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  filter: contrast(1.08) sepia(0.22);
+}
+
+.specimen-grid-svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  opacity: 0.88;
+  pointer-events: none;
 }
 
-/* Glowing Biometric HUD Overlays */
-.hud-overlay {
+/* Primary CTA Below Preview */
+.preview-cta-block {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-scan-primary {
+  width: 100%;
+  padding: 14px 28px;
+  font-size: 1.12rem;
+  letter-spacing: 0.04em;
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.scan-sub-hint {
+  font-family: var(--font-hindi);
+  font-size: 0.8rem;
+  color: var(--ink-muted);
+  text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   SCANNING EXPERIENCE OVERLAY (Folio VII • Hasta Pariksha)
+   -------------------------------------------------------------------------- */
+.scanning-experience-overlay {
   position: absolute;
   inset: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
   pointer-events: none;
-  z-index: 10;
+  transition: opacity 0.3s ease;
+  overflow: hidden;
 }
 
-/* Laser Scanning Beam */
-.scan-laser-line {
+.scanning-experience-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.scan-parchment-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(247, 239, 231, 0.88);
+  backdrop-filter: blur(2px);
+}
+
+/* Slow ink scanning line (vermillion-copper ink sweep) */
+.slow-ink-scan-line {
   position: absolute;
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--color-cyan-biometric);
-  box-shadow: 0 0 16px var(--color-cyan-biometric), 0 0 32px var(--color-cyan-biometric);
+  background: var(--vermillion);
+  box-shadow: 0 0 10px rgba(142, 29, 18, 0.45), 0 0 20px rgba(149, 102, 61, 0.3);
   top: 10%;
-  animation: scan-vertical 3s ease-in-out infinite alternate;
-  opacity: 0.85;
+  z-index: 22;
+  animation: ink-scan-sweep 3.5s ease-in-out infinite alternate;
 }
 
-@keyframes scan-vertical {
-  0% { top: 12%; opacity: 0.3; }
-  50% { opacity: 1; }
-  100% { top: 88%; opacity: 0.3; }
+@keyframes ink-scan-sweep {
+  0% { top: 8%; opacity: 0.4; }
+  50% { opacity: 0.95; }
+  100% { top: 92%; opacity: 0.4; }
 }
 
-/* Corner Reticles */
-.reticle-corner {
-  position: absolute;
-  width: 24px;
-  height: 24px;
-  border-color: var(--color-cyan-biometric);
-  border-style: solid;
-  opacity: 0.7;
-}
-
-.reticle-tl { top: 20px; left: 20px; border-width: 2px 0 0 2px; }
-.reticle-tr { top: 20px; right: 20px; border-width: 2px 2px 0 0; }
-.reticle-bl { bottom: 20px; left: 20px; border-width: 0 0 2px 2px; }
-.reticle-br { bottom: 20px; right: 20px; border-width: 0 2px 2px 0; }
-
-.hud-top-bar {
-  position: absolute;
-  top: 18px;
-  left: 24px;
-  right: 24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 20;
-}
-
-.hud-pill {
-  background: rgba(9, 7, 20, 0.75);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(61, 224, 182, 0.3);
-  padding: 6px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--color-cyan-biometric);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.hud-dot-pulse {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-cyan-biometric);
-  animation: pulse-ring 1.5s infinite;
-}
-
-.hud-floating-badge {
-  position: absolute;
-  background: rgba(9, 7, 20, 0.82);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(229, 185, 88, 0.4);
-  border-radius: var(--radius-full);
-  padding: 6px 14px;
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 20;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
-}
-
-.hud-badge-gold {
-  border-color: rgba(229, 185, 88, 0.5);
-  color: var(--color-gold-primary);
-}
-
-.hud-badge-violet {
-  border-color: rgba(156, 124, 248, 0.5);
-  color: var(--color-violet-mystic);
-}
-
-.hud-guidance-pill {
-  position: absolute;
-  bottom: 24px;
-  background: rgba(9, 7, 20, 0.82);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: var(--radius-full);
-  padding: 8px 18px;
-  font-size: 0.76rem;
-  color: #eee;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  z-index: 20;
-}
-
-/* Scanner Action Controls Below Viewport */
-.scanner-controls-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-top: 14px;
-}
-
-.scanner-btn-scan {
-  flex: 1;
-  background: var(--color-gold-gradient);
-  color: #120e24;
-  padding: 14px 24px;
-  border-radius: var(--radius-md);
-  font-size: 0.95rem;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  box-shadow: 0 4px 20px var(--color-gold-glow);
-  transition: all var(--transition-fast);
-}
-
-.scanner-btn-scan:hover {
-  transform: translateY(-2px);
-  filter: brightness(1.08);
-}
-
-.scanner-btn-upload {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--border-light);
-  color: var(--color-text-main);
-  padding: 14px 22px;
-  border-radius: var(--radius-md);
-  font-size: 0.88rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  transition: all var(--transition-fast);
-}
-
-.scanner-btn-upload:hover {
-  border-color: var(--color-gold-primary);
-  background: var(--color-gold-subtle);
-  color: var(--color-gold-primary);
-}
-
-.scanner-btn-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--radius-md);
-  background: var(--color-bg-surface);
-  border: 1px solid var(--border-light);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--color-text-secondary);
-  transition: all var(--transition-fast);
-}
-
-.scanner-btn-icon:hover {
-  color: var(--color-gold-primary);
-  border-color: var(--color-gold-primary);
-}
-
-/* Biometrics Side Panel (Real-Time Biometrics) */
-.biometrics-panel {
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
-}
-
-.panel-card {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 22px;
-  box-shadow: var(--shadow-sm);
-}
-
-.panel-header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 12px;
-}
-
-.panel-eyebrow {
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-.panel-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-.panel-desc {
-  font-size: 0.82rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-  margin-bottom: 16px;
-}
-
-.metric-checklist {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  margin-bottom: 18px;
-}
-
-.metric-item {
-  background: var(--color-bg-subtle);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  font-size: 0.8rem;
-}
-
-.metric-name {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: 500;
-  color: var(--color-text-main);
-}
-
-.metric-status {
-  font-weight: 600;
-  font-size: 0.74rem;
-}
-
-.status-identified {
-  color: var(--color-cyan-biometric);
-}
-
-.status-analyzing {
-  color: var(--color-gold-primary);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-/* Resonance Progress Bar */
-.resonance-container {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.resonance-labels {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.74rem;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-}
-
-.resonance-bar-track {
-  width: 100%;
-  height: 8px;
-  background: var(--color-bg-elevated);
-  border-radius: var(--radius-full);
-  overflow: hidden;
-  position: relative;
-}
-
-.resonance-bar-fill {
-  height: 100%;
-  background: var(--color-gold-gradient);
-  border-radius: var(--radius-full);
-  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 10px var(--color-gold-glow);
-}
-
-/* Guidelines for Accuracy 2x2 Grid */
-.guidelines-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 10px;
-}
-
-.guideline-box {
-  background: var(--color-bg-subtle);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 12px;
-}
-
-.guideline-title {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--color-gold-primary);
-  margin-bottom: 4px;
-}
-
-.guideline-desc {
-  font-size: 0.72rem;
-  color: var(--color-text-secondary);
-  line-height: 1.45;
-}
-
-/* Sanctuary Privacy Protocol Card */
-.privacy-card {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-}
-
-.privacy-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--color-violet-glow);
-  color: var(--color-violet-mystic);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-
-.privacy-title {
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.privacy-desc {
-  font-size: 0.74rem;
-  color: var(--color-text-secondary);
-  line-height: 1.45;
-}
-
-/* ==========================================================================
-   Destiny Report / Blueprint Page (Screen 3)
-   ========================================================================== */
-.report-page {
-  padding: 30px 0 80px;
-}
-
-.report-hero-card {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-xl);
-  padding: 36px;
-  margin-bottom: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  box-shadow: var(--shadow-md);
-}
-
-.report-hero-meta {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.report-meta-chips {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 8px;
-}
-
-.meta-chip {
-  background: var(--color-bg-subtle);
-  border: 1px solid var(--border-light);
-  padding: 4px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: 600;
-  color: var(--color-text-secondary);
-}
-
-/* Circular Score Gauge */
-.score-gauge-box {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  gap: 6px;
-  flex-shrink: 0;
-}
-
-.gauge-circle {
-  width: 110px;
-  height: 110px;
-  border-radius: 50%;
-  border: 3px solid var(--color-gold-primary);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 0 24px var(--color-gold-glow);
-  position: relative;
-  background: var(--color-bg-subtle);
-}
-
-.gauge-val {
-  font-family: var(--font-serif);
-  font-size: 2.2rem;
-  font-weight: 700;
-  line-height: 1;
-  color: var(--color-gold-primary);
-}
-
-.gauge-max {
-  font-size: 0.7rem;
-  color: var(--color-text-muted);
-}
-
-.gauge-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-}
-
-/* Action Bar */
-.report-action-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 30px;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-
-.report-btn-group {
-  display: flex;
-  gap: 12px;
-}
-
-/* Inspector Layout: Left Hand Visualization + Right Mounts & Rare Signs */
-.inspector-grid {
-  display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
-  gap: 24px;
-  margin-bottom: 40px;
-}
-
-.inspector-hand-card {
-  background: #090714;
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-xl);
-  padding: 24px;
-  display: flex;
-  flex-direction: column;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-}
-
-.hand-toggles-row {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  margin-bottom: 16px;
-  z-index: 10;
-}
-
-.hand-line-toggle {
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  color: #ccc;
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
-  font-size: 0.72rem;
-  font-weight: 600;
-  transition: all var(--transition-fast);
-}
-
-.hand-line-toggle.active {
-  background: var(--color-gold-primary);
-  color: #120e24;
-  border-color: var(--color-gold-primary);
-}
-
-.interactive-hand-canvas {
-  width: 100%;
-  height: 480px;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.interactive-hand-canvas img {
-  max-height: 100%;
-  object-fit: contain;
-  opacity: 0.85;
-}
-
-.interactive-hand-canvas svg {
+.scanning-sketch-svg {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  z-index: 21;
+  pointer-events: none;
 }
 
-.line-path-svg {
-  cursor: pointer;
-  stroke-width: 4px;
-  fill: none;
-  stroke-linecap: round;
-  transition: all 0.3s ease;
-  filter: drop-shadow(0 0 6px currentColor);
+.ink-draw-path {
+  stroke-dasharray: 400;
+  stroke-dashoffset: 400;
+  animation: ink-sketch-draw 2.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
-.line-path-svg:hover, .line-path-svg.active {
-  stroke-width: 7px;
-  filter: drop-shadow(0 0 14px currentColor);
+.path-head { animation-delay: 0.4s; }
+.path-life { animation-delay: 0.8s; }
+.path-fate { animation-delay: 1.2s; }
+
+@keyframes ink-sketch-draw {
+  to { stroke-dashoffset: 0; }
 }
 
-/* Mounts Equilibrium & Rare Markings Column */
-.inspector-metrics-col {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.mount-bar-item {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-bottom: 14px;
-}
-
-.mount-meta {
-  display: flex;
-  justify-content: space-between;
-  font-size: 0.84rem;
-  font-weight: 600;
-}
-
-.mount-sub {
-  font-size: 0.72rem;
-  color: var(--color-text-muted);
-}
-
-/* Rare Markings Card */
-.rare-marking-item {
-  background: var(--color-bg-subtle);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-md);
-  padding: 14px;
-  margin-top: 10px;
-}
-
-.rare-marking-title {
-  font-size: 0.86rem;
-  font-weight: 700;
-  color: var(--color-gold-primary);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
-}
-
-.rare-marking-desc {
-  font-size: 0.78rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
-}
-
-/* The Three Celestial Pillars of Destiny (3 Columns) */
-.pillars-section {
-  margin-bottom: 50px;
-}
-
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.pillar-card {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-lg);
-  padding: 26px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  transition: all var(--transition-normal);
-}
-
-.pillar-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
-}
-
-.pillar-badge-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 14px;
-}
-
-.pillar-title {
-  font-size: 1.15rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.pillar-desc {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
-  line-height: 1.55;
-  margin-bottom: 18px;
-}
-
-.pillar-highlight-box {
-  background: var(--color-bg-subtle);
-  border-radius: var(--radius-sm);
-  padding: 10px 12px;
-  font-size: 0.78rem;
-  color: var(--color-text-main);
-  margin-bottom: 10px;
-}
-
-.pillar-highlight-box strong {
-  color: var(--color-gold-primary);
-}
-
-/* Consecrated Crystals & Behavioral Remedies (4 Columns) */
-.remedies-section {
-  margin-bottom: 60px;
-}
-
-.remedies-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.remedy-card {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--border-light);
-  border-radius: var(--radius-md);
-  padding: 20px;
+/* Inspection Card (Parchment Box) */
+.scanning-inspection-card {
+  position: relative;
+  z-index: 25;
+  background: var(--paper-light);
+  border: 1.5px solid var(--ink);
+  outline: 1px solid rgba(149, 102, 61, 0.45);
+  outline-offset: -5px;
+  padding: 24px 28px;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: var(--shadow-folio);
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all var(--transition-normal);
 }
 
-.remedy-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-3px);
-}
-
-.remedy-icon {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: var(--color-gold-subtle);
-  color: var(--color-gold-primary);
+.inspection-header {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 12px;
-}
-
-.remedy-tag {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  margin-bottom: 4px;
-}
-
-.remedy-name {
-  font-size: 0.95rem;
-  font-weight: 700;
+  gap: 12px;
   margin-bottom: 8px;
 }
 
-.remedy-desc {
-  font-size: 0.78rem;
-  color: var(--color-text-secondary);
-  line-height: 1.5;
+.inspection-folio {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  color: var(--vermillion);
+  font-weight: 700;
 }
 
-/* Upsell Master Banner */
-.consult-upsell-banner {
-  background: var(--color-bg-surface);
-  border: 1px solid var(--color-gold-primary);
-  border-radius: var(--radius-xl);
-  padding: 28px 36px;
+.inspection-title {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.inspection-headline {
+  font-family: var(--font-hindi);
+  font-size: 1.28rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+
+.inspection-animated-box {
+  background: var(--paper-aged);
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.inspection-quill-glyph {
+  font-size: 1.1rem;
+  color: var(--vermillion);
+  animation: quill-bob 1s ease-in-out infinite alternate;
+}
+
+@keyframes quill-bob {
+  from { transform: translateY(-1px); }
+  to { transform: translateY(2px); }
+}
+
+.inspection-animated-msg {
+  font-family: var(--font-hindi);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.inspection-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  margin-bottom: 14px;
+}
+
+.scan-status-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  padding: 4px 8px;
+  border-bottom: 1px dashed var(--line-light);
+  transition: all var(--transition-fast);
+}
+
+.scan-status-item .status-glyph {
+  font-family: var(--font-archive);
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  width: 16px;
+  font-weight: 700;
+}
+
+.scan-status-item.done {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.scan-status-item.done .status-glyph {
+  color: var(--vermillion);
+}
+
+.inspection-note {
+  font-family: var(--font-hindi);
+  font-size: 0.76rem;
+  color: var(--ink-muted);
+  line-height: 1.4;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT COLUMN: MANUSCRIPT UPLOAD BOX & PROTOCOLS
+   -------------------------------------------------------------------------- */
+.manuscript-controls-col {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Framed Manuscript Upload Plate */
+.manuscript-upload-plate {
+  background: var(--paper-aged);
+  border: 1.5px solid var(--ink);
+  outline: 1px solid rgba(149, 102, 61, 0.45);
+  outline-offset: -5px;
+  padding: 28px 24px;
+  box-shadow: var(--shadow-archival);
+  position: relative;
+  transition: border-color var(--transition-fast);
+}
+
+.manuscript-upload-plate.drag-active {
+  background: var(--paper-parchment);
+  border-color: var(--vermillion);
+}
+
+.upload-plate-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.upload-plate-tag {
+  font-family: var(--font-archive);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  color: var(--copper);
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.upload-seal-mark {
+  width: 44px;
+  height: 44px;
+  background: var(--paper-light);
+  border: 1px solid var(--ink);
+  color: var(--vermillion);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-hindi);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.upload-plate-title {
+  font-family: var(--font-hindi);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.upload-plate-formats {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  margin-bottom: 18px;
+}
+
+.upload-action-wrap {
+  margin-bottom: 14px;
+}
+
+.btn-manuscript-select {
+  background: var(--paper-light);
+  border: 1px solid var(--ink);
+  outline: 1px solid var(--copper);
+  outline-offset: -3px;
+  padding: 10px 24px;
+  font-family: var(--font-hindi);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--ink);
+  transition: all var(--transition-fast);
+}
+
+.btn-manuscript-select:hover {
+  background: var(--vermillion);
+  color: var(--paper);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.camera-fallback-row {
+  margin-bottom: 14px;
+}
+
+.btn-camera-link {
+  font-family: var(--font-hindi);
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-decoration: underline;
+  text-decoration-color: var(--line);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.btn-camera-link:hover, .btn-camera-link.active {
+  color: var(--vermillion);
+}
+
+.upload-plate-footer {
+  font-family: var(--font-archive);
+  font-size: 0.6rem;
+  letter-spacing: 0.14em;
+  color: var(--ink-faint);
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  width: 100%;
+}
+
+/* Examination Directives (Rules) */
+.directives-plate {
+  background: var(--paper-light);
+  border: 1px solid var(--line-strong);
+  padding: 20px 22px;
+  box-shadow: var(--shadow-sm);
+}
+
+.directives-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.directives-badge {
+  font-family: var(--font-archive);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  background: var(--paper-aged);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  color: var(--copper);
+}
+
+.directives-title {
+  font-family: var(--font-hindi);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.directives-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.directives-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: var(--font-hindi);
+  font-size: 0.86rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+
+.dir-num {
+  font-family: var(--font-hindi);
+  font-weight: 700;
+  color: var(--vermillion);
+  width: 18px;
+  flex-shrink: 0;
+}
+
+/* Scholarly Trust Plate */
+.scholarly-trust-plate {
+  background: var(--paper-aged);
+  border: 1px solid var(--line);
+  padding: 14px 18px;
+}
+
+.trust-plate-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.trust-glyph {
+  font-size: 0.9rem;
+}
+
+.trust-title {
+  font-family: var(--font-hindi);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.trust-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+  line-height: 1.45;
+}
+
+/* Bottom Notes Frame */
+.examination-scholarly-notes {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.scholarly-notes-frame {
+  background: var(--paper-light);
+  border: 1px solid var(--line-strong);
+  padding: 24px 28px;
+  box-shadow: var(--shadow-sm);
+}
+
+.scholarly-notes-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.notes-tag {
+  font-family: var(--font-archive);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  background: var(--paper-aged);
+  border: 1px solid var(--line);
+  padding: 2px 8px;
+  color: var(--vermillion);
+}
+
+.notes-title {
+  font-family: var(--font-hindi);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.scholarly-notes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.note-box-title {
+  font-family: var(--font-hindi);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 6px;
+}
+
+.note-box-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.84rem;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+
+
+/* ==========================================================================
+   2. PERSONAL FOLIO • HASTA 001 (RESULT PAGE)
+   ========================================================================== */
+.folio-report-page {
+  padding: 30px 0 80px;
+  background-color: var(--paper);
+}
+
+/* Header Plate */
+.folio-header-plate {
+  background: var(--paper-light);
+  border: 1.5px solid var(--ink);
+  outline: 1px solid rgba(149, 102, 61, 0.45);
+  outline-offset: -5px;
+  padding: 28px 32px;
+  margin-bottom: 30px;
+  box-shadow: var(--shadow-folio);
+}
+
+.folio-top-meta {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
-  box-shadow: var(--shadow-glow);
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+  gap: 16px;
 }
+
+.folio-identity-stamp {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.stamp-seal {
+  width: 38px;
+  height: 38px;
+  background: var(--vermillion);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  font-family: var(--font-hindi);
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+.stamp-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.stamp-category {
+  font-family: var(--font-archive);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.stamp-sub {
+  font-family: var(--font-hindi);
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+}
+
+.folio-lang-cluster {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-label {
+  font-family: var(--font-archive);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-muted);
+  font-weight: 700;
+}
+
+.lang-btn-group {
+  display: flex;
+  gap: 6px;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+
+.folio-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.folio-main-title {
+  font-family: var(--font-hindi);
+  font-size: clamp(2rem, 3.4vw, 2.7rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.15;
+}
+
+.folio-main-subtitle {
+  font-family: var(--font-archive);
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  color: var(--copper);
+  font-weight: 700;
+}
+
+.folio-editorial-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+  max-width: 780px;
+  line-height: 1.6;
+  margin-top: 4px;
+}
+
+.folio-chips-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+
+.folio-chip {
+  font-family: var(--font-archive);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  background: var(--paper-aged);
+  border: 1px solid var(--line-strong);
+  padding: 4px 10px;
+  color: var(--ink-soft);
+}
+
+/* --------------------------------------------------------------------------
+   DESKTOP TWO-COLUMN RESULT LAYOUT
+   Left: Annotated Palm (Plate VII-01)
+   Right: Reading Summary & Folio Panels
+   -------------------------------------------------------------------------- */
+.folio-examination-layout {
+  display: grid;
+  grid-template-columns: 1.08fr 0.92fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.folio-header-plate {
+  grid-column: 1 / -1;
+}
+
+/* LEFT COLUMN: ANNOTATED PALM */
+.folio-palm-column {
+  position: sticky;
+  top: 90px;
+}
+
+.archival-plate-card {
+  background: var(--paper-light);
+  border: 1.5px solid var(--ink);
+  outline: 1px solid rgba(149, 102, 61, 0.45);
+  outline-offset: -5px;
+  padding: 22px;
+  box-shadow: var(--shadow-folio);
+}
+
+.plate-top-legend {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--line);
+}
+
+.plate-number-tag {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--vermillion);
+}
+
+.plate-heading-title {
+  font-family: var(--font-hindi);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Hand Line Toggles */
+.hand-toggles-cluster {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-bottom: 14px;
+}
+
+.hand-line-toggle {
+  background: var(--paper-aged);
+  border: 1px solid var(--line);
+  font-family: var(--font-hindi);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.hand-line-toggle:hover {
+  border-color: var(--vermillion);
+  color: var(--vermillion);
+}
+
+.hand-line-toggle.active {
+  background: var(--vermillion);
+  color: var(--paper);
+  border-color: var(--ink);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+
+/* Archival Palm Canvas Frame */
+.archival-palm-canvas-frame {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background: var(--paper-aged);
+  border: 1px solid var(--ink);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.canvas-corner {
+  position: absolute;
+  font-family: var(--font-archive);
+  font-size: 1.15rem;
+  color: var(--copper);
+  line-height: 1;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.canvas-corner.corner-tl { top: 8px; left: 8px; }
+.canvas-corner.corner-tr { top: 8px; right: 8px; }
+.canvas-corner.corner-bl { bottom: 8px; left: 8px; }
+.canvas-corner.corner-br { bottom: 8px; right: 8px; }
+
+.canvas-ruler-left {
+  position: absolute;
+  left: 8px;
+  top: 30px;
+  bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: var(--font-archive);
+  font-size: 0.55rem;
+  color: var(--ink-faint);
+  z-index: 4;
+}
+
+.canvas-ruler-bottom {
+  position: absolute;
+  bottom: 8px;
+  left: 30px;
+  right: 30px;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-archive);
+  font-size: 0.55rem;
+  color: var(--ink-faint);
+  z-index: 4;
+}
+
+.base-palm-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: multiply;
+  filter: contrast(1.08) sepia(0.24);
+}
+
+.archival-lines-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+/* Non-neon, historical vermillion & copper line styles */
+.line-path-svg {
+  cursor: pointer;
+  fill: none;
+  stroke-linecap: round;
+  transition: stroke-width 0.2s ease, opacity 0.2s ease;
+  opacity: 0.85;
+}
+
+.line-path-svg:hover, .line-path-svg.active {
+  stroke-width: 4px;
+  opacity: 1;
+}
+
+/* Numbered Marker Pins */
+.annotated-marker-pin {
+  position: absolute;
+  z-index: 8;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform var(--transition-fast);
+}
+
+.annotated-marker-pin .marker-dot {
+  width: 10px;
+  height: 10px;
+  background: var(--vermillion);
+  border: 1.5px solid var(--paper);
+  box-shadow: 0 0 0 1px var(--ink);
+  flex-shrink: 0;
+}
+
+.annotated-marker-pin .marker-tag {
+  background: var(--paper-light);
+  border: 1px solid var(--ink);
+  padding: 3px 6px;
+  font-family: var(--font-archive);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.15;
+  box-shadow: 1px 1px 0 rgba(36, 27, 23, 0.2);
+  white-space: nowrap;
+}
+
+.annotated-marker-pin .marker-tag small {
+  font-size: 0.55rem;
+  color: var(--copper);
+  letter-spacing: 0.08em;
+}
+
+.annotated-marker-pin:hover .marker-tag,
+.annotated-marker-pin.active .marker-tag {
+  background: var(--paper-aged);
+  border-color: var(--vermillion);
+  color: var(--vermillion);
+}
+
+.annotated-marker-pin.active {
+  transform: scale(1.05);
+}
+
+/* Selected Line Detail Box Beneath Palm */
+.inspector-detail-wrapper {
+  margin-top: 14px;
+}
+
+.inspector-folio-card {
+  background: var(--paper-aged);
+  border: 1px solid var(--line-strong);
+  padding: 16px;
+}
+
+.detail-header-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.detail-marker-num {
+  font-family: var(--font-archive);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--paper);
+  background: var(--vermillion);
+  border: 1px solid var(--ink);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.detail-title-group {
+  flex: 1;
+}
+
+.detail-line-title {
+  font-family: var(--font-hindi);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.detail-element-sub {
+  font-family: var(--font-hindi);
+  font-size: 0.74rem;
+  color: var(--copper);
+  font-weight: 600;
+}
+
+.detail-archival-stamp {
+  font-family: var(--font-archive);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--ink-soft);
+  background: var(--paper-light);
+  border: 1px solid var(--line);
+  padding: 2px 6px;
+}
+
+.detail-reading-text {
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.detail-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px dashed var(--line);
+  font-size: 0.78rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.detail-timing-note {
+  font-family: var(--font-hindi);
+  color: var(--vermillion);
+  font-weight: 600;
+}
+
+.detail-interpretation-tag {
+  font-family: var(--font-archive);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+}
+
+.detail-interpretation-tag .tag-val {
+  color: var(--copper);
+  font-weight: 700;
+}
+
+/* --------------------------------------------------------------------------
+   RIGHT COLUMN: READING SUMMARY & ARCHIVAL FOLIO PANELS
+   -------------------------------------------------------------------------- */
+.folio-content-column {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+/* Subheading Bar */
+.section-subheading-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 16px;
+}
+
+.subheading-mono {
+  font-family: var(--font-archive);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--copper);
+  text-transform: uppercase;
+}
+
+.subheading-ornament {
+  color: var(--vermillion);
+  font-size: 1rem;
+}
+
+/* 1. Main Finding Card */
+.finding-plate-card {
+  background: var(--paper-light);
+  border: 1.5px solid var(--ink);
+  outline: 1px solid rgba(149, 102, 61, 0.45);
+  outline-offset: -5px;
+  padding: 22px 26px;
+  box-shadow: var(--shadow-folio);
+}
+
+.finding-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.section-tag-mono {
+  font-family: var(--font-archive);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--vermillion);
+  text-transform: uppercase;
+}
+
+.score-badge {
+  font-family: var(--font-archive);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--ink);
+  background: var(--paper-aged);
+  border: 1px solid var(--line-strong);
+  padding: 3px 8px;
+}
+
+.finding-title {
+  font-family: var(--font-hindi);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.25;
+  margin-bottom: 8px;
+}
+
+.finding-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+/* 2. Major Lines Summary Grid */
+.major-lines-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.major-line-summary-item {
+  background: var(--paper-light);
+  border: 1px solid var(--line-strong);
+  padding: 12px 14px;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+}
+
+.major-line-summary-item:hover {
+  border-color: var(--vermillion);
+  background: var(--paper-aged);
+}
+
+.line-badge-num {
+  font-family: var(--font-archive);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--paper);
+  background: var(--vermillion);
+  border: 1px solid var(--ink);
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.line-summary-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.line-title-hi {
+  font-family: var(--font-hindi);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.line-title-en {
+  font-family: var(--font-archive);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: var(--copper);
+  font-weight: 700;
+}
+
+.line-quick-val {
+  font-family: var(--font-hindi);
+  font-size: 0.75rem;
+  color: var(--ink-muted);
+  margin-top: 2px;
+}
+
+/* 3. Detailed Archival Folio Panels (Plates I, II, III, IV) */
+.detailed-interpretation-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.archival-folio-panel {
+  background: #FAF4EE;
+  border: 1px solid var(--ink);
+  outline: 1px solid rgba(149, 102, 61, 0.45);
+  outline-offset: -5px;
+  padding: 22px 24px;
+  box-shadow: var(--shadow-folio);
+  position: relative;
+}
+
+.panel-meta-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px dashed var(--line);
+}
+
+.panel-folio-ref {
+  font-family: var(--font-archive);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: var(--vermillion);
+  text-transform: uppercase;
+}
+
+.panel-meta-sutra {
+  font-family: var(--font-archive);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  color: var(--ink-faint);
+}
+
+.panel-line-name {
+  font-family: var(--font-hindi);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.panel-reading-body {
+  font-family: var(--font-hindi);
+  font-size: 0.94rem;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  margin-bottom: 14px;
+}
+
+.panel-interpretation-box {
+  background: var(--paper-aged);
+  border: 1px solid var(--line);
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.interpretation-label {
+  font-family: var(--font-archive);
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-muted);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.interpretation-tags-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.interpretation-chip {
+  font-family: var(--font-hindi);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--vermillion);
+}
+
+.chip-sep {
+  color: var(--copper);
+  font-size: 0.75rem;
+}
+
+/* 4. Secondary Observations (Mounts & Rare Markings) */
+.observations-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.observation-card {
+  background: var(--paper-light);
+  border: 1px solid var(--line-strong);
+  padding: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.observation-card.obs-rare-highlight {
+  border-color: var(--copper);
+  background: var(--paper-aged);
+}
+
+.obs-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.obs-planet {
+  font-family: var(--font-hindi);
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.obs-pct {
+  font-family: var(--font-archive);
+  font-size: 0.68rem;
+  color: var(--copper);
+  font-weight: 700;
+}
+
+.obs-badge {
+  font-family: var(--font-archive);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  background: var(--vermillion);
+  color: var(--paper);
+  padding: 2px 6px;
+}
+
+.obs-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  line-height: 1.45;
+}
+
+/* --------------------------------------------------------------------------
+   5. ARCHIVAL DISCLAIMER (Mandatory Exact Requirement)
+   -------------------------------------------------------------------------- */
+.archival-disclaimer-section {
+  margin-top: 4px;
+}
+
+.archival-disclaimer-box {
+  background: var(--paper-aged);
+  border: 1.5px solid var(--ink);
+  outline: 1px solid rgba(142, 29, 18, 0.4);
+  outline-offset: -5px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow-archival);
+}
+
+.disclaimer-stamp-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.disclaimer-seal {
+  width: 24px;
+  height: 24px;
+  background: var(--vermillion);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  font-family: var(--font-hindi);
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.disclaimer-heading {
+  font-family: var(--font-hindi);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.disclaimer-text {
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+
+.disclaimer-footer-line {
+  font-family: var(--font-archive);
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--ink-faint);
+  margin-top: 10px;
+  padding-top: 6px;
+  border-top: 1px dashed var(--line);
+}
+
+/* 6. Action Tray */
+.report-action-tray {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-top: 10px;
+}
+
+.report-action-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.expert-consult-link-plate {
+  background: var(--paper-light);
+  border: 1px solid var(--line-strong);
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.consult-intro {
+  font-family: var(--font-hindi);
+  font-size: 0.82rem;
+  color: var(--ink-muted);
+}
+
+.consult-anchor {
+  font-family: var(--font-hindi);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--vermillion);
+  text-decoration: underline;
+  text-decoration-color: var(--vermillion);
+}
+
+.consult-anchor:hover {
+  color: var(--vermillion-dark);
+}
+
+/* --------------------------------------------------------------------------
+   ARCHIVAL MODAL STYLING
+   -------------------------------------------------------------------------- */
+.archival-modal-card {
+  background: var(--paper-light);
+  border: 2px solid var(--ink);
+  outline: 1px solid rgba(149, 102, 61, 0.45);
+  outline-offset: -6px;
+  padding: 32px 30px;
+  max-width: 500px;
+  width: 90%;
+  box-shadow: var(--shadow-folio);
+  position: relative;
+  text-align: center;
+}
+
+.modal-close-plate {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
+  background: var(--paper-aged);
+  border: 1px solid var(--ink);
+  font-family: var(--font-archive);
+  font-size: 0.85rem;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.modal-close-plate:hover {
+  background: var(--vermillion);
+  color: var(--paper);
+}
+
+.modal-folio-stamp {
+  font-family: var(--font-archive);
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  color: var(--copper);
+  font-weight: 700;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.modal-plate-title {
+  font-family: var(--font-hindi);
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.modal-plate-desc {
+  font-family: var(--font-hindi);
+  font-size: 0.88rem;
+  color: var(--ink-soft);
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.modal-export-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modal-plate-note {
+  font-family: var(--font-hindi);
+  font-size: 0.74rem;
+  color: var(--ink-muted);
+  margin-top: 14px;
+}
+
+.modal-quote-slate {
+  background: var(--paper-aged);
+  border: 1px solid var(--line);
+  padding: 14px 16px;
+  font-family: var(--font-hindi);
+  font-size: 0.92rem;
+  color: var(--ink);
+  line-height: 1.6;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.modal-copy-cluster {
+  display: flex;
+  gap: 8px;
+}
+
+.archival-copy-input {
+  flex: 1;
+  background: var(--paper-light);
+  border: 1px solid var(--ink);
+  padding: 8px 12px;
+  font-family: var(--font-archive);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+}
+
+/* --------------------------------------------------------------------------
+   STRICT MOBILE HIERARCHY FOR RESULT PAGE (Screen < 992px)
+   Order:
+   1. Palm image (order: 1)
+   2. Main finding (order: 2)
+   3. Major lines (order: 3)
+   4. Detailed interpretation (order: 4)
+   5. Other observations (order: 5)
+   6. Report CTA (order: 6)
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
+  .examination-workspace-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .polarity-plate {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .polarity-options-cluster {
+    width: 100%;
+  }
+
+  .polarity-btn {
+    flex: 1;
+  }
+
+  .folio-examination-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* 1. Mobile order: Palm Image FIRST */
+  .folio-palm-column {
+    order: 1;
+    position: static;
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  .archival-palm-canvas-frame {
+    height: 380px;
+  }
+
+  /* 2. Main finding / Folio title */
+  .folio-header-plate {
+    order: 2;
+    margin-bottom: 20px;
+    padding: 20px 16px;
+  }
+
+  /* Right column wrapper acts as container for remaining sections */
+  .folio-content-column {
+    display: contents;
+  }
+
+  .main-finding-section {
+    order: 3;
+    margin-bottom: 24px;
+  }
+
+  /* 3. Major Lines */
+  .major-lines-summary-section {
+    order: 4;
+    margin-bottom: 24px;
+  }
+
+  /* 4. Detailed Interpretation (Folio Panels) */
+  .detailed-interpretation-section {
+    order: 5;
+    margin-bottom: 24px;
+  }
+
+  /* 5. Other Observations (Mounts) */
+  .other-observations-section {
+    order: 6;
+    margin-bottom: 24px;
+  }
+
+  /* 6. Trust Disclaimer & Report CTA */
+  .archival-disclaimer-section {
+    order: 7;
+    margin-bottom: 20px;
+  }
+
+  .report-action-tray {
+    order: 8;
+    margin-bottom: 40px;
+  }
+
+  .major-lines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .observations-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .scholarly-notes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
 
 .upsell-left {
   display: flex;
